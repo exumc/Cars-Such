@@ -36,35 +36,34 @@ router.get("/car/:id", function (req, res) {
             //var topic = $(element).find("div.flex-container-column.align-items-start.flex").find("ul.tag-list-wrapper").find("li").find("a").text();
 
 
-            var year = $(element).find("tbody").eq(1).children("tr").eq(0).children("td").eq(1).html();
-            var make = $(element).find("tbody").eq(1).children("tr").eq(1).children("td").eq(1).html();
-            var model = $(element).find("tbody").eq(1).children("tr").eq(2).children("td").eq(1).html();
-            var trimLevel = $(element).find("tbody").eq(1).children("tr").eq(3).children("td").eq(1).html();
-            var style = $(element).find("tbody").eq(1).children("tr").eq(4).children("td").eq(1).html();
-            var madeIn = $(element).find("tbody").eq(1).children("tr").eq(5).children("td").eq(1).html();
-
-            var engine = $(element).find("tbody").eq(5).children("tr").eq(0).children("td").eq(1).html();
-            var steeringType = $(element).find("tbody").eq(5).children("tr").eq(1).children("td").eq(1).text();
-            var antiBrakeSystem = $(element).find("tbody").eq(5).children("tr").eq(2).children("td").eq(1).text();
-            var fueltype = $(element).find("tbody").eq(5).children("tr").eq(3).children("td").eq(1).text();
-            var tankSize = $(element).find("tbody").eq(5).children("tr").eq(4).children("td").eq(1).text();
-            var overallHeight = $(element).find("tbody").eq(5).children("tr").eq(5).children("td").eq(1).text();
-            var overallLength = $(element).find("tbody").eq(5).children("tr").eq(6).children("td").eq(1).text();
-            var overallWidth = $(element).find("tbody").eq(5).children("tr").eq(7).children("td").eq(1).text();
-            var standardSeating = $(element).find("tbody").eq(5).children("tr").eq(8).children("td").eq(1).text();
-            var optionalSeating = $(element).find("tbody").eq(5).children("tr").eq(9).children("td").eq(1).text();
-            var hightwayMilage = $(element).find("tbody").eq(5).children("tr").eq(10).children("td").eq(1).text();
-            var cityMilage = $(element).find("tbody").eq(5).children("tr").eq(11).children("td").eq(1).text();
-            var driveType = $(element).find("tbody").eq(5).children("tr").eq(12).children("td").eq(1).text();
-            var transmission = $(element).find("tbody").eq(5).children("tr").eq(13).children("td").eq(1).text();
-
+            let year = $(element).find("tbody").eq(1).children("tr").eq(0).children("td").eq(1).html();
+            let make = $(element).find("tbody").eq(1).children("tr").eq(1).children("td").eq(1).html();
+            let model = $(element).find("tbody").eq(1).children("tr").eq(2).children("td").eq(1).html();
+            let trimLevel = $(element).find("tbody").eq(1).children("tr").eq(3).children("td").eq(1).html();
+            let style = $(element).find("tbody").eq(1).children("tr").eq(4).children("td").eq(1).html();
+            let madeIn = $(element).find("tbody").eq(1).children("tr").eq(5).children("td").eq(1).html();
+            let engine = $(element).find("tbody").eq(5).children("tr").eq(0).children("td").eq(1).html();
+            let steeringType = $(element).find("tbody").eq(5).children("tr").eq(1).children("td").eq(1).text();
+            let antiBrakeSystem = $(element).find("tbody").eq(5).children("tr").eq(2).children("td").eq(1).text();
+            let fueltype = $(element).find("tbody").eq(5).children("tr").eq(3).children("td").eq(1).text();
+            let tankSize = $(element).find("tbody").eq(5).children("tr").eq(4).children("td").eq(1).text();
+            let overallHeight = $(element).find("tbody").eq(5).children("tr").eq(5).children("td").eq(1).text();
+            let overallLength = $(element).find("tbody").eq(5).children("tr").eq(6).children("td").eq(1).text();
+            let overallWidth = $(element).find("tbody").eq(5).children("tr").eq(7).children("td").eq(1).text();
+            let standardSeating = $(element).find("tbody").eq(5).children("tr").eq(8).children("td").eq(1).text();
+            let optionalSeating = $(element).find("tbody").eq(5).children("tr").eq(9).children("td").eq(1).text();
+            let hightwayMilage = $(element).find("tbody").eq(5).children("tr").eq(10).children("td").eq(1).text();
+            let cityMilage = $(element).find("tbody").eq(5).children("tr").eq(11).children("td").eq(1).text();
+            let driveType = $(element).find("tbody").eq(5).children("tr").eq(12).children("td").eq(1).text();
+            let transmission = $(element).find("tbody").eq(5).children("tr").eq(13).children("td").eq(1).text();
 
 
 
 
 
 
-            var myObj = {
+
+            let carObj = {
 
                 year: year,
                 make: make,
@@ -91,7 +90,7 @@ router.get("/car/:id", function (req, res) {
 
 
             }
-            results.push(myObj);
+            results.push(carObj);
 
 
         })
