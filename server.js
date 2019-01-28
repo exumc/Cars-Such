@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 // const db = require("./models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/membersDB", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/carsDB", {useNewUrlParser: true});
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
