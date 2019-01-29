@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Members from "./pages/Members";
-import Add from "./pages/Add";
+
+
+import Wrapper from "./components/Wrapper";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -17,9 +17,7 @@ class App extends Component {
           <Router>
             <Nav>
               <Switch>
-                {"Your routes go here!"}
-                <Route exact path="/" component={Members} />
-                <Route exact path="/add" component={Add} />
+              
               </Switch>
             </Nav>
           </Router>
@@ -28,7 +26,7 @@ class App extends Component {
         <Main />
 
         <Footer />
-        
+
       </Wrapper>
     );
   }
