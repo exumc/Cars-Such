@@ -1,25 +1,27 @@
-// Copy this folder to make a new component. Rename the class and export appropriately
-
 import React from "react";
 import "./style.css";
 
-class Footer extends React.Component {
+class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">
-            Logo
+        <div className="nav-wrapper grey darken-4">
+          <a href="/" className="brand-logo center">
+            Keep it Running
           </a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <a href="sass.html">Sass</a>
+              <a href="/profile">
+                <i class="fas fa-user-circle" />
+              </a>
+            </li>
+
+            <li>
+              <a href="/about">About</a>
             </li>
             <li>
-              <a href="badges.html">Components</a>
-            </li>
-            <li>
-              <a href="collapsible.html">JavaScript</a>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -28,4 +30,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default Nav;

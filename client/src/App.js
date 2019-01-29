@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-
-
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -16,9 +14,7 @@ class App extends Component {
         <Header>
           <Router>
             <Nav>
-              <Switch>
-              
-              </Switch>
+              <Switch />
             </Nav>
           </Router>
         </Header>
@@ -26,7 +22,6 @@ class App extends Component {
         <Main />
 
         <Footer />
-
       </Wrapper>
     );
   }
