@@ -26,7 +26,8 @@ let carSchema = new mongoose.Schema(
     highWayMilage:String,
     cityMilage:String,
     driveType:String,
-    transmission:String
+    transmission:String,
+    isDefault: Boolean,
     // engineOilService: {
     //     type: Schema.Types.ObjectId,
     //     ref: "EngineOilService"
