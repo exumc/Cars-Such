@@ -34,6 +34,7 @@ let questions = [{
         keyword:"Shock Absorbers",
     answer:"Shock absorbers help keep your vehicle stable when you drive over uneven roadways. The absorbers will be located on the underside of your car. Immediate replacement is necessary to prevent further wear and tear to your car’s suspension system.",
 
-    }
+    },
+   
 
 }]
