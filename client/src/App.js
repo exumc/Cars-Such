@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav from ""
 import {
   BrowserRouter as Router,
   Route,
@@ -7,8 +6,8 @@ import {
   Switch
 } from "react-router-dom";
 
-import Members from "./pages/Members";
-import Add from "./pages/Add";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -17,11 +16,7 @@ class App extends Component {
         <Header>
           <Router>
             <Nav>
-              <Switch>
-                {"Your routes go here!"}
-                <Route exact path="/" component={Members} />
-                <Route exact path="/add" component={Add} />
-              </Switch>
+              <Switch />
             </Nav>
           </Router>
         </Header>
@@ -29,7 +24,6 @@ class App extends Component {
         <Main />
 
         <Footer />
-        
       </Wrapper>
     );
   }
