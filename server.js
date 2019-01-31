@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/keepitrunning', {useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware

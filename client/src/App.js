@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
-import Main from "./components/Main"
 import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
