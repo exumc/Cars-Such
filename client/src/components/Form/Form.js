@@ -9,36 +9,35 @@ class Form extends Component {
             mileage: ""
         }
     }
-        // when state value changes, run below
-        componentDidUpdate () {
-            if (mileage >= 3000) {
-                alert("Vehicle will need oil change soon")
-            }   
-            else if (mileage >= 12000) {
-                alert("Vehicle will need new air filters soon")
-            } 
-            else if (mileage >= 30000) {
-                alert("Vehicle will need tune up soon")
-            } 
-            else if (mileage >= 50000) {
-                alert("Vehicle will need Shocks & Struts soon")
-            } 
-            else if (mileage >= 60000) {
-                alert("Vehicle will need Timing Belts")
-            } 
-            else if (mileage >= 70000) {
-                alert("Vehicle will need new Pumps soon")
-            } 
-            else if (mileage >= 80000) {
-                alert("Vehicle will need new battery soon")
-            } 
+    // when state value changes, run below
+    componentDidUpdate() {
+        if (mileage >= 3000) {
+            alert("Vehicle will need oil change soon")
         }
+        else if (mileage >= 12000) {
+            alert("Vehicle will need new air filters soon")
+        }
+        else if (mileage >= 30000) {
+            alert("Vehicle will need tune up soon")
+        }
+        else if (mileage >= 50000) {
+            alert("Vehicle will need Shocks & Struts soon")
+        }
+        else if (mileage >= 60000) {
+            alert("Vehicle will need Timing Belts")
+        }
+        else if (mileage >= 70000) {
+            alert("Vehicle will need new Pumps soon")
+        }
+        else if (mileage >= 80000) {
+            alert("Vehicle will need new battery soon")
+        }
+    }
 
-        // more if statements 
-        //set state
-        // booleans? ex: if oil change = true dont trigger
-        
-       
+    // more if statements 
+    //set state
+    // booleans? ex: if oil change = true dont trigger
+    // function that averages out the mileage and triggers alert based on mileage 
     render() {
         return (
             <div>
