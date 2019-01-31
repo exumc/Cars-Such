@@ -1,33 +1,30 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
-import Main from "./components/Main"
-import Nav from "./components/Nav";
 import Main from "./components/Main";
+import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Carousel from "./components/Carousel";
 
 class App extends Component {
   render() {
     return (
-      <Wrapper>
-        <Header>
-          <Router>
+      <Router>
+        <Wrapper>
+          <Header>
             <Nav>
               <Switch />
             </Nav>
-          </Router>
-        </Header>
+          </Header>
 
-        <Main />
+          <Main>
+          </Main>
 
-        <Footer />
-      </Wrapper>
+          <Footer />
+        </Wrapper>
+      </Router>
     );
   }
 }

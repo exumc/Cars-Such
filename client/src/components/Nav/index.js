@@ -5,12 +5,12 @@ class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper grey darken-4">
-          <a href="/" className="brand-logo center">
+        <div className="nav-wrapper white">
+          <a href="/" className="brand-logo center black-text bold">
             Keep it Running
           </a>
 
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <ul id="nav-mobile" className="right hide-on-med-and-down thin">
             <li>
               <a href="/profile">
                 <i class="fas fa-user-circle" />
