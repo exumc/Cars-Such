@@ -1,5 +1,8 @@
 var mongoose = require("mongoose");
 
+
+// Save a reference to the Schema constructor
+var Schema = mongoose.Schema;
 let carSchema = new mongoose.Schema(
     {
     vin:{
@@ -26,15 +29,13 @@ let carSchema = new mongoose.Schema(
     highWayMilage:String,
     cityMilage:String,
     driveType:String,
-    transmission:String
-    // engineOilService: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "EngineOilService"
-    // },
-    // breakFluidService: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "BrakeFluidService"
-    // },
+    transmission:String,
+    isDefault: Boolean,
+    services: [{
+        type: Schema.Types.ObjectId,
+        ref: "Service"
+    }],
+    
     });
 
 
