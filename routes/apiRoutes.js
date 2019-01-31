@@ -325,6 +325,7 @@ router.post("/addservice/:carid", function (req, res) {
   // })
 });
 router.get("/carinfo/:carid", function (req, res) {
+  console.log(req.params.carid);
   // route to get the car info
   // Find the car with the specific id from req.params.carid
   db.Car.findById(req.params.carid
@@ -339,6 +340,7 @@ router.get("/carinfo/:carid", function (req, res) {
     // with the populated data sends to the client a json type resposnse with
     //the contents
   }).then(function (data) {
+    console.log(data);
     res.json(data)
   })
 })
