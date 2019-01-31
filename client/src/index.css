@@ -7,6 +7,9 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url(../src/images/bg1.jpg);
+  background-position: 50% 20%;
+  background-size: cover;
 }
 
 main {
@@ -19,4 +22,13 @@ main {
 
 .thin{
   font-weight:300;
+}
+
+.login{
+  margin-top:35%;
+}
+
+.login button{
+  width:30%;
+  min-width:200px;
 }

@@ -1,8 +1,16 @@
-nav ul a{
-   color: black;
+nav ul a {
+  color: black;
 }
 
-nav ul a:hover{
-    background-color: transparent;
-    color: #4fc3f7;
+nav ul a:hover {
+  background-color: transparent;
+  color: #4fc3f7;
+}
+
+nav {
+  height: 120px;
+}
+
+#nav-mobile {
+  margin-right: 40px;
 }

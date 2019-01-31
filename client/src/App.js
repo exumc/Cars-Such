@@ -20,6 +20,16 @@ class App extends Component {
           </Header>
 
           <Main>
+            <div className="container center login">
+              <button
+                class="btn waves-effect waves-light myBtn grey lighten-4 black-text"
+                type="submit"
+                name="action"
+                width="400px"
+              >
+                Login/Register
+              </button>
+            </div>
           </Main>
 
           <Footer />
