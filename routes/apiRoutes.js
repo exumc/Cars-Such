@@ -3,6 +3,8 @@ var router = express.Router()
 var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require("../models");
+
+
 router.get("/car/:id", function (req, res) {
 
     let carUrl = `http://vinfreecheck.com/vin/${req.params.id}`
@@ -95,6 +97,25 @@ router.get("/car/:id", function (req, res) {
 
 })
 
+router.get("/car/:id/servicehistory", function (req, res) {
+    db.Services.find({
+        id: req.params.id
+    })
+    .exec()
+    .then(function(services) {
+        res.json({
+            ok: true,
+            results: services
+        });
+    })
+    .catch(function(err) {
+        console.log(err);
+        res.json({
+            ok: false,
+            error: err
+        });
+    })
+});
 
 
 module.exports = router
