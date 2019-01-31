@@ -10,7 +10,8 @@ const isAuthenticated = exjwt({
 });
 router.get("/car/:id", function (req, res) {
   let carUrl = `http://vinfreecheck.com/vin/${req.params.id}`;
-  //1FTFW1EF7DKD26755
+  //VIN NUMBER 1FTFW1EF7DKD26755
+
 
   axios.get(carUrl).then(function (response) {
     // Load the HTML into cheerio
