@@ -8,6 +8,7 @@ var db = require("../models");
 const isAuthenticated = exjwt({
   secret: 'all sorts of code up in here'
 });
+
 router.get("/car/:id", function (req, res) {
   let carUrl = `http://vinfreecheck.com/vin/${req.params.id}`;
   //VIN NUMBER 1FTFW1EF7DKD26755
@@ -217,6 +218,7 @@ router.get("/car/:id", function (req, res) {
     res.json(results);
   });
 });
+
 // LOGIN ROUTE
 router.post('/login', (req, res) => {
   db.User.findOne({
@@ -275,9 +277,34 @@ router.get('/user/:id', isAuthenticated, (req, res) => {
 router.post("/edituser", function (req, res) {
   // route to edit the user information
 });
-router.post("/addcar", function (req, res) {
+
+router.post("/addcar/:id", (req, res) => {
   // route to a car to the existing logged in user
+  db.Car.create(req.body)
+  .then(function (data) {
+    return db.User.findOneAndUpdate({
+      _id: req.params.id
+    }, {
+      $push: {
+        cars: data.id
+      }
+    });
+  })
+  //get the User with the id of req.params.id
+  .then(function (data) {
+    db.User.findById(req.params.id)
+      .populate({
+        path: 'cars',
+        populate: {
+          path: 'cars'
+        }
+      }).then(function (newData) {
+        res.json(newData);
+      })
+  })
+    .catch(err => res.status(400).json(err));
 });
+
 router.post("/addservice/:carid", function (req, res) {
   // route to add a service type to a chosen car.
   // creates an instance of db.services
@@ -321,35 +348,14 @@ router.post("/addservice/:carid", function (req, res) {
 
         })
     })
-
-
-router.get("/car/:id/servicehistory", function (req, res) {
-    db.Services.find({
-        id: req.params.id
-    })
-    .exec()
-    .then(function(services) {
-        res.json({
-            ok: true,
-            results: services
-        });
-    })
-    .catch(function(err) {
-        console.log(err);
-        res.json({
-            ok: false,
-            error: err
-        });
-    })
 });
-  // })
-});
+
 router.get("/carinfo/:carid", function (req, res) {
   // route to get the car info
   // Find the car with the specific id from req.params.carid
   db.Car.findById(req.params.carid
-    //runs a deep population instruction to get all the services 
-    //associated with that car 
+    //runs a deep population instruction to get all the services
+    //associated with that car
   ).populate({
     path: 'services',
     //within the array get all the information about the object
@@ -357,11 +363,11 @@ router.get("/carinfo/:carid", function (req, res) {
       path: 'services'
     }
     // with the populated data sends to the client a json type resposnse with
-    //the contents
+    // the contents
   }).then(function (data) {
     res.json(data)
   })
-})
+});
 
 
 module.exports = router;

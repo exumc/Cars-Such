@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt-nodejs');
+var Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema({
     firstname: {
@@ -29,7 +30,11 @@ const UserSchema = new mongoose.Schema({
       createdAt: {
         type: Date,
         default: Date.now
-      }
+      },
+      cars: [{
+        type: Schema.Types.ObjectId,
+        ref: "Car"
+    }]
     });
 
     UserSchema.pre('save', function(callback) {
