@@ -1,0 +1,17 @@
+.col.s4.offset-s4 p{
+    margin-top:30%;
+}
+
+.login{
+    margin-top:10%;
+  }
+  
+  .login span{
+    width:30%;
+    min-width:200px;
+  }
+  
+  .login span:hover{
+    background-color:#42a5f5 !important;
+    color:white !important;
+  }
