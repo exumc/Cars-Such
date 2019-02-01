@@ -6,12 +6,12 @@
     margin-top:10%;
   }
   
-  .login a{
+  .login span{
     width:30%;
     min-width:200px;
   }
   
-  .login a:hover{
+  .login span:hover{
     background-color:#42a5f5 !important;
     color:white !important;
   }

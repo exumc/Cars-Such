@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 class Nav extends React.Component {
@@ -7,22 +8,22 @@ class Nav extends React.Component {
       <nav>
         <div className="nav-wrapper white">
           <div className="myRow">
-            <a href="/" className="brand-logo center black-text bold">
+            <Link to='/'><span className="brand-logo center black-text bold">
               Keep it Running
-            </a>
+            </span></Link>
 
             <ul id="nav-mobile" className="right hide-on-med-and-down thin">
               <li>
-                <a href="/profile">
+                <Link to='/profile'>
                   <i class="fas fa-user-circle" />
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/about">About</a>
+                <Link to='/about'>About</Link>
               </li>
               <li>
-                <a href="/contact">Contact</a>
+                <Link to='/contact'>Contact</Link>
               </li>
             </ul>
           </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./style.css";
 
 function Home(props) {
@@ -12,8 +14,9 @@ What did you say? Ahh. Ahh. Yeah, where does he live? Nothing, nothing, nothing,
         </div>
       </div>
       <div className="container center login">
-        <a class="btn grey lighten-4 grey-text text-darken-4" href="/login">Login/Register</a>
-
+        <Link to='/login'>
+          <span class="btn grey lighten-4 grey-text text-darken-4" href="/login">Login/Register</span>
+        </Link>
       </div>
     </section>
   );

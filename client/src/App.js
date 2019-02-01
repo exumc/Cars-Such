@@ -19,9 +19,8 @@ class App extends Component {
       <Router>
         <Wrapper>
           <Header>
-            <Nav>
-              <Switch />
-            </Nav>
+            <Nav />
+
           </Header>
 
           <Main>
