@@ -20,10 +20,12 @@ let carSchema = new mongoose.Schema(
         required:true,
         unique:true,
     },
+    
     year: Number,
     make: String,
     Vehicle_Type: String,
     grossWeightRating: String,
+    model:String,
     driveType: String,
     noCylinders: Number,
     HP: Number,
