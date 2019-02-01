@@ -20,6 +20,7 @@ let carSchema = new mongoose.Schema(
         required:true,
         unique:true,
     },
+    model:Number,
     year: Number,
     make: String,
     Vehicle_Type: String,
