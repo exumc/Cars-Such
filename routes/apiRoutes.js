@@ -442,6 +442,19 @@ router.get("/carinfo/:carid", function (req, res) {
     res.json(data)
   })
 });
+router.post("/carmileage/:id" , function (req, res){
+ let myDate = new Date();
+  
+ db.Car.updateOne({
+    _id:req.params.id,
+    currentMileage:req.body.mileage,
+    dateMileageUpdate:myDate
+
+  
+  }).then(data =>{
+    res.json(data)
+  })
+})
 
 
 module.exports = router;
