@@ -6,29 +6,34 @@ import "./style.css";
 class Contact extends React.Component {
     render() {
         return (
-            <div class="container"/>
-                <div class="row"/>
-                <div class="col m10 offset-m1 s12"/>
-                    <h2 class="center-align">Contact Form</h2>
-                <div class="row"/>
-                <form class="col s12"/>
-                    <div class="row"/>
-                        <div class="input-field col m6 s12"/>
+            <div class="container">
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+            <h2 class="center-align">Contact Form</h2>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col m6 s12">
                             <input id="first_name" type="text" class="validate"/>
                             <label for="first_name">First Name</label>
-                        
-                        <div class="input-field col m6 s12"/>
+                        </div>
+                        <div class="input-field col m6 s12">
                             <input id="last_name" type="text" class="validate"/>
                             <label for="last_name">Last Name</label>
-                    <div class="row"/>
-                        <div class="input-field col m6 s12"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col m6 s12">
                             <i class="mdi-content-mail prefix"></i>
                             <input id="email" type="email" class="validate" required/>
                             <label for="email">Email</label>
-                        <div class="input-field col m6 s12"/>
+                        </div>
+                        <div class="input-field col m6 s12">
                             <i class="mdi-maps-store-mall-directory prefix"></i>
                             <input id="company" type="text" class="validate"/>
                             <label for="company">Company</label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="input-field col s12">
                           <textarea id="message" class="materialize-textarea"></textarea>
@@ -96,6 +101,11 @@ class Contact extends React.Component {
                          <p class="right-align"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Send Message</button></p>
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
         );
     }
 }
