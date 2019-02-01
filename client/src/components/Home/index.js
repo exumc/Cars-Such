@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Profile from "../Profile";
 
 import "./style.css";
 
-function Home(props) {
+function Guest() {
   return (
     <section>
       <div className="row white-text center">
@@ -13,8 +14,9 @@ function Home(props) {
             and hands, and then work outward from there.”
             <br />
             ― Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
-          <br />
-          <br />
+            </p>
+        
+          <p className="aboutKIR">
             At Keep It Running we aim to put the knowledge and capability into
             the hands of people that wish to improve the world around them.
             Starting with that which takes them from place to place every day.
@@ -36,6 +38,18 @@ function Home(props) {
       </div>
     </section>
   );
+}
+
+function User() {
+  return <Profile />;
+}
+
+function Home(props) {
+  const isLoggedIn = props.loggedIn;
+  if (isLoggedIn) {
+    return <User />;
+  }
+  return <Guest />;
 }
 
 export default Home;
