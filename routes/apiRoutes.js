@@ -280,7 +280,7 @@ router.post("/edituser", function (req, res) {
 
 router.post("/addcar/:id/user/:uid", (req, res) => {
   // route to a car to the existing logged in user
-  //   console.log(req.params);
+//   console.log(req.params);
   let carUrl = `http://vinfreecheck.com/vin/${req.params.id}`;
   //VIN NUMBER 1FTFW1EF7DKD26755
 
@@ -482,32 +482,30 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
         driveType: driveType,
         transmission: transmission
       };
-      db.Car.create(carObj)
-        .then(function (data) {
-          return db.User.findOneAndUpdate({
-            _id: req.params.uid
-          }, {
-              $push: {
-                cars: data.id
-              }
-            });
-        })
-        //get the User with the id of req.params.id
-        .then(function (data) {
-          db.User.findById(req.params.id)
-            .populate({
-              path: 'cars',
-              populate: {
-                path: 'cars'
-              }
-            }).then(function (newData) {
-              res.json(newData);
-            })
-        })
-        .catch(err => res.status(400).json(err));
-    })
+  db.Car.create(carObj)
+  .then(function (data) {
+    return db.User.findOneAndUpdate({
+      _id: req.params.uid
+    }, {
+      $push: {
+        cars: data.id
+      }
+    });
   })
-})
+  //get the User with the id of req.params.id
+  .then(function (data) {
+    db.User.findById(req.params.uid)
+      .populate({
+        path: 'cars',
+        populate: {
+          path: 'cars'
+        }
+      }).then(function (newData) {
+        res.json(newData);
+      })
+  })
+    .catch(err => res.status(400).json(err));
+})})});
 
 
 router.post("/addservice/:carid", function (req, res) {
