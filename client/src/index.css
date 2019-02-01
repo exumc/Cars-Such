@@ -7,9 +7,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url(../src/images/bg1.jpg);
-  background-position: 50% 20%;
-  background-size: cover;
 }
 
 main {
@@ -28,7 +25,12 @@ main {
   margin-top:35%;
 }
 
-.login button{
+.login a{
   width:30%;
   min-width:200px;
+}
+
+.login a:hover{
+  background-color:#42a5f5 !important;
+  color:white !important;
 }

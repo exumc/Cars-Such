@@ -5,7 +5,12 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
 import Login from "./components/Login";
+import About from "./components/About";
+// import Contact from "./components/Contact";
+// import Profile from "./components/Profile";
+
 import Carousel from "./components/Carousel";
 
 class App extends Component {
@@ -20,16 +25,11 @@ class App extends Component {
           </Header>
 
           <Main>
-            <div className="container center login">
-              <button
-                class="btn waves-effect waves-light myBtn grey lighten-4 black-text"
-                type="submit"
-                name="action"
-                width="400px"
-              >
-                Login/Register
-              </button>
-            </div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            {/* <Route exact path="/login" component={Login} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/profile" component={Profile} /> */}
           </Main>
 
           <Footer />
