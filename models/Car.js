@@ -20,7 +20,7 @@ let carSchema = new mongoose.Schema(
         required:true,
         unique:true,
     },
-    model:model,
+    model:String,
     year: Number,
     make: String,
     Vehicle_Type: String,
@@ -29,6 +29,9 @@ let carSchema = new mongoose.Schema(
     noCylinders: Number,
     HP: Number,
     fueltype:String,
+    isDefault: Boolean,
+    currentMileage:Number,
+    dateMileageUpdate:Date,
     services: [{
         type: Schema.Types.ObjectId,
         ref: "Service"

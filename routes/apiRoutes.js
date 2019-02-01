@@ -281,7 +281,7 @@ router.post("/edituser", function (req, res) {
 router.post("/addcar/:id/user/:uid", (req, res) => {
   // route to a car to the existing logged in user
   //   console.log(req.params);
-  axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" + vin + "?format=json").then(function (result) {
+  axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" + req.params.id + "?format=json").then(function (result) {
     var data = [];
     console.log(result);
     result.data.Results.forEach(function (el) {
@@ -329,7 +329,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
     if (typeof data[21] !== 'undefined' && data[21]['value']) var HP = (data[21]['value'] * 1.341).toFixed(0);
     if (typeof data[24] !== 'undefined' && data[24]['value']) var fuelType = data[24]['value'];
     let carObj = {
-      vin:vin,
+      vin:req.params.id,
       model: model,
       year: year,
       Vehicle_Type: Vehicle_Type,
@@ -431,6 +431,19 @@ router.get("/carinfo/:carid", function (req, res) {
     res.json(data)
   })
 });
+router.post("/carmileage/:id" , function (req, res){
+ let myDate = new Date();
+  
+ db.Car.updateOne({
+    _id:req.params.id,
+    currentMileage:req.body.mileage,
+    dateMileageUpdate:myDate
+
+  
+  }).then(data =>{
+    res.json(data)
+  })
+})
 
 
 module.exports = router;
