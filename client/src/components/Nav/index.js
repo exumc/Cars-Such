@@ -5,25 +5,27 @@ class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper grey darken-4">
-          <a href="/" className="brand-logo center">
-            Keep it Running
-          </a>
+        <div className="nav-wrapper white">
+          <div className="myRow">
+            <a href="/" className="brand-logo center black-text bold">
+              Keep it Running
+            </a>
 
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <a href="/profile">
-                <i class="fas fa-user-circle" />
-              </a>
-            </li>
+            <ul id="nav-mobile" className="right hide-on-med-and-down thin">
+              <li>
+                <a href="/profile">
+                  <i class="fas fa-user-circle" />
+                </a>
+              </li>
 
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </ul>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li>
+                <a href="/contact">Contact</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     );
