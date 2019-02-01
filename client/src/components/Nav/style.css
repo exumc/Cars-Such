@@ -15,7 +15,11 @@ nav {
   margin-right: 40px;
 }
 
-.myRow {
-  padding-top: 25px;
+.myRow span {
+  padding-top: 24px;
   line-height:2.27rem;
+}
+ 
+ul.sidenav{
+  padding-top:24px;
 }
