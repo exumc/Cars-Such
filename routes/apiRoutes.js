@@ -274,8 +274,19 @@ router.get('/user/:id', isAuthenticated, (req, res) => {
   }).catch(err => res.status(400).send(err));
 });
 
-router.post("/edituser", function (req, res) {
+router.post("/edituser/:id", isAuthenticated, function (req, res) {
   // route to edit the user information
+  db.User.updateOne({
+    id: req.params.id, 
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email
+  })
+  .then (
+    function(data){
+      res.json(data);
+    }
+);
 });
 
 router.post("/addcar/:id/user/:uid", (req, res) => {
