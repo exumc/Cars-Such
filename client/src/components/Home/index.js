@@ -14,8 +14,9 @@ function Guest() {
             and hands, and then work outward from there.”
             <br />
             ― Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
-          <br />
-          <br />
+            </p>
+        
+          <p className="aboutKIR">
             At Keep It Running we aim to put the knowledge and capability into
             the hands of people that wish to improve the world around them.
             Starting with that which takes them from place to place every day.
