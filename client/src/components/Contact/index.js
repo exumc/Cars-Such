@@ -42,20 +42,6 @@ class Contact extends React.Component {
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                          <label for="budget">Budget</label>
-                          <br/>
-                        </div>
-                        <div class="input-field col s12">
-                            <select class="browser-default" id="budget">
-                              <option value="" selected disabled>Choose your option</option>
-                              <option value="1">&lt; $4000</option>
-                              <option value="2">$4000 - $9000</option>
-                              <option value="3">&gt; $9000</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
                           <label>How Did You Find Us?</label>
                           <br/>
                         </div>
