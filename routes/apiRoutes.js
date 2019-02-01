@@ -230,8 +230,8 @@ router.post('/login', (req, res) => {
           id: user._id,
           email: user.email
         }, 'all sorts of code up in here', {
-          expiresIn: 129600
-        }); // Sigining the token
+            expiresIn: 129600
+          }); // Sigining the token
         res.json({
           success: true,
           message: "Token Issued!",
@@ -274,7 +274,7 @@ router.get('/user/:id', isAuthenticated, (req, res) => {
   }).catch(err => res.status(400).send(err));
 });
 
-router.put("/edituser/:id", isAuthenticated, function (req, res) {
+router.post("/edituser", function (req, res) {
   // route to edit the user information
 });
 
@@ -526,11 +526,11 @@ router.post("/addservice/:carid", function (req, res) {
       return db.Car.findOneAndUpdate({
         _id: req.params.carid
       }, {
-        // push the newly created service log _id to the array of services in the cars model
-        $push: {
-          services: data._id
-        }
-      });
+          // push the newly created service log _id to the array of services in the cars model
+          $push: {
+            services: data._id
+          }
+        });
     })
     //get the car with the id of req.params.carid
     .then(function (data) {
@@ -554,7 +554,6 @@ router.post("/addservice/:carid", function (req, res) {
 });
 
 router.get("/carinfo/:carid", function (req, res) {
-  console.log(req.params.carid);
   // route to get the car info
   // Find the car with the specific id from req.params.carid
   db.Car.findById(req.params.carid
@@ -569,7 +568,6 @@ router.get("/carinfo/:carid", function (req, res) {
     // with the populated data sends to the client a json type resposnse with
     // the contents
   }).then(function (data) {
-    console.log(data);
     res.json(data)
   })
 });
