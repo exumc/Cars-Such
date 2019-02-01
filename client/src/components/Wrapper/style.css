@@ -2,6 +2,7 @@
     background-image: url(../../images/bg1.jpg);
     background-size:cover;
     background-position: 50% 20%;
-    height:968px;
+    position: absolute;
+    height:100%;
     width:100%;
 }

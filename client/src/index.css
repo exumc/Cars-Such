@@ -21,16 +21,3 @@ main {
   font-weight:300;
 }
 
-.login{
-  margin-top:35%;
-}
-
-.login a{
-  width:30%;
-  min-width:200px;
-}
-
-.login a:hover{
-  background-color:#42a5f5 !important;
-  color:white !important;
-}
