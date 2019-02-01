@@ -22,7 +22,7 @@ let carSchema = new mongoose.Schema(
     },
     
     year: Number,
-    model:Number,
+    model:String,
     make: String,
     Vehicle_Type: String,
     grossWeightRating: String,
