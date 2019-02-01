@@ -1,6 +1,16 @@
 var mongoose = require("mongoose");
 
 
+
+// model:model,
+//    year:year,
+//    Vehicle_Type:Vehicle_Type,
+//    Body_Type:Body_Type,
+//    grossWeightRating:grossWeightRating,
+//    driveType:driveType,
+//    noCylinders:noCylinders,
+//    HP:HP,
+//    fuelType:fuelType,
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 let carSchema = new mongoose.Schema(
@@ -12,25 +22,12 @@ let carSchema = new mongoose.Schema(
     },
     year: Number,
     make: String,
-    model: String,
-    trimLevel: String,
-    style: String,
-    madeIn: String,
-    engine: String,
-    steeringType: String,
-    antiBrakeSystem:String,
+    Vehicle_Type: String,
+    grossWeightRating: String,
+    driveType: String,
+    noCylinders: Number,
+    HP: Number,
     fueltype:String,
-    tankSize:String,
-    overallHeight:String,
-    overallLength:String,
-    overallWidth: String,
-    standardSeating:String,
-    optionalSeating:String,
-    highWayMilage:String,
-    cityMilage:String,
-    driveType:String,
-    transmission:String,
-    isDefault: Boolean,
     services: [{
         type: Schema.Types.ObjectId,
         ref: "Service"
