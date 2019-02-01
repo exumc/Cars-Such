@@ -8,26 +8,49 @@ class Nav extends React.Component {
       <nav>
         <div className="nav-wrapper white">
           <div className="myRow">
-            <Link to='/'><span className="brand-logo center black-text bold">
-              Keep it Running
-            </span></Link>
+            <Link to="/">
+              <span className="brand-logo center black-text bold">
+                Keep it Running
+              </span>
+            </Link>
 
+            <a
+              href="menu"
+              data-target="mobile-demo"
+              className="sidenav-trigger black-text right"
+            >
+              <i class="fas fa-bars" />
+            </a>
             <ul id="nav-mobile" className="right hide-on-med-and-down thin">
               <li>
-                <Link to='/profile'>
+                <Link to="/profile">
                   <i class="fas fa-user-circle" />
                 </Link>
               </li>
 
               <li>
-                <Link to='/about'>About</Link>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to='/contact'>Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </div>
         </div>
+
+        <ul class="sidenav" id="mobile-demo">
+          <li>
+            <Link to="/profile">
+              <i class="fas fa-user-circle" />
+            </Link>{" "}
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
       </nav>
     );
   }
