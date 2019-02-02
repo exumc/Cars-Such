@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 
 class Contact extends React.Component {
+
   render() {
     return (
       <section className="contact">
@@ -37,17 +38,17 @@ class Contact extends React.Component {
                       <input id="company" type="text" className="validate" />
                       <label for="company">Company</label>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="input-field col s12">
-                      <textarea id="message" className="materialize-textarea" />
-                      <label for="message">Message</label>
+                    <div className="row">
+                        <div className="input-field col m10 s8">
+                          <textarea id="message" className="materialize-textarea"></textarea>
+                          <label for="message">Message</label>
+                        </div>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="input-field col s12">
-                      <label>How Did You Find Us?</label>
-                      <br />
+                    
+                    <div className="row">
+                        <div className="col m7">
+                         <p className="right-align"><button className="btn btn-large waves-effect waves-light" type="button" name="action">Send Message</button></p>
+                        </div>
                     </div>
                     <div className="input-field col m3 s6 center-align">
                       <input name="group1" type="radio" id="google" />
