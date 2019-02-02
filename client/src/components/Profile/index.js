@@ -5,9 +5,8 @@ function About(props) {
   // let alan = require('../../images/alan.jpg')
 
   return (
-    <section>
-    <hr>
     
+<section>
     <div className="container">
         <div className="row">
             <div className="col-sm-10">
@@ -25,7 +24,7 @@ function About(props) {
                     <h6>Upload a different photo...></h6>
                     <input type="file" className="text-center center-block file-upload"/>
                 </div>
-                </hr><br>
+                <br />
 
 
 
@@ -45,14 +44,12 @@ function About(props) {
                 <ul className="nav nav-tabs">
                     <li className="active"><a data-toggle="tab" href="#home">Home</a></li>
                     <li><a data-toggle="tab" href="#messages">Vehicle 1</a></li>
-                 
-                  
                 </ul>
 
 
                 <div className="tab-content">
                     <div className="tab-pane active" id="home">
-                        <hr>
+                        <hr />
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -137,7 +134,7 @@ function About(props) {
                             </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br />
                                     <button className="btn btn-lg btn-success" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i>
@@ -146,7 +143,7 @@ function About(props) {
                             </div>
                         </form>
 
-                        <hr>
+                        <hr />
 
                     </div>
                     {/* <!--/tab-pane--> */}
@@ -154,7 +151,7 @@ function About(props) {
 
                         <h2></h2>
 
-                        <hr>
+                        <hr />
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -269,7 +266,7 @@ function About(props) {
                                         </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br />
                                     <button className="btn btn-lg btn-success" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i>
@@ -283,7 +280,7 @@ function About(props) {
                     <div className="tab-pane" id="settings">
 
 
-                        <hr>
+                        <hr />
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -368,7 +365,7 @@ function About(props) {
                             </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br />
                                     <button className="btn btn-lg btn-success pull-right" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i> Reset</button>
@@ -386,7 +383,7 @@ function About(props) {
         {/* <!--/col-9--> */}
     </div>
     {/* <!--/row--> */}
-
+    </div>
 </section>
   );
 }
