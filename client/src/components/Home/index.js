@@ -29,7 +29,7 @@ function Guest() {
       <div className="container center login">
         <Link to="/login">
           <span
-            class="btn grey lighten-4 grey-text text-darken-4"
+            className="btn grey lighten-4 grey-text text-darken-4"
             href="/login"
           >
             Login/Register
