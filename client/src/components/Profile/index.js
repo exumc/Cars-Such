@@ -226,7 +226,7 @@ function About(props) {
             </div>
             {/* <!--/tab-pane--> */}
             <div className="tab-pane" id="messages">
-              <h2 />
+            
 
               <hr />
               <form
