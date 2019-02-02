@@ -1,4 +1,8 @@
-.about{
+.profile{
     height:968px;
     background-color:white;
+}
+
+input {
+    float: left;
 }
