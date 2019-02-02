@@ -5,7 +5,7 @@ function About(props) {
   // let alan = require('../../images/alan.jpg')
 
   return (
-    <section>
+    <section className="profile">
       <hr />
 
       <div className="container">
@@ -24,7 +24,7 @@ function About(props) {
               className="avatar img-circle img-thumbnail"
               alt="avatar"
             />
-            <h6>Upload a different photo...></h6>
+            <h6>Upload a different photo...</h6>
             <input
               type="file"
               className="text-center center-block file-upload"
@@ -89,7 +89,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="first_name">
-                      <h4>First name</h4>
+                      <h6>First name</h6>
                     </label>
                     <input
                       type="text"
@@ -104,7 +104,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="last_name">
-                      <h4>Last name</h4>
+                      <h6>Last name</h6>
                     </label>
                     <input
                       type="text"
@@ -120,7 +120,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="phone">
-                      <h4>Phone</h4>
+                      <h6>Phone</h6>
                     </label>
                     <input
                       type="text"
@@ -136,7 +136,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="mobile">
-                      <h4>Mobile</h4>
+                      <h6>Mobile</h6>
                     </label>
                     <input
                       type="text"
@@ -151,7 +151,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="email">
-                      <h4>Email</h4>
+                      <h6>Email</h6>
                     </label>
                     <input
                       type="email"
@@ -166,7 +166,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="email">
-                      <h4>Location</h4>
+                      <h6>Location</h6>
                     </label>
                     <input
                       type="email"
@@ -180,7 +180,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="password">
-                      <h4>Password</h4>
+                      <h6>Password</h6>
                     </label>
                     <input
                       type="password"
@@ -195,15 +195,15 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="password2">
-                      <h4>Verify</h4>
+                      <h6>Verify</h6>
                     </label>
                     <input
                       type="password"
                       className="form-control"
                       name="password2"
                       id="password2"
-                      placeholder="password2"
-                      title="enter your password2."
+                      placeholder="verify password"
+                      title="enter your password again."
                     />
                   </div>
                 </div>
@@ -238,7 +238,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="year">
-                      <h4>Year</h4>
+                      <h6>Year</h6>
                     </label>
                     <input
                       type="text"
@@ -253,7 +253,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="Make">
-                      <h4>Make</h4>
+                      <h6>Make</h6>
                     </label>
                     <input
                       type="text"
@@ -269,7 +269,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="Vehicle model">
-                      <h4>Vehicle Model</h4>
+                      <h6>Vehicle Model</h6>
                     </label>
                     <input
                       type="text"
@@ -285,7 +285,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="mobile">
-                      <h4>Vehicle Type</h4>
+                      <h6>Vehicle Type</h6>
                     </label>
                     <input
                       type="text"
@@ -300,7 +300,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="text">
-                      <h4>Drive Type</h4>
+                      <h6>Drive Type</h6>
                     </label>
                     <input
                       type="text"
@@ -315,7 +315,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="horse power">
-                      <h4>Horse Power</h4>
+                      <h6>Horse Power</h6>
                     </label>
                     <input
                       type="text"
@@ -329,7 +329,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="vehicle weight">
-                      <h4>Vehicle Weight</h4>
+                      <h6>Vehicle Weight</h6>
                     </label>
                     <input
                       type="number"
@@ -344,7 +344,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="password2">
-                      <h4>Cylinders</h4>
+                      <h6>Cylinders</h6>
                     </label>
                     <input
                       type="number"
@@ -359,7 +359,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="vehicle weight">
-                      <h4>Last Mileage Date</h4>
+                      <h6>Last Mileage Date</h6>
                     </label>
                     <input
                       type="date"
@@ -373,7 +373,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="Current Mileage">
-                      <h4>Current Mileage</h4>
+                      <h6>Current Mileage</h6>
                     </label>
                     <input
                       type="number"
@@ -388,7 +388,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="Last Mileage">
-                      <h4>Last Updated Mileage</h4>
+                      <h6>Last Updated Mileage</h6>
                     </label>
                     <input
                       type="text"
@@ -427,7 +427,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="first_name">
-                      <h4>First name</h4>
+                      <h6>First name</h6>
                     </label>
                     <input
                       type="text"
@@ -442,7 +442,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="last_name">
-                      <h4>Last name</h4>
+                      <h6>Last name</h6>
                     </label>
                     <input
                       type="text"
@@ -458,7 +458,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="phone">
-                      <h4>Phone</h4>
+                      <h6>Phone</h6>
                     </label>
                     <input
                       type="text"
@@ -474,7 +474,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="mobile">
-                      <h4>Mobile</h4>
+                      <h6>Mobile</h6>
                     </label>
                     <input
                       type="text"
@@ -489,7 +489,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="email">
-                      <h4>Email</h4>
+                      <h6>Email</h6>
                     </label>
                     <input
                       type="email"
@@ -504,7 +504,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="email">
-                      <h4>Location</h4>
+                      <h6>Location</h6>
                     </label>
                     <input
                       type="email"
@@ -518,7 +518,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="password">
-                      <h4>Password</h4>
+                      <h6>Password</h6>
                     </label>
                     <input
                       type="password"
@@ -533,7 +533,7 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-6">
                     <label for="password2">
-                      <h4>Verify</h4>
+                      <h6>Verify</h6>
                     </label>
                     <input
                       type="password"
