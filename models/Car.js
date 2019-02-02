@@ -25,6 +25,7 @@ let carSchema = new mongoose.Schema(
     make: String,
     Vehicle_Type: String,
     grossWeightRating: String,
+    model:String,
     driveType: String,
     noCylinders: Number,
     HP: Number,

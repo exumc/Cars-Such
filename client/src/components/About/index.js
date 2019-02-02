@@ -1,36 +1,31 @@
 import React from "react";
 import "./style.css";
+//added the reference to the progressbar component for testing purposes 
+// Helder.
+import Service from "../Service"
 
 function About(props) {
   // let alan = require('../../images/alan.jpg')
 
   return (
     <section className="about">
-      <div class="row">
-
-        <div class="col s12 m4">
-        {/* <img src={alan} alt="" class="circle responsive-img" /> */}
-
+      <div className="row white-text center">
+        <div className="col s4 offset-s4">
+          <p className="black-text">
+            Keep It Running comes as the brain child of Helder Calado, Chris
+            Pierre-Lewis, Cord Exum, Leslie Morris, and Alan Lopez. We set out
+            to build an application that would not only benefit ourselves in our
+            immeadiate lives but to also continue to do so throughout it's
+            usage. We all started from a cohort of the UCSD Full-Stack Web
+            Development Bootcamp and quickly gravitated towards working
+            together, and working together well more importantly.
+          </p>
         </div>
-
-        <div class="col s12 m4">
-
-        </div>
-
-        <div class="col s12 m4">
-
-        </div>
+        {/* //added the reference to the progressbar component for testing purposes 
+// Helder. */}
+       
       </div>
-
-      <div className="row">
-        <div class="col s12 m6">
-
-        </div>
-
-        <div class="col s12 m6">
-
-        </div></div>
-
+      <Service />
     </section>
   );
 }
