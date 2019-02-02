@@ -1,5 +1,8 @@
 import React from "react";
 import "./style.css";
+//added the reference to the progressbar component for testing purposes 
+// Helder.
+import Service from "../Service"
 
 function About(props) {
   return (
@@ -16,7 +19,11 @@ function About(props) {
             together, and working together well more importantly.
           </p>
         </div>
+        {/* //added the reference to the progressbar component for testing purposes 
+// Helder. */}
+       
       </div>
+      <Service />
     </section>
   );
 }
