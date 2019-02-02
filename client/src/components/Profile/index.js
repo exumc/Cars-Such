@@ -6,7 +6,7 @@ function About(props) {
 
   return (
     <section>
-    <hr>
+    <hr/>
     
     <div className="container">
         <div className="row">
@@ -25,7 +25,7 @@ function About(props) {
                     <h6>Upload a different photo...></h6>
                     <input type="file" className="text-center center-block file-upload"/>
                 </div>
-                </hr><br>
+                <br/>
 
 
 
@@ -52,7 +52,7 @@ function About(props) {
 
                 <div className="tab-content">
                     <div className="tab-pane active" id="home">
-                        <hr>
+                        <hr/>
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -137,7 +137,7 @@ function About(props) {
                             </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br/>
                                     <button className="btn btn-lg btn-success" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i>
@@ -146,7 +146,7 @@ function About(props) {
                             </div>
                         </form>
 
-                        <hr>
+                        <hr/>
 
                     </div>
                     {/* <!--/tab-pane--> */}
@@ -154,7 +154,7 @@ function About(props) {
 
                         <h2></h2>
 
-                        <hr>
+                        <hr/>
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -269,7 +269,7 @@ function About(props) {
                                         </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br/>
                                     <button className="btn btn-lg btn-success" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i>
@@ -283,7 +283,7 @@ function About(props) {
                     <div className="tab-pane" id="settings">
 
 
-                        <hr>
+                        <hr/>
                         <form className="form" action="##" method="post" id="registrationForm">
                             <div className="form-group">
 
@@ -313,7 +313,7 @@ function About(props) {
                                         <h4>Phone</h4>
                                     </label>
                                     <input type="text" className="form-control" name="phone" id="phone" placeholder="enter phone"
-                                        title="enter your phone number if any.">
+                                        title="enter your phone number if any."/>
                                 </div>
                             </div>
 
@@ -333,7 +333,7 @@ function About(props) {
                                         <h4>Email</h4>
                                     </label>
                                     <input type="email" className="form-control" name="email" id="email" placeholder="you@email.com"
-                                        title="enter your email.">
+                                        title="enter your email."/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -353,7 +353,7 @@ function About(props) {
                                         <h4>Password</h4>
                                     </label>
                                     <input type="password" className="form-control" name="password" id="password"
-                                        placeholder="password" title="enter your password.">
+                                        placeholder="password" title="enter your password."/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -368,7 +368,7 @@ function About(props) {
                             </div>
                             <div className="form-group">
                                 <div className="col-xs-12">
-                                    <br>
+                                    <br/>
                                     <button className="btn btn-lg btn-success pull-right" type="submit"><i className="glyphicon glyphicon-ok-sign"></i>
                                         Save</button>
                                     <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i> Reset</button>
@@ -384,9 +384,7 @@ function About(props) {
 
         </div>
         {/* <!--/col-9--> */}
-    </div>
-    {/* <!--/row--> */}
-
+    
 </section>
   );
 }
