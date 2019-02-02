@@ -17,7 +17,7 @@ function Service(props) {
       <h6>Oil Change</h6>
        </div>
        <div className="box-icon">
-       <img src="https://image.flaticon.com/icons/svg/181/181240.svg" />
+       <img src="https://image.flaticon.com/icons/svg/181/181240.svg" alt="icon"/>
        </div>
        <div className="box-progressbar">
        <Progress />
