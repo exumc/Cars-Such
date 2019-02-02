@@ -21,3 +21,21 @@ main {
   font-weight:300;
 }
 
+.input-field input[type=date]:focus + label,
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=password]:focus + label,
+.input-field textarea:focus + label {
+  color: #4FC3F7 !important;
+}
+
+
+
+.input-field input[type=date]:focus,
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus,
+.input-field textarea:focus {
+  border-bottom: 2px solid #4FC3F7 !important;
+  box-shadow: none !important;
+}

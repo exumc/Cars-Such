@@ -19,12 +19,12 @@ class Nav extends React.Component {
               data-target="mobile-demo"
               className="sidenav-trigger black-text right"
             >
-              <i class="fas fa-bars" />
+              <i className="fas fa-bars" />
             </a>
             <ul id="nav-mobile" className="right hide-on-med-and-down thin">
               <li>
                 <Link to="/profile">
-                  <i class="fas fa-user-circle" />
+                  <i className="fas fa-user-circle" />
                 </Link>
               </li>
 
@@ -38,10 +38,10 @@ class Nav extends React.Component {
           </div>
         </div>
 
-        <ul class="sidenav" id="mobile-demo">
+        <ul className="sidenav" id="mobile-demo">
           <li>
             <Link to="/profile">
-              <i class="fas fa-user-circle" />
+              <i className="fas fa-user-circle" />
             </Link>{" "}
           </li>
           <li>

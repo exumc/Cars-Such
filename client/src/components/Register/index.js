@@ -1,22 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 import "./style.css";
 
-function Login(props) {
+function Register(props) {
   return (
     <section className="signin">
       <div className="container">
         <center>
           <div class="section" />
-          <h5 class="black-text">Please, login into your account</h5>
+          <h5 class="black-text">Register Your account</h5>
           <div class="section" />
           <div class="container">
             <div class="z-depth-1 grey lighten-4 row login-form">
               <form class="col s12" method="post">
                 <div class="row">
                   <div class="col s12" />
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input
+                      class="validate"
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                    />
+                    <label for="firstName">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input
+                      class="validate"
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                    />
+                    <label for="email">Last Name</label>
+                  </div>
                 </div>
 
                 <div class="row">
@@ -41,11 +61,16 @@ function Login(props) {
                     />
                     <label for="password">Enter your password</label>
                   </div>
-                  <label className="right">
-                    <a class="light-blue-text" href="#!">
-                      <b>Forgot Password?</b>
-                    </a>
-                  </label>
+                  <div class="input-field col s12">
+                    <input
+                      class="validate"
+                      type="password"
+                      name="password"
+                      id="password"
+                    />
+                    <label for="password">Confirm your password</label>
+                  </div>
+                  
                 </div>
 
                 <br />
@@ -71,4 +96,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Register;

@@ -149,4 +149,4 @@ function getVin (vin){
 
   }
 
-getVin("5TFTX4CN7BX009246");
+// getVin("5TFTX4CN7BX009246");
