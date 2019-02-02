@@ -84,7 +84,7 @@ function About(props) {
                 className="form"
                 action="##"
                 method="post"
-                id="registrationForm"
+                id="registrationForm1"
               >
                 <div className="form-group">
                   <div className="col-xs-6">
@@ -233,7 +233,7 @@ function About(props) {
                 className="form"
                 action="##"
                 method="post"
-                id="registrationForm"
+                id="registrationForm2"
               >
                 <div className="form-group">
                   <div className="col-xs-6">
@@ -245,7 +245,7 @@ function About(props) {
                       className="form-control"
                       name="vehicle Year"
                       id="year"
-                      placeholder="Year"
+                      placeholder="year"
                       title="enter vehicle year"
                     />
                   </div>
@@ -260,7 +260,7 @@ function About(props) {
                       className="form-control"
                       name="last_name"
                       id="make"
-                      placeholder="Make"
+                      placeholder="make"
                       title="enter vehicle make."
                     />
                   </div>
@@ -292,7 +292,7 @@ function About(props) {
                       className="form-control"
                       name="vehicle type"
                       id="vehicletype"
-                      placeholder="Vehicle type"
+                      placeholder="type"
                       title="enter vehicle type."
                     />
                   </div>
@@ -307,7 +307,7 @@ function About(props) {
                       className="form-control"
                       name="Drive type"
                       id="text"
-                      placeholder="Drive type"
+                      placeholder="drive type"
                       title="enter Drive type."
                     />
                   </div>
@@ -336,7 +336,7 @@ function About(props) {
                       className="form-control"
                       name="vehicle weight"
                       id="weight"
-                      placeholder="Vehicle weight"
+                      placeholder="weight"
                       title="enter vehicle weight."
                     />
                   </div>
@@ -351,7 +351,7 @@ function About(props) {
                       className="form-control"
                       name="Cylinders"
                       id="Cylinders"
-                      placeholder="Cylinders"
+                      placeholder="cylinders"
                       title="enter Cylinders."
                     />
                   </div>
@@ -380,14 +380,14 @@ function About(props) {
                       className="form-control"
                       name="Current Mileage"
                       id="vehiclemileage"
-                      placeholder="Current Mileage"
+                      placeholder="mileage"
                       title="enter your vehicle mileage."
                     />
                   </div>
                 </div>
                 <div className="form-group">
                   <div className="col-xs-6">
-                    <label for="Last Mileage">
+                    <label for="last mileage">
                       <h6>Last Updated Mileage</h6>
                     </label>
                     <input
@@ -422,7 +422,7 @@ function About(props) {
                 className="form"
                 action="##"
                 method="post"
-                id="registrationForm"
+                id="registrationForm3"
               >
                 <div className="form-group">
                   <div className="col-xs-6">
