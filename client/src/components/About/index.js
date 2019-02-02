@@ -5,8 +5,6 @@ import "./style.css";
 import Service from "../Service"
 
 function About(props) {
-  // let alan = require('../../images/alan.jpg')
-
   return (
     <section className="about">
       <div className="row white-text center">

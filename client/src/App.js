@@ -8,10 +8,9 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import About from "./components/About";
-// import Contact from "./components/Contact";
+import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-
-import Carousel from "./components/Carousel";
+import Register from "./components/Register";
 
 class App extends Component {
   render() {
@@ -29,9 +28,11 @@ class App extends Component {
               render={props => <Home {...props} loggedIn={false} />}
             />
             <Route exact path="/about" component={About} />
-            {/* <Route exact path="/login" component={Login} />
-            <Route exact path="/contact" component={Contact} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/register" component={Register} />
+
           </Main>
 
           <Footer />
