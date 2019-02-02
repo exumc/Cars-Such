@@ -2,8 +2,6 @@ import React from "react";
 import "./style.css";
 
 function About(props) {
-  // let alan = require('../../images/alan.jpg')
-
   return (
     <section className="about">
       <div className="row white-text center">
