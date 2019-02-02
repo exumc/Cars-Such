@@ -14,11 +14,11 @@ class Contact extends React.Component {
                   <div className="row">
                     <div className="input-field col m6 s12">
                       <input id="first_name" type="text" className="validate" />
-                      <label for="first_name">First Name</label>
+                      <label htmlFor="first_name">First Name</label>
                     </div>
                     <div className="input-field col m6 s12">
                       <input id="last_name" type="text" className="validate" />
-                      <label for="last_name">Last Name</label>
+                      <label htmlFor="last_name">Last Name</label>
                     </div>
                   </div>
                   <div className="row">
@@ -33,13 +33,13 @@ class Contact extends React.Component {
                         pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
                         title="Please provide a valid e-mail address"
                       />
-                      <label for="email">Email</label>
+                      <label htmlFor="email">Email</label>
                     </div>
 
                     <div className="input-field col m6 s12">
                       <i className="mdi-maps-store-mall-directory " />
                       <input id="company" type="text" className="validate" />
-                      <label for="company">Company</label>
+                      <label htmlFor="company">Company</label>
                     </div>
 
                     <div className="row">
@@ -48,7 +48,7 @@ class Contact extends React.Component {
                           id="message"
                           className="materialize-textarea"
                         />
-                        <label for="message">Message</label>
+                        <label htmlFor="message">Message</label>
                       </div>
                     </div>
 
