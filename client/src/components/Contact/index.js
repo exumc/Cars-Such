@@ -14,27 +14,35 @@ class Contact extends React.Component {
             <div className="row">
                 <form className="col s8">
                     <div className="row">
-                        <div className="input-field col m5 s8">
-                            <input id="first_name" type="text" className="validate"/>
-                            <label for="first_name">First Name</label>
+                        <div className="input-field col m5 s12">
+                            <form className="column-center">
+                                <input id="first_name" type="text" className="validate"/>
+                                <label for="first_name">First Name</label>
+                            </form>
                         </div>
-                        <div className="input-field col m5 s8">
-                            <input id="last_name" type="text" className="validate"/>
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col m5 s8">
-                            <input id="email" type="email" className="validate" required/>
-                            <label for="email">Email</label>
-                        </div>
-                        <div className="input-field col m5 s8">
-                            <input id="company" type="text" className="validate"/>
-                            <label for="company">Company</label>
+                        <div className="input-field col m5 s12">
+                            <form className="column-center">
+                                <input id="last_name" type="text" className="validate"/>
+                                <label for="last_name">Last Name</label>
+                            </form>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="input-field col m10 s8">
+                        <div className="input-field col m5 s12">
+                            <form className="column-center">
+                                <input id="email" type="email" className="validate" required/>
+                                <label for="email">Email</label>
+                            </form>
+                        </div>
+                        <div className="input-field col m5 s12">
+                            <form className="column-center">
+                                <input id="company" type="text" className="validate"/>
+                                <label for="company">Company</label>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col m10 s12">
                           <textarea id="message" className="materialize-textarea"></textarea>
                           <label for="message">Message</label>
                         </div>
