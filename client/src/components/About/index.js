@@ -11,7 +11,7 @@ function About(props) {
         <div className="col s4 offset-s4">
           <p className="black-text">
             Keep It Running comes as the brain child of Helder Calado, Chris
-            Pierre-Lewis, Cord Exum, Leslie Morris, and Alan Lopez. We set out
+            Pierre-Louis, Cord Exum, Leslie Morris, and Alan Lopez. We set out
             to build an application that would not only benefit ourselves in our
             immeadiate lives but to also continue to do so throughout it's
             usage. We all started from a cohort of the UCSD Full-Stack Web
