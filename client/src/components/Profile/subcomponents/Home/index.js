@@ -5,7 +5,7 @@ function Home(props) {
 
   return (
           <div className="tab-content">
-            <div className="tab-panel active" id="home">
+            <div className="tab-panel" id="home">
               <hr />
               <form
                 className="form"

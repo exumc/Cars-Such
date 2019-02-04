@@ -5,7 +5,7 @@ function Vehicle(props) {
 
     return (
         <section className = "vehicle">
-        <div className="tab-panel active" id="vehicles">
+        <div className="tab-panel" id="vehicles">
             
               <form
                 className="form"

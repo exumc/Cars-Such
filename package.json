@@ -29,6 +29,7 @@
     "mongoose": "^5.4.7",
     "morgan": "^1.9.1",
     "nhtsa": "^1.2.7",
+    "react-materialize": "^2.6.0",
     "vindec": "^2.7.1"
   }
 }
