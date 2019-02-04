@@ -9,213 +9,10 @@ const isAuthenticated = exjwt({
   secret: "all sorts of code up in here"
 });
 
-router.get("/car/:id", function(req, res) {
-  let carUrl = `http://vinfreecheck.com/vin/${req.params.id}`;
-  //VIN NUMBER 1FTFW1EF7DKD26755
+router.post("removecar/:id/car/:id", function (req, res) {
+  // route to remove a car from the user
+  // to be implemented after we have the mvp working
 
-  axios.get(carUrl).then(function(response) {
-    // Load the HTML into cheerio
-
-    try {
-      var $ = cheerio.load(response.data);
-    } catch (e) {
-      console.log(e); // handle error
-    }
-
-    // Make an empty array for saving our scraped info
-    var results = [];
-
-    $("main.content").each(function(i, element) {
-      let year = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(0)
-        .children("td")
-        .eq(1)
-        .html();
-      let make = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(1)
-        .children("td")
-        .eq(1)
-        .html();
-      let model = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(2)
-        .children("td")
-        .eq(1)
-        .html();
-      let trimLevel = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(3)
-        .children("td")
-        .eq(1)
-        .html();
-      let style = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(4)
-        .children("td")
-        .eq(1)
-        .html();
-      let madeIn = $(element)
-        .find("tbody")
-        .eq(1)
-        .children("tr")
-        .eq(5)
-        .children("td")
-        .eq(1)
-        .html();
-      let engine = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(0)
-        .children("td")
-        .eq(1)
-        .html();
-      let steeringType = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(1)
-        .children("td")
-        .eq(1)
-        .text();
-      let antiBrakeSystem = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(2)
-        .children("td")
-        .eq(1)
-        .text();
-      let fueltype = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(3)
-        .children("td")
-        .eq(1)
-        .text();
-      let tankSize = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(4)
-        .children("td")
-        .eq(1)
-        .text();
-      let overallHeight = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(5)
-        .children("td")
-        .eq(1)
-        .text();
-      let overallLength = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(6)
-        .children("td")
-        .eq(1)
-        .text();
-      let overallWidth = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(7)
-        .children("td")
-        .eq(1)
-        .text();
-      let standardSeating = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(8)
-        .children("td")
-        .eq(1)
-        .text();
-      let optionalSeating = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(9)
-        .children("td")
-        .eq(1)
-        .text();
-      let highWayMilage = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(10)
-        .children("td")
-        .eq(1)
-        .text();
-      let cityMilage = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(11)
-        .children("td")
-        .eq(1)
-        .text();
-      let driveType = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(12)
-        .children("td")
-        .eq(1)
-        .text();
-      let transmission = $(element)
-        .find("tbody")
-        .eq(5)
-        .children("tr")
-        .eq(13)
-        .children("td")
-        .eq(1)
-        .text();
-
-      let carObj = {
-        vin: req.params.id,
-        year: year,
-        make: make,
-        model: model,
-        trimLevel: trimLevel,
-        style: style,
-        madeIn: madeIn,
-        engine: engine,
-        steeringType: steeringType,
-        antiBrakeSystem: antiBrakeSystem,
-        fueltype: fueltype,
-        tankSize: tankSize,
-        overallHeight: overallHeight,
-        overallLength: overallLength,
-        overallWidth: overallWidth,
-        standardSeating: standardSeating,
-        optionalSeating: optionalSeating,
-        highWayMilage: highWayMilage,
-        cityMilage: cityMilage,
-        driveType: driveType,
-        transmission: transmission
-      };
-      db.Car.create(carObj);
-      results.push(carObj);
-    });
-    console.log(results);
-    res.json(results);
-  });
 });
 
 // LOGIN ROUTE
@@ -267,10 +64,22 @@ router.post("/signup", (req, res) => {
 });
 
 // Any route with isAuthenticated is protected and you need a valid token
-// to access
-router.get("/user/:id", isAuthenticated, (req, res) => {
+// to access , removed isAuthenticated from function temporarily
+// Helder
+router.get("/user/:id", (req, res) => {
   db.User.findById(req.params.id)
-    .then(data => {
+  .populate({
+    path: "cars",
+    populate: {
+      path: "cars"
+    }
+  }).populate({
+    path: "cars",
+    populate: {
+      path: "services"
+    }
+  })
+  .then(data => {
       if (data) {
         res.json(data);
       } else {
@@ -282,15 +91,17 @@ router.get("/user/:id", isAuthenticated, (req, res) => {
     })
     .catch(err => res.status(400).send(err));
 });
-
-router.post("/edituser/:id", isAuthenticated, function(req, res) {
+// Any route with isAuthenticated is protected and you need a valid token
+// to access , removed isAuthenticated from function temporarily
+// Helder // isAuthenticated,
+router.post("/edituser/:id", function (req, res) {
   // route to edit the user information
   db.User.updateOne({
     id: req.params.id,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email
-  }).then(function(data) {
+  }).then(function (data) {
     res.json(data);
   });
 });
@@ -301,13 +112,13 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
   axios
     .get(
       "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" +
-        req.params.id +
-        "?format=json"
+      req.params.id +
+      "?format=json"
     )
-    .then(function(result) {
+    .then(function (result) {
       var data = [];
       console.log(result);
-      result.data.Results.forEach(function(el) {
+      result.data.Results.forEach(function (el) {
         data[el.VariableId] = [];
         data[el.VariableId]["name"] = el.Variable;
         data[el.VariableId]["value"] = el.Value;
@@ -373,7 +184,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
       };
       //console.log(carObj);
       db.Car.create(carObj)
-        .then(function(data) {
+        .then(function (data) {
           return db.User.findOneAndUpdate(
             {
               _id: req.params.uid
@@ -386,7 +197,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
           );
         })
         //get the User with the id of req.params.id
-        .then(function(data) {
+        .then(function (data) {
           db.User.findById(req.params.uid)
             .populate({
               path: "cars",
@@ -394,7 +205,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
                 path: "cars"
               }
             })
-            .then(function(newData) {
+            .then(function (newData) {
               res.json(newData);
             });
         })
@@ -402,7 +213,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
     });
 });
 
-router.post("/addservice/:carid", function(req, res) {
+router.post("/addservice/:carid", function (req, res) {
   // route to add a service type to a chosen car.
   // creates an instance of db.services
   var Service = db.Services;
@@ -416,7 +227,7 @@ router.post("/addservice/:carid", function(req, res) {
   //creates the new entry in the database
   db.Services.create(service)
     // gets the car with the id provided by req.params
-    .then(function(data) {
+    .then(function (data) {
       return db.Car.findOneAndUpdate(
         {
           _id: req.params.carid
@@ -430,7 +241,7 @@ router.post("/addservice/:carid", function(req, res) {
       );
     })
     //get the car with the id of req.params.carid
-    .then(function(data) {
+    .then(function (data) {
       db.Car.findById(req.params.carid)
         //runs a deep population instruction to get all the services
         //associated with that car
@@ -443,13 +254,13 @@ router.post("/addservice/:carid", function(req, res) {
           // with the populated data sends to the client a json type resposnse with
           //the contents
         })
-        .then(function(newData) {
+        .then(function (newData) {
           res.json(newData);
         });
     });
 });
 
-router.get("/carinfo/:carid", function(req, res) {
+router.get("/carinfo/:carid", function (req, res) {
   // route to get the car info
   // Find the car with the specific id from req.params.carid
   db.Car.findById(
@@ -466,12 +277,12 @@ router.get("/carinfo/:carid", function(req, res) {
       // with the populated data sends to the client a json type resposnse with
       // the contents
     })
-    .then(function(data) {
+    .then(function (data) {
       res.json(data);
     });
 });
 
-router.post("/carmileage/:id", function(req, res) {
+router.post("/carmileage/:id", function (req, res) {
   let myDate = new Date();
 
   db.Car.updateOne({
