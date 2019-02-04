@@ -11,17 +11,15 @@ function Service(props) {
             <div className="collapsible-header">{props.name}</div>
             <div className="collapsible-body">
               <div className="box">
-                <div className="box-icon">
                   <div
                     className="box-img"
                     style={{
                       backgroundImage: `url(${props.image})`,
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover"
+                      backgroundSize: "contain"
                     }}
                   />
-                </div>
                 <div className="box-progressbar">
                   <Progress />
                 </div>

@@ -12,7 +12,7 @@ body {
 main {
   flex: 1 0 auto;
   margin-bottom: 40px;
-  background-image: url(./images/bg1.jpg);
+  background-image: url(/images/bg1.jpg);
   background-size: cover;
   background-position: 50% 20%;
 }

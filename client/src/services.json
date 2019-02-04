@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Oil Change",
-    "image": "",
+    "image": "./images/oilChange.svg",
     "clicked": false
   },
   {
@@ -13,27 +13,27 @@
   {
     "id": 3,
     "name": "Tune Up",
-    "image": "./images/tuneUp.svg"
+    "image": "./images/tuneUp.png"
   },
   {
     "id": 4,
     "name": "Shocks and Struts",
-    "image": "./images/shocks.svg"
+    "image": "./images/shocks.png"
   },
   {
     "id": 5,
     "name": "Brakes",
-    "image": "./images/brakes.svg"
+    "image": "./images/brakes.png"
   },
   {
     "id": 6,
     "name": "Battery",
-    "image": "./images/battery.svg"
+    "image": "./images/battery.png"
   },
   {
     "id": 7,
     "name": "Coolant",
-    "image": "./images/coolant.svg"
+    "image": "./images/coolant.png"
   },
   {
     "id": 8,
@@ -43,26 +43,26 @@
   {
     "id": 9,
     "name": "Transmission",
-    "image": "./images/transmission.svg"
+    "image": "./images/transmission.png"
   },
   {
     "id": 10,
     "name": "Spark Plugs",
-    "image": "./images/sparkPlug.svg"
+    "image": "./images/sparkPlug.png"
   },
   {
     "id": 11,
     "name": "Power Steering",
-    "image": "./images/steering.svg"
+    "image": "./images/steering.png"
   },
   {
     "id": 12,
     "name": "Tire Rotation",
-    "image": "./images/tire.svg"
+    "image": "./images/tire.png"
   },
   {
     "id": 13,
     "name": "Air Conditioning",
-    "image": "./images/airConditioning.svg"
+    "image": "./images/airConditioning.png"
   }
 ]
