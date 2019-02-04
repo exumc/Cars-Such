@@ -5,6 +5,9 @@ import "./style.css";
 import Service from "../Service"
 
 function About(props) {
+  function test (){
+    return "hi"
+  }
   return (
     <section className="about">
       <div className="row white-text center">
@@ -18,7 +21,7 @@ function About(props) {
             Development Bootcamp and quickly gravitated towards working
             together, and working together well more importantly.
           </p>
-          <p>{[props.userDetail]}</p>
+          <p>{props.test()}</p>
         </div>
         {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
