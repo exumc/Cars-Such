@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Profile from "../Profile";
+import CarProfile from "../CarProfile";
 
 import "./style.css";
 
@@ -41,7 +41,7 @@ function Guest() {
 }
 
 function User() {
-  return <Profile />;
+  return <CarProfile />;
 }
 
 function Home(props) {

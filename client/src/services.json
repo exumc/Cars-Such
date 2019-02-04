@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Oil Change",
+    "image": "client/src/images/airFilter.png",
+    "clicked": false
+  },
+  {
+    "id": 2,
+    "name": "Air Filter",
+    "image": "https://img.pokemondb.net/sprites/ruby-sapphire/normal/moltres.png"
+  },
+  {
+    "id": 3,
+    "name": "Tune Up",
+    "image": "https://img.pokemondb.net/sprites/x-y/shiny/charizard.png"
+  },
+  {
+    "id": 4,
+    "name": "Shocks and Struts",
+    "image": "https://img.pokemondb.net/sprites/diamond-pearl/shiny/wartortle.png"
+  },
+  {
+    "id": 5,
+    "name": "Brakes",
+    "image": "https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/bulbasaur.png"
+  },
+  {
+    "id": 6,
+    "name": "Battery",
+    "image": "https://img.pokemondb.net/sprites/black-white/normal/gengar.png"
+  },
+  {
+    "id": 7,
+    "name": "Coolant",
+    "image": "https://img.pokemondb.net/sprites/x-y/shiny/alakazam-f.png"
+  },
+  {
+    "id": 8,
+    "name": "Timing Belt",
+    "image": "https://img.pokemondb.net/sprites/black-white/normal/kangaskhan.png"
+  },
+  {
+    "id": 9,
+    "name": "Transmission",
+    "image": "https://img.pokemondb.net/sprites/x-y/shiny/eevee.png"
+  },
+  {
+    "id": 10,
+    "name": "Spark Plugs",
+    "image": "https://img.pokemondb.net/sprites/black-white/shiny/articuno.png"
+  },
+  {
+    "id": 11,
+    "name": "Power Steering",
+    "image": "https://img.pokemondb.net/sprites/diamond-pearl/shiny/zapdos.png"
+  },
+  {
+    "id": 12,
+    "name": "Tire Rotation",
+    "image": "https://img.pokemondb.net/sprites/diamond-pearl/shiny/zapdos.png"
+  },
+  {
+    "id": 13,
+    "name": "Air Conditioning",
+    "image": "https://img.pokemondb.net/sprites/diamond-pearl/shiny/zapdos.png"
+  }
+]

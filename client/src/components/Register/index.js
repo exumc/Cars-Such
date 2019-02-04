@@ -5,7 +5,7 @@ import "./style.css";
 
 function Register(props) {
   return (
-    <section className="signin">
+    <section className="mainSection">
       <div className="container">
         <center>
           <div class="section" />

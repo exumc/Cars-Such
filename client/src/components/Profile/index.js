@@ -5,7 +5,7 @@ function About(props) {
   // let alan = require('../../images/alan.jpg')
 
   return (
-    <section className="profile">
+    <section className="mainSection">
       <hr />
 
       <div className="container">

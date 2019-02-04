@@ -11,6 +11,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
+import CarProfile from "./components/CarProfile";
 
 class App extends Component {
   render() {
@@ -25,13 +26,14 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={props => <Home {...props} loggedIn={false} />}
+              render={props => <Home {...props} loggedIn={true} />}
             />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/carprofile" component={CarProfile} />
 
           </Main>
 
