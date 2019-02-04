@@ -224,7 +224,7 @@ function About(props) {
               
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-panel" id="vehicles">
+            <div className="tab-panel active" id="vehicles">
             
 
               
