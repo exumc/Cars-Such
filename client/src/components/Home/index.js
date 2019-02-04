@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CarProfile from "../CarProfile";
+import withAuth from "../withAuth";
+
 
 import "./style.css";
 

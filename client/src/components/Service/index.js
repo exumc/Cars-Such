@@ -3,7 +3,6 @@ import "./style.css";
 import Progress from "./subconponents/ProgressBar";
 
 function Service(props) {
-  let Background = require
   return (
     <div className="row">
       <div className="col s12 m6 offset-m3 center">
@@ -16,9 +15,10 @@ function Service(props) {
                   <div
                     className="box-img"
                     style={{
-                      backgroundImage: `url(${Background})`,
+                      backgroundImage: `url(${props.image})`,
                       backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover"
                     }}
                   />
                 </div>
