@@ -420,6 +420,7 @@ function About(props) {
               </form>
             </div>
             {/* <!--/tab-pane--> */}
+<<<<<<< HEAD
             {/* <div className="tab-pan" id="settings">
               
               <form
@@ -566,6 +567,9 @@ function About(props) {
                 </div>
               </form>
             </div> */}
+=======
+            
+>>>>>>> 2d44b26ebb735a069f47a2286e205d08129965d0
           </div>
         </div>
       </div>
