@@ -30,7 +30,7 @@ function About(props) {
               className="text-center center-block file-upload"
             />
           </div>
-          <br />
+          {/* <br /> */}
 
           <ul className="list-group">
             <li className="list-group-item text-muted">
@@ -70,8 +70,13 @@ function About(props) {
                 Home
               </a>
             </li>
+<<<<<<< HEAD
             <li className = "tab col s3">
               <a className="active" data-toggle="tab" href="#messages">
+=======
+            <li className="tab col s3">
+              <a className="active" data-toggle="tab" href="#vehicles">
+>>>>>>> d7a8a72542ef2f9fade0bd1e7d234e1c85ab72b2
                 Vehicle 1
               </a>
             </li>
@@ -79,7 +84,10 @@ function About(props) {
           
           <div className="tab-content">
             <div className="tab-panel active" id="home">
+<<<<<<< HEAD
               <hr />
+=======
+>>>>>>> d7a8a72542ef2f9fade0bd1e7d234e1c85ab72b2
               <form
                 className="form"
                 action="##"
@@ -222,13 +230,18 @@ function About(props) {
                 </div>
               </form>
 
-              <hr />
+              
             </div>
             {/* <!--/tab-pane--> */}
+<<<<<<< HEAD
             <div className="tab-panel" id="messages">
               <h2 />
+=======
+            <div className="tab-panel" id="vehicles">
+            
+>>>>>>> d7a8a72542ef2f9fade0bd1e7d234e1c85ab72b2
 
-              <hr />
+              
               <form
                 className="form"
                 action="##"
@@ -415,6 +428,7 @@ function About(props) {
                 </div>
               </form>
             </div>
+<<<<<<< HEAD
             {/* <!--/tab-pane--> */}
             <div className="tab-pan" id="settings">
               
@@ -562,6 +576,8 @@ function About(props) {
                 </div>
               </form>
             </div>
+=======
+>>>>>>> d7a8a72542ef2f9fade0bd1e7d234e1c85ab72b2
           </div>
         </div>
       </div>
