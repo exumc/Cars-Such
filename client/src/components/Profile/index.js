@@ -420,7 +420,7 @@ function About(props) {
               </form>
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-pan" id="settings">
+            {/* <div className="tab-pan" id="settings">
               
               <form
                 className="form"
@@ -565,11 +565,11 @@ function About(props) {
                   </div>
                 </div>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
-     
+     </div>
     </section>
   );
 }
