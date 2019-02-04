@@ -6,7 +6,7 @@ function About(props) {
 
   return (
     <section className="profile">
-      <hr />
+     
 
       <div className="container">
         <div className="row">
@@ -64,21 +64,21 @@ function About(props) {
         </div>
         {/* <!--/col-3--> */}
         <div className="col-sm-9">
-          <ul className="nav nav-tabs">
-            <li className="active">
-              <a data-toggle="tab" href="#home">
+          <ul className="nav tabs">
+            <li className="tab col s3">
+              <a className="active" data-toggle="tab" href="#home">
                 Home
               </a>
             </li>
-            <li>
-              <a data-toggle="tab" href="#messages">
+            <li className = "tab col s3">
+              <a className="active" data-toggle="tab" href="#messages">
                 Vehicle 1
               </a>
             </li>
           </ul>
-
+          
           <div className="tab-content">
-            <div className="tab-pane active" id="home">
+            <div className="tab-panel active" id="home">
               <hr />
               <form
                 className="form"
@@ -210,11 +210,11 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-12">
                     <br />
-                    <button className="btn btn-lg btn-success" type="submit">
+                    <button className ="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
                       <i className="glyphicon glyphicon-ok-sign" />
                       Save
                     </button>
-                    <button className="btn btn-lg" type="reset">
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
                       <i className="glyphicon glyphicon-repeat" />
                       Reset
                     </button>
@@ -225,7 +225,7 @@ function About(props) {
               <hr />
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-pane" id="messages">
+            <div className="tab-panel" id="messages">
               <h2 />
 
               <hr />
@@ -403,11 +403,11 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-12">
                     <br />
-                    <button className="btn btn-lg btn-success" type="submit">
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
                       <i className="glyphicon glyphicon-ok-sign" />
                       Save
                     </button>
-                    <button className="btn btn-lg" type="reset">
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
                       <i className="glyphicon glyphicon-repeat" />
                       Reset
                     </button>
@@ -416,8 +416,8 @@ function About(props) {
               </form>
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-pane" id="settings">
-              <hr />
+            <div className="tab-pan" id="settings">
+              
               <form
                 className="form"
                 action="##"
@@ -549,7 +549,7 @@ function About(props) {
                   <div className="col-xs-12">
                     <br />
                     <button
-                      className="btn btn-lg btn-success pull-right"
+                      className="btn btn-large waves-effect waves-light light-blue lighten-2"
                       type="submit"
                     >
                       <i className="glyphicon glyphicon-ok-sign" />
