@@ -64,22 +64,21 @@ function About(props) {
         </div>
         {/* <!--/col-3--> */}
         <div className="col-sm-9">
-          <ul className="nav nav-tabs">
-            <li className="active">
-              <a data-toggle="tab" href="#home">
+          <ul className="nav tabs">
+            <li className="tab col s3">
+              <a className="active" data-toggle="tab" href="#home">
                 Home
               </a>
             </li>
-            <li>
-              <a data-toggle="tab" href="#messages">
+            <li className="tab col s3">
+              <a className="active" data-toggle="tab" href="#messages">
                 Vehicle 1
               </a>
             </li>
           </ul>
 
           <div className="tab-content">
-            <div className="tab-pane active" id="home">
-              <hr />
+            <div className="tab-panel active" id="home">
               <form
                 className="form"
                 action="##"
@@ -222,13 +221,13 @@ function About(props) {
                 </div>
               </form>
 
-              <hr />
+              
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-pane" id="messages">
+            <div className="tab-panel" id="messages">
             
 
-              <hr />
+              
               <form
                 className="form"
                 action="##"
@@ -416,8 +415,8 @@ function About(props) {
               </form>
             </div>
             {/* <!--/tab-pane--> */}
-            <div className="tab-pane" id="settings">
-              <hr />
+            <div className="tab-panel" id="settings">
+              
               <form
                 className="form"
                 action="##"
