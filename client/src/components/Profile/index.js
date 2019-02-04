@@ -6,7 +6,7 @@ function About(props) {
 
   return (
     <section className="profile">
-      <hr />
+     
 
       <div className="container">
         <div className="row">
@@ -70,15 +70,16 @@ function About(props) {
                 Home
               </a>
             </li>
-            <li className="tab col s3">
-              <a className="active" data-toggle="tab" href="#vehicles">
+            <li className = "tab col s3">
+              <a className="active" data-toggle="tab" href="#messages">
                 Vehicle 1
               </a>
             </li>
           </ul>
-
+          
           <div className="tab-content">
             <div className="tab-panel active" id="home">
+              <hr />
               <form
                 className="form"
                 action="##"
@@ -209,11 +210,11 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-12">
                     <br />
-                    <button className="btn btn-lg btn-success" type="submit">
+                    <button className ="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
                       <i className="glyphicon glyphicon-ok-sign" />
                       Save
                     </button>
-                    <button className="btn btn-lg" type="reset">
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
                       <i className="glyphicon glyphicon-repeat" />
                       Reset
                     </button>
@@ -224,6 +225,10 @@ function About(props) {
               
             </div>
             {/* <!--/tab-pane--> */}
+
+            <div className="tab-panel" id="messages">
+              <h2 />
+
             <div className="tab-panel active" id="vehicles">
             
 
@@ -402,13 +407,160 @@ function About(props) {
                 <div className="form-group">
                   <div className="col-xs-12">
                     <br />
-                    <button className="btn btn-lg btn-success" type="submit">
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
+                      <i className="glyphicon glyphicon-ok-sign" />
+                      Save
+                    </button>
+                    <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
+                      <i className="glyphicon glyphicon-repeat" />
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {/* <!--/tab-pane--> */}
+            <div className="tab-pan" id="settings">
+              
+              <form
+                className="form"
+                action="##"
+                method="post"
+                id="registrationForm3"
+              >
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="first_name">
+                      <h6>First name</h6>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="first_name"
+                      id="first_name"
+                      placeholder="first name"
+                      title="enter your first name if any."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="last_name">
+                      <h6>Last name</h6>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="last_name"
+                      id="last_name"
+                      placeholder="last name"
+                      title="enter your last name if any."
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="phone">
+                      <h6>Phone</h6>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="phone"
+                      id="phone"
+                      placeholder="enter phone"
+                      title="enter your phone number if any."
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="mobile">
+                      <h6>Mobile</h6>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="mobile"
+                      id="mobile"
+                      placeholder="enter mobile number"
+                      title="enter your mobile number if any."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="email">
+                      <h6>Email</h6>
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="you@email.com"
+                      title="enter your email."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="email">
+                      <h6>Location</h6>
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="location"
+                      placeholder="somewhere"
+                      title="enter a location"
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="password">
+                      <h6>Password</h6>
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      id="password"
+                      placeholder="password"
+                      title="enter your password."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-6">
+                    <label for="password2">
+                      <h6>Verify</h6>
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password2"
+                      id="password2"
+                      placeholder="password2"
+                      title="enter your password2."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-xs-12">
+                    <br />
+                    <button
+                      className="btn btn-large waves-effect waves-light light-blue lighten-2"
+                      type="submit"
+                    >
                       <i className="glyphicon glyphicon-ok-sign" />
                       Save
                     </button>
                     <button className="btn btn-lg" type="reset">
-                      <i className="glyphicon glyphicon-repeat" />
-                      Reset
+                      <i className="glyphicon glyphicon-repeat" /> Reset
                     </button>
                   </div>
                 </div>
