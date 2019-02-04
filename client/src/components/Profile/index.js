@@ -1,7 +1,8 @@
 import React from "react";
 import "./style.css";
+import withAuth from "../withAuth";
 
-function About(props) {
+function Profile(props) {
   // let alan = require('../../images/alan.jpg')
 
   return (
@@ -226,7 +227,7 @@ function About(props) {
             </div>
             {/* <!--/tab-pane--> */}
             <div className="tab-pane" id="messages">
-            
+
 
               <hr />
               <form
@@ -565,9 +566,9 @@ function About(props) {
           </div>
         </div>
       </div>
-     
+
     </section>
   );
 }
 
-export default About;
+export default withAuth(Profile);
