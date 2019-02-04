@@ -18,6 +18,7 @@ function About(props) {
             Development Bootcamp and quickly gravitated towards working
             together, and working together well more importantly.
           </p>
+          <p>{[props.userDetail]}</p>
         </div>
         {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
