@@ -43,8 +43,8 @@ export default {
         return axios.post("/api/carmileage/" + carId, mileage);
     },
     getUser: function(userId){
-        let result = axios.get("/api/user/" + userId);
-        console.log(result);
+        
+        console.log("get user called: " +userId);
         return axios.get("/api/user/" + userId);
 
     }

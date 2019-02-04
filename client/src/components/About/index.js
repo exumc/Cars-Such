@@ -1,13 +1,29 @@
 import React from "react";
 import "./style.css";
+import API from  "../../utils/API"
 //added the reference to the progressbar component for testing purposes 
 // Helder.
 import Service from "../Service"
 
-function About(props) {
-  function test (){
-    return "hi"
-  }
+class  About extends React.Component {
+  
+
+    // Must initialize state first
+    state = {
+       userDetails:{}
+      } 
+  
+  
+  
+
+
+componentDidMount (){
+  
+  this.setState({
+    userDetails:API.getUser("5c54a0586f5161041cda39b3")
+  });
+}
+  render(){
   return (
     <section className="about">
       <div className="row white-text center">
@@ -21,15 +37,18 @@ function About(props) {
             Development Bootcamp and quickly gravitated towards working
             together, and working together well more importantly.
           </p>
-          <p>{props.test()}</p>
+         <p>{JSON.stringify(this.state.userDetails)}</p>
         </div>
         {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
        
       </div>
-      <Service />
+     
     </section>
-  );
+  
+  )
+}
+
 }
 
 export default About;
