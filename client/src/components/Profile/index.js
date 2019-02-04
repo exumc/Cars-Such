@@ -88,7 +88,7 @@ function About(props) {
               >
                 <div className="form-group">
                   <div className="col-xs-6">
-                    <label for="first_name">
+                    <label htmlFor="first_name">
                       <h6>First name</h6>
                     </label>
                     <input
@@ -226,7 +226,7 @@ function About(props) {
             </div>
             {/* <!--/tab-pane--> */}
 
-            <div className="tab-panel" id="messages">
+            <div className="tab-panel active" id="messages">
               <h2 />
 
             <div className="tab-panel active" id="vehicles">
