@@ -9,26 +9,47 @@ import API from "../../utils/API"
 //turned the function into a class 
 class Profile extends React.Component {
   // Must initialize state first
-  state = {
-    userDetails: {},
-    userCars: ""
-  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      userDetails: {},
+      userCars: "",
+      username: "",
+      email: "",
+      carIsSet: false
+    }
+   
+}
+ 
 
   componentDidMount() {
-    API
-      .getUser("5c59123ed73f724624841d3b")
-      .then(res => {
-        var now = new Date(res.data.cars[0].dateMileageUpdate);
-        var today = now.toLocaleDateString()
-        console.log(today);
-        this.setState({
-          userDetails: res.data,
-          userCars: res.data.cars[0]
-        });
-        this.state.userCars.dateMileageUpdate = today;
-        console.log(this.state.userCars.dateMileageUpdate);
 
+    console.log(this.props.user.id);
+    API
+      .getUser(this.props.user.id)
+      .then(res => {
+        if (res.data.cars[0]) {
+          this.setState({ carIsSet: true })
+          var now = new Date(res.data.cars[0].dateMileageUpdate);
+          var today = now.toLocaleDateString()
+          console.log(today);
+          this.setState({
+            userDetails: res.data,
+            userCars: res.data.cars[0]
+          });
+          this.state.userCars.dateMileageUpdate = today;
+          console.log(this.state.userCars.dateMileageUpdate);
+        } else {
+          this.setState({ 
+            carIsSet: false ,
+            userDetails: res.data,
+          })
+        }
       });
+
+
+
+
   }
 
   render() {
@@ -37,7 +58,7 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col l10">
-              <h1>User name</h1>
+              <h1>{this.props.user.id}</h1>
             </div>
           </div>
 
@@ -96,22 +117,30 @@ class Profile extends React.Component {
                     email={this.state.userDetails.email}
                   />
                 </Tab>
-                <Tab title="Vehicle">
-                  <Vehicle
-                    year={this.state.userCars.year}
-                    make={this.state.userCars.make}
-                    model={this.state.userCars.model}
-                    type={this.state.userCars.Vehicle_Type}
-                    driveType={this.state.userCars.driveType}
-                    hp={this.state.userCars.HP}
-                    fuelType={this.state.userCars.fueltype}
-                    noCylinders={this.state.userCars.noCylinders}
-                    weight={this.state.userCars.grossWeightRating}
-                    lastMileageDate={this.state.userCars.dateMileageUpdate}
-                    currentMileage={this.state.userCars.currentMileage}
+                {
+                  this.state.carIsSet ?
 
-                  />
-                </Tab>
+                    
+                    (
+                      <Tab title="Vehicle">
+                        <Vehicle
+                          year={this.state.userCars.year}
+                          make={this.state.userCars.make}
+                          model={this.state.userCars.model}
+                          type={this.state.userCars.Vehicle_Type}
+                          driveType={this.state.userCars.driveType}
+                          hp={this.state.userCars.HP}
+                          fuelType={this.state.userCars.fueltype}
+                          noCylinders={this.state.userCars.noCylinders}
+                          weight={this.state.userCars.grossWeightRating}
+                          lastMileageDate={this.state.userCars.dateMileageUpdate}
+                          currentMileage={this.state.userCars.currentMileage}
+
+                        />
+                      </Tab>
+                    )
+                    :<Tab />
+                }
               </Tabs>
             </div>
           </div>
@@ -124,4 +153,4 @@ class Profile extends React.Component {
   }
 }
 
-export default (Profile);
+export default withAuth(Profile);
