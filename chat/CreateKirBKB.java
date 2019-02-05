@@ -158,7 +158,8 @@ public static Response GetStatus (String operation) throws Exception {
   "lastActionTimestamp": "2018-09-26T05:23:08Z",
   "resourceLocation": "/knowledgebases/XXX7892b-10cf-47e2-a3ae-e40683adb714",
   "userId": "XXX9549466094e1cb4fd063b646e1ad6",
-  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
+  "operationId": "6b98262d-2fec-47d1-a2e7-40191bd8c15a"
+  
 }
 
 public static void main(String[] args) {
