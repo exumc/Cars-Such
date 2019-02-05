@@ -21,6 +21,11 @@ main {
   font-weight:300;
 }
 
+.mainSection{
+  height:100%;
+  background-color:white;
+}
+
 .input-field input[type=date]:focus + label,
 .input-field input[type=text]:focus + label,
 .input-field input[type=email]:focus + label,
@@ -28,8 +33,6 @@ main {
 .input-field textarea:focus + label {
   color: #4FC3F7 !important;
 }
-
-
 
 .input-field input[type=date]:focus,
 .input-field input[type=text]:focus,

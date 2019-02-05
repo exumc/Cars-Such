@@ -1,29 +1,38 @@
-.profile{
-    height:968px;
-    background-color:white;
+button i {
+    margin-right:8px
 }
 
-input {
-    float: left;
+div.col.s12 button{
+    margin-right:8px;
 }
 
-.btn {display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+.list-group{
+    margin-top:40px;
+}
+
+#profile-image{
+    margin-bottom:40px;
+    padding:0;
+}
+
+.tabs .tab a{
+    color:#4fc3f7;
+} 
+
+.tabs .tab a:hover {
+    background-color:#b3e5fc;
+    color:#4fc3f7;
+} 
+
+.tabs .tab a.active {
+    background-color:#fafafa;
+    color:#4fc3f7;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+    background-color: #e1f5fe ;
+}
+
+.tabs .indicator {
+    background-color:#4fc3f7;
 }
