@@ -25,6 +25,7 @@ function Vehicle(props) {
                       id="year"
                       placeholder="year"
                       title="enter vehicle year"
+                      value={props.year}
                     />
                   </div>
                 </div>
@@ -36,10 +37,11 @@ function Vehicle(props) {
                     <input
                       type="text"
                       className="form-control"
-                      name="last_name"
+                      name="make"
                       id="make"
                       placeholder="make"
                       title="enter vehicle make."
+                      value={props.make}
                     />
                   </div>
                 </div>
@@ -55,6 +57,7 @@ function Vehicle(props) {
                       id="model"
                       placeholder="model"
                       title="enter vehicle model"
+                      value={props.model}
                     />
                   </div>
                 </div>
@@ -70,6 +73,7 @@ function Vehicle(props) {
                       id="vehicletype"
                       placeholder="type"
                       title="enter vehicle type."
+                      value={props.type}
                     />
                   </div>
                 </div>
@@ -85,6 +89,7 @@ function Vehicle(props) {
                       id="text"
                       placeholder="drive type"
                       title="enter Drive type."
+                      value={props.driveType}
                     />
                   </div>
                 </div>
@@ -99,6 +104,7 @@ function Vehicle(props) {
                       id="horsepower"
                       placeholder="horse power"
                       title="enter horse power"
+                      value={props.hp}
                     />
                   </div>
                 </div>
@@ -114,6 +120,7 @@ function Vehicle(props) {
                       id="weight"
                       placeholder="weight"
                       title="enter vehicle weight."
+                      value={props.weight}
                     />
                   </div>
                 </div>
@@ -129,6 +136,7 @@ function Vehicle(props) {
                       id="Cylinders"
                       placeholder="cylinders"
                       title="enter Cylinders."
+                      value={props.noCylinders}
                     />
                   </div>
                 </div>
@@ -140,9 +148,11 @@ function Vehicle(props) {
                     <input
                       type="date"
                       className="form-control"
-                      name="last date"
+                      name="date"
                       id="date"
                       title="enter your vehilce weight"
+                      placeholder={props.lastMileageDate}
+                      value={props.lastMileageDate}
                     />
                   </div>
                 </div>
@@ -158,6 +168,7 @@ function Vehicle(props) {
                       id="vehiclemileage"
                       placeholder="mileage"
                       title="enter your vehicle mileage."
+                      value={props.currentMileage}
                     />
                   </div>
                 </div>
