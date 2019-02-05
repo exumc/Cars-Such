@@ -5,10 +5,9 @@ import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import { Tabs, Tab } from "react-materialize";
 //added import to the API -- Helder
- 
 import API from "../../utils/API"
-//turned the function into a class 
-// import Modal from "../Modal";
+//turned the function into a class
+import UserModal from "../Modal"
 
 class Profile extends React.Component {
   // Must initialize state first
@@ -49,6 +48,9 @@ class Profile extends React.Component {
   render() {
     return (
       <section className="mainSection">
+      <div>
+        <UserModal />
+      </div>
         <div className="container">
           <div className="row">
             <div className="col l10">
