@@ -1,48 +1,91 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AuthService from '../AuthService';
+
 
 
 import "./style.css";
 
-function Login(props) {
+
+
+class Login extends React.Component {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+  }
+  state= {
+    email:"",
+    password:"",
+  }
+  componentWillMount() {
+    if (this.Auth.loggedIn()) {
+      this.props.history.replace('/');
+    }
+  }
+  handleChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+        [name]: value
+    });
+  };
+
+  handleSubmit = (event)=> {
+   
+    event.preventDefault();
+    this.Auth.login(this.state.email, this.state.password)
+      .then(res => {
+        // once user is logged in
+        // take them to their profile page
+        this.props.history.replace(`/profile`);
+      })
+      .catch(err => {
+        alert(err.response.data.message)
+      });
+
+  }
+  render(){
   return (
     <section className="mainSection">
       <div className="container">
         <center>
-          <div class="section" />
-          <h5 class="black-text">Please, login into your account</h5>
-          <div class="section" />
-          <div class="container">
-            <div class="z-depth-1 grey lighten-4 row login-form">
-              <form class="col s12" method="post">
-                <div class="row">
-                  <div class="col s12" />
+          <div className="section" />
+          <h5 className="black-text">Please, login into your account</h5>
+          <div className="section" />
+          <div className="container">
+            <div className="z-depth-1 grey lighten-4 row login-form">
+              <form className="col s12" onSubmit={this.handleSubmit} >
+                <div className="row">
+                  <div className="col s12" />
                 </div>
 
-                <div class="row">
-                  <div class="input-field col s12">
+                <div className="row">
+                  <div className="input-field col s12">
                     <input
-                      class="validate"
+                      className="validate"
                       type="email"
                       name="email"
                       id="email"
+                      value={this.state.email}
+                      onChange={this.handleChange}
                     />
                     <label for="email">Enter your email</label>
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="input-field col s12">
+                <div className="row">
+                  <div className="input-field col s12">
                     <input
-                      class="validate"
+                      className="validate"
                       type="password"
                       name="password"
                       id="password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
                     />
                     <label for="password">Enter your password</label>
                   </div>
                   <label className="right">
-                    <a class="light-blue-text" href="#!">
+                    <a className="light-blue-text" href="#!">
                       <b>Forgot Password?</b>
                     </a>
                   </label>
@@ -50,12 +93,13 @@ function Login(props) {
 
                 <br />
                 <center>
-                  <div class="row">
+                  <div className="row">
                     <button
                       type="submit"
                       name="btn_login"
                       id="userLogin"
-                      class="col s12 btn btn-large waves-effect light-blue lighten-2"
+                      className="col s12 btn btn-large waves-effect light-blue lighten-2"
+                     
                     >
                       Login
                     </button>
@@ -69,6 +113,7 @@ function Login(props) {
       </div>
     </section>
   );
+}
 }
 
 export default Login;
