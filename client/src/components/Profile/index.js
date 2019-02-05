@@ -1,13 +1,15 @@
 import React from "react";
 import "./style.css";
-import myProfile from "./subcomponents/myProfile";
-import myVehicle from "./subcomponents/myVehicle";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import withAuth from "../withAuth";
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
+<<<<<<< HEAD
 import { Tabs, Tab, Modal, Button } from 'react-materialize';
+=======
+import { Tabs, Tab } from "react-materialize";
+>>>>>>> d22f776badf06e15e0f327bfb1195b2da606c51e
 //added import to the API -- Helder
+
 import API from "../../utils/API"
 //turned the function into a class 
 // import Modal from "../Modal";
@@ -22,38 +24,36 @@ class Profile extends React.Component {
       username: "",
       email: "",
       carIsSet: false
+<<<<<<< HEAD
     }
    
 }
+=======
+    };
+  }
+>>>>>>> d22f776badf06e15e0f327bfb1195b2da606c51e
 
   componentDidMount() {
-
     console.log(this.props.user.id);
-    API
-      .getUser(this.props.user.id)
-      .then(res => {
-        if (res.data.cars[0]) {
-          this.setState({ carIsSet: true })
-          var now = new Date(res.data.cars[0].dateMileageUpdate);
-          var today = now.toLocaleDateString()
-          console.log(today);
-          this.setState({
-            userDetails: res.data,
-            userCars: res.data.cars[0]
-          });
-          this.state.userCars.dateMileageUpdate = today;
-          console.log(this.state.userCars.dateMileageUpdate);
-        } else {
-          this.setState({ 
-            carIsSet: false ,
-            userDetails: res.data,
-          })
-        }
-      });
-
-
-
-
+    API.getUser(this.props.user.id).then(res => {
+      if (res.data.cars[0]) {
+        this.setState({ carIsSet: true });
+        var now = new Date(res.data.cars[0].dateMileageUpdate);
+        var today = now.toLocaleDateString();
+        console.log(today);
+        this.setState({
+          userDetails: res.data,
+          userCars: res.data.cars[0]
+        });
+        this.state.userCars.dateMileageUpdate = today;
+        console.log(this.state.userCars.dateMileageUpdate);
+      } else {
+        this.setState({
+          carIsSet: false,
+          userDetails: res.data
+        });
+      }
+    });
   }
   
   render() {
@@ -62,57 +62,13 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col l10">
-              <h1>{this.props.user.id}</h1>
+              <h1>{this.props.user.name}</h1>
             </div>
           </div>
 
           <div className="row">
-
-            <div className="col s3">
-
-              <div className="col s12" id="profile-image">
-                <img
-                  src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                  className="avatar img-circle img-thumbnail"
-                  alt="avatar"
-                />
-                <h6>Upload a different photo...</h6>
-                <input
-                  type="file"
-                  className="text-center center-block file-upload"
-                />
-              </div>
-              <ul className="list-group">
-                <li className="list-group-item text-muted">
-                  Recent Destinations <i className="fa fa-dashboard fa-1x" />
-                </li>
-                <li className="list-group-item text-right">
-                  <span className="pull-left">
-                    <strong>Home</strong>
-                  </span>
-                  125 miles
-            </li>
-                <li className="list-group-item text-right">
-                  <span className="pull-left">
-                    <strong>Work</strong>
-                  </span>
-                  13 miles
-            </li>
-                <li className="list-group-item text-right">
-                  <span className="pull-left">
-                    <strong>Ya moms house</strong>
-                  </span>
-                  37 miles
-            </li>
-                <li className="list-group-item text-right">
-                  <span className="pull-left">
-                    <strong>HER moms house</strong>
-                  </span>
-                  78 miles
-            </li>
-              </ul>
-            </div>
-            <div className="col s9">
+            
+            <div className="col s12">
               <Tabs className="tabs">
                 <Tab title="Home" active>
                   <Home
@@ -121,37 +77,31 @@ class Profile extends React.Component {
                     email={this.state.userDetails.email}
                   />
                 </Tab>
-                {
-                  this.state.carIsSet ?
-
-                    
-                    (
-                      <Tab title="Vehicle">
-                        <Vehicle
-                          year={this.state.userCars.year}
-                          make={this.state.userCars.make}
-                          model={this.state.userCars.model}
-                          type={this.state.userCars.Vehicle_Type}
-                          driveType={this.state.userCars.driveType}
-                          hp={this.state.userCars.HP}
-                          fuelType={this.state.userCars.fueltype}
-                          noCylinders={this.state.userCars.noCylinders}
-                          weight={this.state.userCars.grossWeightRating}
-                          lastMileageDate={this.state.userCars.dateMileageUpdate}
-                          currentMileage={this.state.userCars.currentMileage}
-
-                        />
-                      </Tab>
-                    )
-                    :<Tab />
-                }
+                {this.state.carIsSet ? (
+                  <Tab title="Vehicle">
+                    <Vehicle
+                      year={this.state.userCars.year}
+                      make={this.state.userCars.make}
+                      model={this.state.userCars.model}
+                      type={this.state.userCars.Vehicle_Type}
+                      driveType={this.state.userCars.driveType}
+                      hp={this.state.userCars.HP}
+                      fuelType={this.state.userCars.fueltype}
+                      noCylinders={this.state.userCars.noCylinders}
+                      weight={this.state.userCars.grossWeightRating}
+                      lastMileageDate={this.state.userCars.dateMileageUpdate}
+                      currentMileage={this.state.userCars.currentMileage}
+                    />
+                  </Tab>
+                ) : (
+                  <Tab />
+                )}
               </Tabs>
             </div>
           </div>
-
+        
+        
         </div>
-
-
       </section>
     );
   }

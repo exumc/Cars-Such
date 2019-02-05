@@ -17,35 +17,47 @@ main {
   background-position: 50% 20%;
 }
 
+@media only screen and (min-width: 600px) {
+  section {
+    min-height: 960px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    min-height: 700px;
+  }
+}
+
 footer {
-  position: fixed;
+  /* position: relative; */
   margin-top: 40px;
   bottom: 0;
+  left: 0;
   width: 100%;
-  z-index: 10;
 }
 
 .bold {
   font-weight: 700;
 }
 
-.mainSection{
-  height:100%;
-  background-color:white;
+.mainSection {
+  height: 100%;
+  background-color: white;
 }
 
-.input-field input[type=date]:focus + label,
-.input-field input[type=text]:focus + label,
-.input-field input[type=email]:focus + label,
-.input-field input[type=password]:focus + label,
+.input-field input[type="date"]:focus + label,
+.input-field input[type="text"]:focus + label,
+.input-field input[type="email"]:focus + label,
+.input-field input[type="password"]:focus + label,
 .input-field textarea:focus + label {
-  color: #4FC3F7 !important;
+  color: #4fc3f7 !important;
 }
 
-.input-field input[type=date]:focus,
-.input-field input[type=text]:focus,
-.input-field input[type=email]:focus,
-.input-field input[type=password]:focus,
+.input-field input[type="date"]:focus,
+.input-field input[type="text"]:focus,
+.input-field input[type="email"]:focus,
+.input-field input[type="password"]:focus,
 .input-field textarea:focus {
   border-bottom: 2px solid #4fc3f7 !important;
   box-shadow: none !important;
