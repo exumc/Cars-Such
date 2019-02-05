@@ -49,7 +49,6 @@ class Profile extends React.Component {
     return (
       <section className="mainSection">
       <div>
-        <UserModal />
       </div>
         <div className="container">
           <div className="row">
@@ -70,6 +69,7 @@ class Profile extends React.Component {
                   />
                 </Tab>
                 {this.state.carIsSet ? (
+                  
                   <Tab title="Vehicle">
                     <Vehicle
                       year={this.state.userCars.year}
@@ -85,9 +85,11 @@ class Profile extends React.Component {
                       currentMileage={this.state.userCars.currentMileage}
                     />
                   </Tab>
-                ) : (
-                  <Tab />
-                )}
+                ) : 
+                <Tab>
+                  <UserModal />
+                </Tab>
+                }
               </Tabs>
             </div>
           </div>
