@@ -26,7 +26,7 @@ class  Register extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.signUp(this.state.firstname,this.state.firstname ,this.state.email, this.state.password)
+    API.signUp(this.state.firstname,this.state.lastname ,this.state.email, this.state.password)
       .then(res => {
         // once the user has signed up
         // send them to the login page

@@ -3,21 +3,23 @@ import { Link } from "react-router-dom";
 import Profile from "../Profile";
 import Service from "../Service"
 import AuthService from '../AuthService';
+import CarProfile from '../CarProfile'
 
 import "./style.css";
 
 class  Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.Auth = new AuthService();
   }
   componentDidMount(){
     console.log(this.Auth.loggedIn());
+    console.log(this.Auth.getProfile().id);
    ;
   }
   render(){
     if (this.Auth.loggedIn()) {
-      return <User />;
+      return <User id={this.Auth.getProfile().id}/>;
     }
     return <Guest />
  
@@ -62,10 +64,10 @@ function Guest (props){
 function User(props){
   
   return( 
-  <div>
-<Service />
-<h1>User Loaded</h1>
-  </div>
+  
+<CarProfile id={props.id}/>
+
+  
   )
 }
 
