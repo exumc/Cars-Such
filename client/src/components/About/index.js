@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
-
+import UserModal from "../Modal"
 //added the reference to the progressbar component for testing purposes 
 // Helder.
-import Service from "../Service"
+// import Service from "../Service"
+// import Modal from "../Modal"
 
-class About extends React.Component {
+class About extends Component {
 
 
   
@@ -27,7 +28,9 @@ class About extends React.Component {
           </div>
           {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
-
+        <div>
+        <UserModal />
+        </div>
         </div>
 
       </section>

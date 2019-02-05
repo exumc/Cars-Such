@@ -12,20 +12,19 @@ class  Home extends React.Component {
     super(props);
     this.Auth = new AuthService();
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.Auth.loggedIn());
     console.log(this.Auth.getProfile().id);
    ;
   }
-  render(){
+  render() {
     if (this.Auth.loggedIn()) {
       return <User id={this.Auth.getProfile().id}/>;
     }
-    return <Guest />
- 
+    return <Guest />;
+  }
 }
-}
-function Guest (props){
+function Guest(props) {
   return (
     <section>
       <div className="row white-text center">
@@ -33,10 +32,9 @@ function Guest (props){
           <p>
             “The place to improve the world is first in one's own heart and head
             and hands, and then work outward from there.”
-            <br />
-            ― Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
-            </p>
-        
+            <br />― Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
+          </p>
+
           <p className="aboutKIR">
             At Keep It Running we aim to put the knowledge and capability into
             the hands of people that wish to improve the world around them.
@@ -70,7 +68,5 @@ function User(props){
   
   )
 }
-
-
 
 export default Home;
