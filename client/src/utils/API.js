@@ -40,6 +40,9 @@ export default {
         }
         return axios.post("/api/addservice/" + carId, serviceObj);
     },
+    getService: function (carId){
+        return axios.get("/api/getservices/" + carId);
+    },
     updateMileage: function (carId, mileage) {
 
         return axios.post("/api/carmileage/" + carId, mileage);

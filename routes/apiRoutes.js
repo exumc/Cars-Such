@@ -270,5 +270,20 @@ router.post("/carmileage/:id", function (req, res) {
     res.json(data);
   });
 });
+router.get("/getservices/:carid", function(req,res){
+db.Car.findById(req.params.carid)
+.populate({
+  path: "services",
+  //within the array get all the information about the object
+  populate: {
+    path: "services"
+  }
+  // with the populated data sends to the client a json type resposnse with
+  // the contents
+}).then(data =>{
+  res.json(data)
+})
+
+})
 
 module.exports = router;
