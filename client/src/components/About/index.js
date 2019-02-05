@@ -4,6 +4,7 @@ import "./style.css";
 //added the reference to the progressbar component for testing purposes 
 // Helder.
 import Service from "../Service"
+import Modal from "../Modal"
 
 class About extends React.Component {
 
@@ -27,7 +28,7 @@ class About extends React.Component {
           </div>
           {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
-
+        <Modal />
         </div>
 
       </section>
