@@ -67,6 +67,7 @@ router.post("/signup", (req, res) => {
 // to access , removed isAuthenticated from function temporarily
 // Helder
 router.get("/user/:id", (req, res) => {
+  console.log(req.params.id);
   db.User.findById(req.params.id)
   .populate({
     path: "cars",
@@ -173,6 +174,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
       let carObj = {
         vin: req.params.id,
         model: model,
+        make:make,
         year: year,
         Vehicle_Type: Vehicle_Type,
         Body_Type: Body_Type,

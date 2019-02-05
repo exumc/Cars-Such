@@ -1,5 +1,9 @@
-.col.s4.offset-s4 p {
-  margin-top: 30%;
+.col.s4.offset-s4{
+  margin-top:10%;
+}
+
+.col.s4.offset-s4 p{
+    margin-top:40px;
 }
 
 .login {

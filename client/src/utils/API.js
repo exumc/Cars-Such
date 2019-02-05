@@ -2,49 +2,49 @@ import axios from "axios";
 
 export default {
 
-    signUp: function (email , password) {
+    signUp: function (email, password) {
         let user = {
-            email:email,
-            password:password,
+            email: email,
+            password: password,
         }
         return axios.post("/api/signup/", user);
     },
     addCar: function (userId, vinNumber) {
-       return axios.post("/api/addcar/" + vinNumber + "/user/" + userId);
+        return axios.post("/api/addcar/" + vinNumber + "/user/" + userId);
     },
     removeCar: function (userId, carId) {
-        return axios.post("/removecar/user/"+userId+"/car"+carId);
-     },
+        return axios.post("/removecar/user/" + userId + "/car" + carId);
+    },
     editUser: function (firstName, lastName, email, userPassword, userId) {
         let userObj = {
-            firstname:firstName,
-            lastname:lastName,
-            email:email,
-            password:userPassword,
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
+            password: userPassword,
         }
-      return axios.post("/api/edituser/" + userId , userObj);
+        return axios.post("/api/edituser/" + userId, userObj);
     },
     login: function (userEmail, userPassword) {
         let userObj = {
-             email: userEmail,
-             password: userPassword
-         }
-         return axios.post("/api/login/", userObj);
+            email: userEmail,
+            password: userPassword
+        }
+        return axios.post("/api/login/", userObj);
     },
-    addService: function (serviceType, mileage , carId) {
-         let serviceObj = {
-             serviceType: serviceType,
+    addService: function (serviceType, mileage, carId) {
+        let serviceObj = {
+            serviceType: serviceType,
             mileage: mileage
-         }
-         return axios.post("/api/addservice/"+ carId, serviceObj);
+        }
+        return axios.post("/api/addservice/" + carId, serviceObj);
     },
     updateMileage: function (carId, mileage) {
-        
+
         return axios.post("/api/carmileage/" + carId, mileage);
     },
-    getUser: function(userId){
-        let result = axios.get("/api/user/" + userId);
-        console.log(result);
+    getUser: function (userId) {
+
+        console.log("get user called: " + userId);
         return axios.get("/api/user/" + userId);
 
     }
