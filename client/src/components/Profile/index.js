@@ -5,7 +5,7 @@ import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import { Tabs, Tab } from "react-materialize";
 //added import to the API -- Helder
-
+ 
 import API from "../../utils/API"
 //turned the function into a class 
 // import Modal from "../Modal";
