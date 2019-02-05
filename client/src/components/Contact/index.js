@@ -29,7 +29,7 @@ class Contact extends React.Component {
                         type="email"
                         className="validate"
                         required
-                        placeholder="Enter your email address"
+                        // placeholder="Enter your email address"
                         pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
                         title="Please provide a valid e-mail address"
                       />
