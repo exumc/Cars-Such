@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import withAuth from "../withAuth";
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
-import { Tabs, Tab } from 'react-materialize';
+import { Tabs, Tab, Modal, Button } from 'react-materialize';
 //added import to the API -- Helder
 import API from "../../utils/API"
 //turned the function into a class 
@@ -25,7 +25,6 @@ class Profile extends React.Component {
     }
    
 }
- 
 
   componentDidMount() {
 
