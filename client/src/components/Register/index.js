@@ -43,7 +43,7 @@ class  Register extends React.Component {
   };
  render(){
   return (
-    <section className="signin">
+    <section className="mainSection">
       <div className="container">
         <center>
           <div class="section" />

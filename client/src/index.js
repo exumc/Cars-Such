@@ -17,35 +17,34 @@ import Register from "./components/Register";
 import axios from "axios";
 // Here is if we have an id_token in localStorage
 if (localStorage.getItem("id_token")) {
-    // then we will attach it to the headers of each request from react application via axios
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
+  // then we will attach it to the headers of each request from react application via axios
+  axios.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${localStorage.getItem("id_token")}`;
 }
 
 ReactDOM.render(
-    <Router>
-        <Wrapper>
-            <Header>
-                <Nav />
-            </Header>
-            <Main>
+  <Router>
+    <Wrapper>
+      <Header>
+        <Nav />
+      </Header>
+      <Main>
+        <Route
+          exact
+          path="/"
+          render={props => <Home {...props} loggedIn={true} />}
+        />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/register" component={Register} />
+      </Main>
 
-                <Route
-                    exact
-                    path="/"
-                    render={props => <Home {...props} loggedIn={false} />}
-                />
-                <Route exact path="/about" component={About} />
-
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/contact" component={Contact} />
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/register" component={Register} />
-
-            </Main>
-
-            <Footer />
-        </Wrapper>
-    </Router>
-    , document.getElementById('root')
+      <Footer />
+    </Wrapper>
+  </Router>,
+  document.getElementById("root")
 );
 registerServiceWorker();
