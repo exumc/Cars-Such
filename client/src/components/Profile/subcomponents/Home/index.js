@@ -46,7 +46,7 @@ function Home(props) {
             </div>
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <div className="col s6">
               <label htmlFor="phone">
                 <h6>Phone</h6>
@@ -60,9 +60,9 @@ function Home(props) {
                 title="enter your phone number if any."
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <div className="col s6">
               <label htmlFor="mobile">
                 <h6>Mobile</h6>
@@ -76,7 +76,7 @@ function Home(props) {
                 title="enter your mobile number if any."
               />
             </div>
-          </div>
+          </div> */}
           <div className="form-group">
             <div className="col s6">
               <label htmlFor="email">
@@ -93,7 +93,7 @@ function Home(props) {
               />
             </div>
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <div className="col s6">
               <label htmlFor="email">
                 <h6>Location</h6>
@@ -106,7 +106,7 @@ function Home(props) {
                 title="enter a location"
               />
             </div>
-          </div>
+          </div> */}
           <div className="form-group">
             <div className="col s6">
               <label htmlFor="password">
