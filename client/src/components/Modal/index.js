@@ -1,49 +1,16 @@
-import "./style.css";
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import "./style.css";
+import { Modal, Button } from 'react-materialize';
 
-class Modal extends Component {
-  state = { show: false };
-
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-
+class UserModal extends Component {
   render() {
-    return (
-      <main>
-        <h1>React Modal</h1>
-        <VIN show={this.state.show} handleClose={this.hideModal}>
-          <p>Modal</p>
-          <p>Data</p>
-        </VIN>
-        <button type="button" onClick={this.showModal}>
-          open
-        </button>
-      </main>
-    );
-  }
-}
+    return( 
+    <Modal
+    open
+    header='Modal Header'
+    trigger={<Button>MODAL</Button>}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    </Modal>
+  )}};
 
-const VIN = ({ handleClose, show, children }) => {
-  let showHideClassName = show ? "modal display-block" : "modal display-none";
-
-  return (
-    <div className={showHideClassName}>
-      <section className="modal-main">
-        {children}
-        <button onClick={handleClose}>close</button>
-      </section>
-    </div>
-  );
-};
-
-
-const container = document.createElement("div");
-document.body.appendChild(container);
-ReactDOM.render(<Modal />, container);
-export default Modal;
+export default UserModal;
