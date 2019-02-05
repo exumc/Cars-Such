@@ -24,6 +24,7 @@
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
+    "gson": "^0.1.5",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.7",
