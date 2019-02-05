@@ -14,8 +14,8 @@ function Vehicle(props) {
                 id="registrationForm2"
               >
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="year">
+                  <div className="col s6">
+                    <label htmlFor="year">
                       <h6>Year</h6>
                     </label>
                     <input
@@ -30,8 +30,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="Make">
+                  <div className="col s6">
+                    <label htmlFor="Make">
                       <h6>Make</h6>
                     </label>
                     <input
@@ -46,8 +46,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="Vehicle model">
+                  <div className="col s6">
+                    <label htmlFor="Vehicle model">
                       <h6>Vehicle Model</h6>
                     </label>
                     <input
@@ -62,8 +62,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="mobile">
+                  <div className="col s6">
+                    <label htmlFor="mobile">
                       <h6>Vehicle Type</h6>
                     </label>
                     <input
@@ -78,8 +78,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="text">
+                  <div className="col s6">
+                    <label htmlFor="text">
                       <h6>Drive Type</h6>
                     </label>
                     <input
@@ -94,8 +94,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="horse power">
+                  <div className="col s6">
+                    <label htmlFor="horse power">
                       <h6>Horse Power</h6>
                     </label>
                     <input
@@ -109,8 +109,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="vehicle weight">
+                  <div className="col s6">
+                    <label htmlFor="vehicle weight">
                       <h6>Vehicle Weight</h6>
                     </label>
                     <input
@@ -125,8 +125,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="password2">
+                  <div className="col s6">
+                    <label htmlFor="password2">
                       <h6>Cylinders</h6>
                     </label>
                     <input
@@ -141,8 +141,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="vehicle weight">
+                  <div className="col s6">
+                    <label htmlFor="vehicle weight">
                       <h6>Last Mileage Date</h6>
                     </label>
                     <input
@@ -157,8 +157,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="Current Mileage">
+                  <div className="col s6">
+                    <label htmlFor="Current Mileage">
                       <h6>Current Mileage</h6>
                     </label>
                     <input
@@ -173,8 +173,8 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-6">
-                    <label for="last mileage">
+                  <div className="col s6">
+                    <label htmlFor="last mileage">
                       <h6>Last Updated Mileage</h6>
                     </label>
                     <input
@@ -188,15 +188,14 @@ function Vehicle(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-xs-12">
+                  <div className="col s12">
                     <br />
                     <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
-                      <i className="glyphicon glyphicon-ok-sign" />
-                      Save
+                    <i className="fas fa-check"></i>Save
+
                     </button>
                     <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
-                      <i className="glyphicon glyphicon-repeat" />
-                      Reset
+                    <i className="fas fa-redo"></i>Reset
                     </button>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import "./style.css";
 class Contact extends React.Component {
   render() {
     return (
-      <section className="contact">
+      <section className="mainSection">
         <div className="container">
           <div className="row">
             <div className="col s12">

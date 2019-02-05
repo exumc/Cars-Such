@@ -11,7 +11,7 @@ class About extends React.Component {
   
   render() {
     return (
-      <section className="about">
+      <section className="mainSection">
         <div className="row white-text center">
           <div className="col s4 offset-s4">
             <p className="black-text">
