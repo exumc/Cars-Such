@@ -53,7 +53,7 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col l10">
-              <h1>{this.props.user.name}</h1>
+              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
             </div>
           </div>
 
