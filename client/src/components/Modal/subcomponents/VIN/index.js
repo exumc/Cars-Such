@@ -1,4 +1,4 @@
-const Modal = ({ handleClose, show, children }) => {
+const VIN = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (

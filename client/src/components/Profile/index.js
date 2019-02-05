@@ -7,6 +7,7 @@ import { Tabs, Tab } from 'react-materialize';
 //added import to the API -- Helder
 import API from "../../utils/API"
 //turned the function into a class 
+// import Modal from "../Modal";
 
 class Profile extends React.Component {
   // Must initialize state first
@@ -52,7 +53,7 @@ class Profile extends React.Component {
 
 
   }
-
+  
   render() {
     return (
       <section className="mainSection">

@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
@@ -16,6 +17,10 @@ class Modal extends Component {
     return (
       <main>
         <h1>React Modal</h1>
+        <VIN show={this.state.show} handleClose={this.hideModal}>
+          <p>Modal</p>
+          <p>Data</p>
+        </VIN>
         <button type="button" onClick={this.showModal}>
           open
         </button>
@@ -24,6 +29,21 @@ class Modal extends Component {
   }
 }
 
+const VIN = ({ handleClose, show, children }) => {
+  let showHideClassName = show ? "modal display-block" : "modal display-none";
+
+  return (
+    <div className={showHideClassName}>
+      <section className="modal-main">
+        {children}
+        <button onClick={handleClose}>close</button>
+      </section>
+    </div>
+  );
+};
+
+
 const container = document.createElement("div");
 document.body.appendChild(container);
 ReactDOM.render(<Modal />, container);
+export default Modal;
