@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Progress from "./subconponents/ProgressBar";
+// import Progress from "./subconponents/ProgressBar";
 import { Collapsible, CollapsibleItem, Row, Col, ProgressBar } from "react-materialize";
 
 function Service(props) {

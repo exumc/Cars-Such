@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import UserModal from "../Modal"
+// import UserModal from "../Modal"
 //added the reference to the progressbar component for testing purposes 
 // Helder.
 // import Service from "../Service"
