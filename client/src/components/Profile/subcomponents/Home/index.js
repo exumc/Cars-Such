@@ -25,6 +25,7 @@ function Home(props) {
                       id="first_name"
                       placeholder="first name"
                       title="enter your first name if any."
+                      value={props.firstName}
                     />
                   </div>
                 </div>
@@ -40,6 +41,7 @@ function Home(props) {
                       id="last_name"
                       placeholder="last name"
                       title="enter your last name if any."
+                      value={props.lastName}
                     />
                   </div>
                 </div>
@@ -87,6 +89,7 @@ function Home(props) {
                       id="email"
                       placeholder="you@email.com"
                       title="enter your email."
+                      value={props.email}
                     />
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import API from "../../utils/API"
+
 //added the reference to the progressbar component for testing purposes 
 // Helder.
 import Service from "../Service"
@@ -8,24 +8,7 @@ import Service from "../Service"
 class About extends React.Component {
 
 
-  // Must initialize state first
-  state = {
-    userDetails: {}
-  }
-
-
-
-
-
-  componentDidMount() {
-    API
-      .getUser("5c54a0586f5161041cda39b3")
-      .then(res => {
-        this.setState({
-          userDetails: res.data
-        });
-      });
-  }
+  
   render() {
     return (
       <section className="about">
@@ -40,7 +23,7 @@ class About extends React.Component {
               Development Bootcamp and quickly gravitated towards working
               together, and working together well more importantly.
           </p>
-            <p>{JSON.stringify(this.state.userDetails)}</p>
+            
           </div>
           {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}

@@ -174,6 +174,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
       let carObj = {
         vin: req.params.id,
         model: model,
+        make:make,
         year: year,
         Vehicle_Type: Vehicle_Type,
         Body_Type: Body_Type,
