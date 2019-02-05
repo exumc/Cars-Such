@@ -146,12 +146,12 @@ function Vehicle(props) {
                       <h6>Last Mileage Date</h6>
                     </label>
                     <input
-                      type="date"
+                      type="text"
                       className="form-control"
                       name="date"
                       id="date"
                       title="enter your vehilce weight"
-                      placeholder={props.lastMileageDate}
+                      placeholder="MM/DD/YYYY"
                       value={props.lastMileageDate}
                     />
                   </div>
