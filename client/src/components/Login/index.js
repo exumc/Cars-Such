@@ -45,7 +45,7 @@ class Login extends React.Component {
   }
   render(){
   return (
-    <section className="signin">
+    <section className="mainSection">
       <div className="container">
         <center>
           <div className="section" />

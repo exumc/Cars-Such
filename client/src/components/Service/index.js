@@ -1,38 +1,34 @@
-
 import React from "react";
 import "./style.css";
-import Progress from "./subconponents/ProgressBar"
+import Progress from "./subconponents/ProgressBar";
 
 function Service(props) {
- 
-
   return (
-  
- <ul className="collapsible">
-    <li>
-      <div className="collapsible-header">Services</div>
-      <div className="collapsible-body">
-      <div className="box">
-      <div className="box-title">
-      <h6>Oil Change</h6>
-       </div>
-       <div className="box-icon">
-       <img src="https://image.flaticon.com/icons/svg/181/181240.svg" alt="icon"/>
-       </div>
-       <div className="box-progressbar">
-       <Progress />
-       </div>
-     </div>
-      
-      
-      
+    <div className="row">
+      <div className="col s12 m6 offset-m3 center">
+        <ul className="collapsible">
+          <li>
+            <div className="collapsible-header">{props.name}</div>
+            <div className="collapsible-body">
+              <div className="box">
+                  <div
+                    className="box-img"
+                    style={{
+                      backgroundImage: `url(${props.image})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "contain"
+                    }}
+                  />
+                <div className="box-progressbar">
+                  <Progress />
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-    
-  </ul>
-
-
-
+    </div>
   );
 }
 
