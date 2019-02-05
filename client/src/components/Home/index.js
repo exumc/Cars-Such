@@ -1,10 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Profile from "../Profile";
+import Service from "../Service"
+import AuthService from '../AuthService';
 
 import "./style.css";
 
-function Guest() {
+class  Home extends React.Component {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+  }
+  componentDidMount(){
+    console.log(this.Auth.loggedIn());
+   ;
+  }
+  render(){
+    if (this.Auth.loggedIn()) {
+      return <User />;
+    }
+    return <Guest />
+ 
+}
+}
+function Guest (props){
   return (
     <section>
       <div className="row white-text center">
@@ -40,16 +59,16 @@ function Guest() {
   );
 }
 
-function User() {
-  return <Profile />;
+function User(props){
+  
+  return( 
+  <div>
+<Service />
+<h1>User Loaded</h1>
+  </div>
+  )
 }
 
-function Home(props) {
-  const isLoggedIn = props.loggedIn;
-  if (isLoggedIn) {
-    return <User />;
-  }
-  return <Guest />;
-}
+
 
 export default Home;

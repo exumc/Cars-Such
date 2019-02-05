@@ -2,8 +2,10 @@ import axios from "axios";
 
 export default {
 
-    signUp: function (email, password) {
+    signUp: function (firstname , lastname , email, password) {
         let user = {
+            firstname:firstname,
+            lastname:lastname,
             email: email,
             password: password,
         }
