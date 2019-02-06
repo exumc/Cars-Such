@@ -1,21 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthService from '../AuthService';
-
-
-
 import "./style.css";
-
-
 
 class Login extends React.Component {
   constructor() {
     super();
     this.Auth = new AuthService();
   }
-  state= {
-    email:"",
-    password:"",
+  state = {
+    email: "",
+    password: "",
   }
   componentWillMount() {
     if (this.Auth.loggedIn()) {
@@ -23,14 +18,14 @@ class Login extends React.Component {
     }
   }
   handleChange = event => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     this.setState({
-        [name]: value
+      [name]: value
     });
   };
 
-  handleSubmit = (event)=> {
-   
+  handleSubmit = (event) => {
+
     event.preventDefault();
     this.Auth.login(this.state.email, this.state.password)
       .then(res => {
@@ -43,77 +38,77 @@ class Login extends React.Component {
       });
 
   }
-  render(){
-  return (
-    <section className="mainSection">
-      <div className="container">
-        <center>
-          <div className="section" />
-          <h5 className="black-text">Please, login into your account</h5>
-          <div className="section" />
-          <div className="container">
-            <div className="z-depth-1 grey lighten-4 row login-form">
-              <form className="col s12" onSubmit={this.handleSubmit} >
-                <div className="row">
-                  <div className="col s12" />
-                </div>
-
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      className="validate"
-                      type="email"
-                      name="email"
-                      id="email"
-                      value={this.state.email}
-                      onChange={this.handleChange}
-                    />
-                    <label for="email">Enter your email</label>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      className="validate"
-                      type="password"
-                      name="password"
-                      id="password"
-                      value={this.state.password}
-                      onChange={this.handleChange}
-                    />
-                    <label for="password">Enter your password</label>
-                  </div>
-                  <label className="right">
-                    <a className="light-blue-text" href="#!">
-                      <b>Forgot Password?</b>
-                    </a>
-                  </label>
-                </div>
-
-                <br />
-                <center>
+  render() {
+    return (
+      <section className="mainSection">
+        <div className="container">
+          <center>
+            <div className="section" />
+            <h5 className="black-text">Please, login into your account</h5>
+            <div className="section" />
+            <div className="container">
+              <div className="z-depth-1 grey lighten-4 row login-form">
+                <form className="col s12" onSubmit={this.handleSubmit} >
                   <div className="row">
-                    <button
-                      type="submit"
-                      name="btn_login"
-                      id="userLogin"
-                      className="col s12 btn btn-large waves-effect light-blue lighten-2"
-                     
-                    >
-                      Login
-                    </button>
+                    <div className="col s12" />
                   </div>
-                </center>
-              </form>
+
+                  <div className="row">
+                    <div className="input-field col s12">
+                      <input
+                        className="validate"
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                      <label for="email">Enter your email</label>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="input-field col s12">
+                      <input
+                        className="validate"
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+                      <label for="password">Enter your password</label>
+                    </div>
+                    <label className="right">
+                      <a className="light-blue-text" href="#!">
+                        <b>Forgot Password?</b>
+                      </a>
+                    </label>
+                  </div>
+
+                  <br />
+                  <center>
+                    <div className="row">
+                      <button
+                        type="submit"
+                        name="btn_login"
+                        id="userLogin"
+                        className="col s12 btn btn-large waves-effect light-blue lighten-2"
+
+                      >
+                        Login
+                    </button>
+                    </div>
+                  </center>
+                </form>
+              </div>
             </div>
-          </div>
-          <Link to="/register">Register an Account</Link>
-        </center>
-      </div>
-    </section>
-  );
-}
+            <Link to="/register">Register an Account</Link>
+          </center>
+        </div>
+      </section>
+    );
+  }
 }
 
 export default Login;
