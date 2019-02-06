@@ -21,14 +21,14 @@ router.post("/login", (req, res) => {
     email: req.body.email
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
-      if(isMatch && !err) {
+      if (isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user});
+        res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
-        res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
+        res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
       }
     });
-  }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
+  }).catch(err => res.status(404).json({ success: false, message: "User not found", error: err }));
 });
 
 // SIGNUP ROUTE
@@ -44,18 +44,18 @@ router.post("/signup", (req, res) => {
 router.get("/user/:id", (req, res) => {
   console.log(req.params.id);
   db.User.findById(req.params.id)
-  .populate({
-    path: "cars",
-    populate: {
-      path: "cars"
-    }
-  }).populate({
-    path: "cars",
-    populate: {
-      path: "services"
-    }
-  })
-  .then(data => {
+    .populate({
+      path: "cars",
+      populate: {
+        path: "cars"
+      }
+    }).populate({
+      path: "cars",
+      populate: {
+        path: "services"
+      }
+    })
+    .then(data => {
       if (data) {
         res.json(data);
       } else {
@@ -149,7 +149,7 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
       let carObj = {
         vin: req.params.id,
         model: model,
-        make:make,
+        make: make,
         year: year,
         Vehicle_Type: Vehicle_Type,
         Body_Type: Body_Type,
@@ -270,19 +270,19 @@ router.post("/carmileage/:id", function (req, res) {
     res.json(data);
   });
 });
-router.get("/getservices/:carid", function(req,res){
-db.Car.findById(req.params.carid)
-.populate({
-  path: "services",
-  //within the array get all the information about the object
-  populate: {
-    path: "services"
-  }
-  // with the populated data sends to the client a json type resposnse with
-  // the contents
-}).then(data =>{
-  res.json(data)
-})
+router.get("/getservices/:carid", function (req, res) {
+  db.Car.findById(req.params.carid)
+    .populate({
+      path: "services",
+      //within the array get all the information about the object
+      populate: {
+        path: "services"
+      }
+      // with the populated data sends to the client a json type resposnse with
+      // the contents
+    }).then(data => {
+      res.json(data)
+    })
 
 })
 
