@@ -12,11 +12,13 @@ class Login extends React.Component {
     email: "",
     password: "",
   }
+
   componentWillMount() {
     if (this.Auth.loggedIn()) {
       this.props.history.replace('/');
     }
   }
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -36,8 +38,8 @@ class Login extends React.Component {
       .catch(err => {
         alert(err.response.data.message)
       });
-
   }
+  
   render() {
     return (
       <section className="mainSection">

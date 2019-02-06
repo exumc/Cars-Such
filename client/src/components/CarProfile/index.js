@@ -13,69 +13,51 @@ class CarProfile extends React.Component {
       carmileage: "",
       carmileageUpdateDate: ""
     };
-
   }
 
   componentDidMount() {
-
     API
       .getUser(this.props.id)
       .then(res => {
-        if (res.data.cars[0]){
-          if(res.data.cars[0].services[0]){
-        this.setState({
-          servicesFromDataBase: res.data.services,
-          carmileage: res.data.cars[0].currentMileage,
-          carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
-          carServiceDate: res.data.cars[0].services[0].dateServiced,
-          carServiceMileage: res.data.cars[0].services[0].mileage
+        if (res.data.cars[0]) {
+          if (res.data.cars[0].services[0]) {
+            this.setState({
+              servicesFromDataBase: res.data.services,
+              carmileage: res.data.cars[0].currentMileage,
+              carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
+              carServiceDate: res.data.cars[0].services[0].dateServiced,
+              carServiceMileage: res.data.cars[0].services[0].mileage
 
-        });
-        //console.log(this.state.servicesFromDataBase)
-        let myCarObj = {
-          initialDate: this.state.carServiceDate,
-          initialMileage: this.state.carServiceMileage,
-          currentMileage: this.state.carmileage,
-          currentDate: this.state.carmileageUpdateDate,
-        }
-        this.calculateAverageMileage(myCarObj);
-        API.getService(res.data.cars[0]._id).then(res => {
-          //console.log(res.data);
-          this.setState({ servicesFromDataBase: res.data.services })
-
-
-        }).then(data => {
-          let a = this.state.services
-          let b = this.state.servicesFromDataBase
-          //console.log(b);
-          for (let i = 0; i < a.length; i++) {
-            // console.log(a[i].name);
-            for (let j = 0; j < b.length; j++) {
-
-              if (b[j].serviceType === a[i].name) {
-                //console.log(b[j].serviceType);
-                a[i].mileage = b[j].mileage;
-                a[i].dateServiced = b[j].dateServiced;
-
-
-              }
-            
+            });
+            let myCarObj = {
+              initialDate: this.state.carServiceDate,
+              initialMileage: this.state.carServiceMileage,
+              currentMileage: this.state.carmileage,
+              currentDate: this.state.carmileageUpdateDate,
             }
+            this.calculateAverageMileage(myCarObj);
+            API.getService(res.data.cars[0]._id).then(res => {
+              this.setState({ servicesFromDataBase: res.data.services })
+            }).then(data => {
+              let a = this.state.services
+              let b = this.state.servicesFromDataBase
+              for (let i = 0; i < a.length; i++) {
+                for (let j = 0; j < b.length; j++) {
+
+                  if (b[j].serviceType === a[i].name) {
+                    a[i].mileage = b[j].mileage;
+                    a[i].dateServiced = b[j].dateServiced;
+                  }
+                }
+              }
+              this.setState({ services: a })
+            })
           }
-          console.log(a);
-          this.setState({ services: a })
-
-        })
-      }
-
-      }
+        }
       })
-
   }
 
-
   calculateAverageMileage(objInfo) {
-
     let initialDate = objInfo.initialDate;
     let initialMileage = objInfo.initialMileage;
     let currentMileage = objInfo.currentMileage;
@@ -88,7 +70,6 @@ class CarProfile extends React.Component {
       mileageDif: currentMileage - initialMileage,
       daysDif: dayDifference
     }
-    console.log(myNewObj);
   }
 
   render() {
@@ -103,9 +84,6 @@ class CarProfile extends React.Component {
                 key={service.id}
                 name={service.name}
                 image={service.image}
-               
-
-
               />
             );
           })}

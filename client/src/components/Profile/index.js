@@ -6,8 +6,10 @@ import Vehicle from "./subcomponents/Vehicle";
 import { Tabs, Tab, Modal, Button, Row, Input, Col } from "react-materialize";
 import API from "../../utils/API"
 import ChatBot from "../ChatBot";
+import AuthService from '../AuthService';
 
 class Profile extends React.Component {
+  
   // Must initialize state first
   constructor(props) {
     super(props);
@@ -18,6 +20,21 @@ class Profile extends React.Component {
       email: "",
       carIsSet: false
     };
+    this.Auth = new AuthService();
+
+  }
+
+  handleSubmit = (event) => {
+
+    event.preventDefault();
+    this.Auth.logout()
+      .then(res => {
+        this.props.history.replace(`/`);
+      })
+      .catch(err => {
+        alert(err.response.data.message)
+      });
+
   }
 
   componentDidMount() {
@@ -100,13 +117,14 @@ class Profile extends React.Component {
               </Tabs>
             </div>
           </div>
-          <Row>    
-          <button
-            type="submit"
-            name="btn_logout"
-            id="userLogout"
-            className="btn btn-large waves-effect light-blue lighten-2"
-          > Logout
+          <Row>
+            <button
+              type="submit"
+              name="btn_logout"
+              id="userLogout"
+              onClick={this.handleSubmit}
+              className="btn btn-large waves-effect light-blue lighten-2"
+            > Logout
           </button>
           </Row>
           <Row>
@@ -118,6 +136,5 @@ class Profile extends React.Component {
     );
   }
 }
-
 
 export default withAuth(Profile);
