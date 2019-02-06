@@ -9,7 +9,9 @@ class CarProfile extends React.Component {
     this.state = {
       services,
       userCars:"",
-      servicesFromDataBase:[]
+      servicesFromDataBase:[],
+      carmileage:"",
+      carmileageUpdateDate:""
     };
 
   }
@@ -19,11 +21,25 @@ class CarProfile extends React.Component {
  API
  .getUser(this.props.id)
  .then(res =>{
-   //console.log(res);
+  this.setState({servicesFromDataBase:res.data.services,
+    carmileage:res.data.cars[0].currentMileage,
+    carmileageUpdateDate:res.data.cars[0].dateMileageUpdate,
+    carServiceDate:res.data.cars[0].services[0].dateServiced,
+    carServiceMileage:res.data.cars[0].services[0].mileage
+                 
+  });
+ //console.log(this.state.servicesFromDataBase)
+let myCarObj ={
+initialDate:this.state.carServiceDate,
+initialMileage:this.state.carServiceMileage,
+currentMileage:this.state.carmileage,
+currentDate:this.state.carmileageUpdateDate,
+}
+this.calculateAverageMileage(myCarObj);
   API.getService( res.data.cars[0]._id).then(res=> {
     //console.log(res.data);
-    this.setState({servicesFromDataBase:res.data.services});
-   //console.log(this.state.servicesFromDataBase)
+    this.setState({servicesFromDataBase:res.data.services})
+   
    
   }).then(data =>{
     let a = this.state.services
@@ -45,17 +61,30 @@ class CarProfile extends React.Component {
      
     }
     console.log(a);
+    this.setState({services:a})
 
   })
 
   
 
 })
-//console.log(c);
-   
 
-  
-    
+}
+calculateAverageMileage(objInfo){
+
+let initialDate = objInfo.initialDate;
+let initialMileage = objInfo.initialMileage;
+let currentMileage = objInfo.currentMileage;
+let currentDate = objInfo.CurrentDate;
+let date_1 = new Date(initialDate);
+let date_2 = new Date(currentDate);
+var timediff = Math.abs(date_2.getTime() -date_1.getTime())
+let dayDifference=Math.ceil(timediff /(1000 * 3600*24))
+let myNewObj ={
+  mileageDif : currentMileage - initialMileage,
+  daysDif:dayDifference
+}
+console.log(myNewObj);
 }
 
   render() {
@@ -70,6 +99,7 @@ class CarProfile extends React.Component {
                 key={service.id}
                 name={service.name}
                 image={service.image}
+                mileage={service.mileage? service.mileage:null}
                
                
               />

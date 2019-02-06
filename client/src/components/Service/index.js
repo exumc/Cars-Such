@@ -5,7 +5,7 @@ import { Collapsible, CollapsibleItem, Row, Col, ProgressBar } from "react-mater
 
 function Service(props) {
   let car = {
-    partlife:25
+    partlife:45
   }
 
 
@@ -15,6 +15,7 @@ function Service(props) {
         <Collapsible>
           <CollapsibleItem header={props.name}>
             <div
+            
               className="box-img"
               style={{
                 backgroundImage: `url(${props.image})`,
@@ -23,9 +24,10 @@ function Service(props) {
                 backgroundSize: "contain"
               }}
             />
+            
             <Row>
               <Col s={12}>
-                <ProgressBar progress={car.partlife} className={car.partlife >= 80 ? "green" : car.partlife >= 40 ? "yellow" : "red"} />
+                <ProgressBar  progress={car.partlife} className={car.partlife >= 80 ? "green" : car.partlife >= 40 ? "yellow" : "red"} />
               </Col>
             </Row>
           </CollapsibleItem>
