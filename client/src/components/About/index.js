@@ -20,6 +20,10 @@ class About extends Component {
 
           </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7aa186012611648634bd7b754ded35f77b714d5b
       </section>
 
     )
