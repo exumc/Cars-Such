@@ -22,7 +22,7 @@ class CarProfile extends React.Component {
       .getUser(this.props.id)
       .then(res => {
         if (res.data.cars[0]){
-          if(res.data.services[0]){
+          if(res.data.cars[0].services[0]){
         this.setState({
           servicesFromDataBase: res.data.services,
           carmileage: res.data.cars[0].currentMileage,
