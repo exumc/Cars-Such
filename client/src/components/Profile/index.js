@@ -29,7 +29,6 @@ class Profile extends React.Component {
     event.preventDefault();
     this.Auth.logout()
       .then(res => {
-        this.props.history.replace(`/`);
       })
       .catch(err => {
         alert(err.response.data.message)
@@ -109,6 +108,7 @@ class Profile extends React.Component {
                       trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
                       <Row>
                         <Input placeholder="VIN" s={6} label="" />
+                        <Button type="submit">Submit</Button>
                       </Row>
 
                     </Modal>
