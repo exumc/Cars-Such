@@ -87,7 +87,7 @@ class CarProfile extends React.Component {
                 key={service.id}
                 name={service.name}
                 image={service.image}
-                life={1 - (currentLife / service.totalLife)}
+                // life={1 - (currentLife / service.totalLife)}
               />
             );
           })}
