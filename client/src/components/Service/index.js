@@ -25,9 +25,9 @@ function Service(props) {
             <Row>
               <Col s={12}>
                 <div className="col s10">
-                  <ProgressBar progress={props.life} className={props.life >= 80 ? "green" : props.life >= 40 ? "yellow" : "red"} />
+                  <ProgressBar progress={props.partLife} className={props.partLife >= 80 ? "green" : props.partLife >= 40 ? "yellow" : "red"} />
                 </div>
-                <div className="col s2">{props.life}%</div>
+                <div className="col s2">{props.partLife}%</div>
               </Col>
             </Row>
           </CollapsibleItem>
