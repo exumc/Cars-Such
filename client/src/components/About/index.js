@@ -29,7 +29,9 @@ class About extends Component {
           {/* //added the reference to the progressbar component for testing purposes 
 // Helder. */}
         <div>
-        <UserModal />
+        <UserModal>
+          <p>testing some stuff</p>
+          </UserModal>
         </div>
         </div>
 
