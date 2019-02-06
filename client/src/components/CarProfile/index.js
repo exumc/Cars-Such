@@ -11,7 +11,8 @@ class CarProfile extends React.Component {
       userCars: "",
       servicesFromDataBase: [],
       carmileage: "",
-      carmileageUpdateDate: ""
+      carmileageUpdateDate: "",
+      averageMileagePerDay:""
     };
   }
 
@@ -47,6 +48,8 @@ class CarProfile extends React.Component {
                   if (b[j].serviceType === a[i].name) {
                     a[i].mileage = b[j].mileage;
                     a[i].dateServiced = b[j].dateServiced;
+                    let serviceLife = b[j].nextServiceMiles - b[j].mileage;
+                    a[i].percentage =this.getPercentage(b[j].dateServiced ,serviceLife) 
                   }
                 }
               }
@@ -61,17 +64,59 @@ class CarProfile extends React.Component {
     let initialDate = objInfo.initialDate;
     let initialMileage = objInfo.initialMileage;
     let currentMileage = objInfo.currentMileage;
-    let currentDate = objInfo.CurrentDate;
+    let currentDate = objInfo.currentDate;
     let date_1 = new Date(initialDate);
     let date_2 = new Date(currentDate);
-    var timediff = Math.abs(date_2.getTime() - date_1.getTime());
-    let dayDifference = Math.ceil(timediff / (1000 * 3600 * 24));
+    let differenceInDays =this.mydiff(date_1 , date_2 , "days");
+    let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
     let myNewObj = {
       mileageDif: currentMileage - initialMileage,
-      daysDif: dayDifference
+      daysDif: differenceInDays,
+      averageMileagePerDay:averageMiles
     }
+    console.log(myNewObj);
+    this.setState({averageMileagePerDay:averageMiles})
+    return myNewObj.averageMileagePerDay
   }
+  getPercentage(argDateServiced , argServiceLifeSpan){
+    let currentDate = new Date();
+    argDateServiced = new Date(argDateServiced);
+    let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
+    console.log("avg Miles per day: "+ this.state.averageMileagePerDay);
+    let milesCounter = dateDifference * this.state.averageMileagePerDay
+    let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
+    let percentageLeft =100 - percentage
+    console.log("Service Life Span: "+ argServiceLifeSpan);
+    console.log("Days Since last Service: "+ dateDifference);
+    console.log("Estimated Miles Since Last Service: "+ milesCounter);
+    console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
+    return percentageLeft  
 
+
+
+  }
+  
+  mydiff(date1,date2,interval) {
+    var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
+    date1 = new Date(date1);
+    date2 = new Date(date2);
+    var timediff = date2 - date1;
+    if (isNaN(timediff)) return NaN;
+    switch (interval) {
+        case "years": return date2.getFullYear() - date1.getFullYear();
+        case "months": return (
+            ( date2.getFullYear() * 12 + date2.getMonth() )
+            -
+            ( date1.getFullYear() * 12 + date1.getMonth() )
+        );
+        case "weeks"  : return Math.floor(timediff / week);
+        case "days"   : return Math.floor(timediff / day); 
+        case "hours"  : return Math.floor(timediff / hour); 
+        case "minutes": return Math.floor(timediff / minute);
+        case "seconds": return Math.floor(timediff / second);
+        default: return undefined;
+    }
+}
   render() {
     return (
       <section className="mainSection">
@@ -84,6 +129,7 @@ class CarProfile extends React.Component {
                 key={service.id}
                 name={service.name}
                 image={service.image}
+                partLife={service.percentage}
               />
             );
           })}
