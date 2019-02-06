@@ -22,6 +22,7 @@ class Home extends React.Component {
     return <Guest />;
   }
 }
+
 function Guest(props) {
   return (
     <section>

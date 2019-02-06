@@ -34,7 +34,9 @@ class Profile extends React.Component {
           userDetails: res.data,
           userCars: res.data.cars[0]
         });
-        this.state.userCars.dateMileageUpdate = today;
+
+        //changed this. Should still work the same as before
+        this.userCars.dateMileageUpdate = today;
         console.log(this.state.userCars.dateMileageUpdate);
       } else {
         this.setState({

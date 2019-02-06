@@ -8,8 +8,6 @@ import "./style.css";
 
 class About extends Component {
 
-
-  
   render() {
     return (
       <section className="mainSection">
@@ -24,12 +22,8 @@ class About extends Component {
               Development Bootcamp and quickly gravitated towards working
               together, and working together well more importantly.
           </p>
-            
+
           </div>
-          {/* //added the reference to the progressbar component for testing purposes 
-// Helder. */}
-        <div>
-        </div>
         </div>
 
       </section>
