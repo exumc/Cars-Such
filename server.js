@@ -8,7 +8,8 @@ const morgan = require('morgan'); // used to see requests
 const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
-var axios = require("axios");
+var axios = require("axios")
+
 
 // Setting CORS so that any website can
 // Access our API
@@ -30,7 +31,7 @@ mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware
 const isAuthenticated = exjwt({
-  secret: 'all sorts of code up in here'
+  secret: process.env.SERVER_SECRET
 });
 
 
