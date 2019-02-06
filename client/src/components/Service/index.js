@@ -15,6 +15,7 @@ function Service(props) {
         <Collapsible>
           <CollapsibleItem header={props.name}>
             <div
+            
               className="box-img"
               style={{
                 backgroundImage: `url(${props.image})`,
@@ -23,6 +24,7 @@ function Service(props) {
                 backgroundSize: "contain"
               }}
             />
+            
             <Row>
               <Col s={12}>
                 <div className="col s10">
