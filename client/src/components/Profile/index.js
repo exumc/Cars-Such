@@ -5,10 +5,9 @@ import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import { Tabs, Tab } from "react-materialize";
 //added import to the API -- Helder
- 
 import API from "../../utils/API"
-//turned the function into a class 
-// import Modal from "../Modal";
+//turned the function into a class
+import UserModal from "../Modal"
 
 class Profile extends React.Component {
   // Must initialize state first
@@ -49,10 +48,12 @@ class Profile extends React.Component {
   render() {
     return (
       <section className="mainSection">
+      <div>
+      </div>
         <div className="container">
           <div className="row">
             <div className="col l10">
-              <h1>{this.props.user.name}</h1>
+              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
             </div>
           </div>
 
@@ -68,6 +69,7 @@ class Profile extends React.Component {
                   />
                 </Tab>
                 {this.state.carIsSet ? (
+                  
                   <Tab title="Vehicle">
                     <Vehicle
                       year={this.state.userCars.year}
@@ -83,9 +85,11 @@ class Profile extends React.Component {
                       currentMileage={this.state.userCars.currentMileage}
                     />
                   </Tab>
-                ) : (
-                  <Tab />
-                )}
+                ) : 
+                <Tab>
+                  <UserModal />
+                </Tab>
+                }
               </Tabs>
             </div>
           </div>
