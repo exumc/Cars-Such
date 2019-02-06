@@ -5,11 +5,7 @@ import { Collapsible, CollapsibleItem, Row, Col, ProgressBar } from "react-mater
 
 function Service(props) {
   let car = {
-<<<<<<< HEAD
     partlife: 60
-=======
-    partlife: 25
->>>>>>> f342c7dbc0b0ce5677d4cf06a24cf3ba9cefd3be
   }
 
 

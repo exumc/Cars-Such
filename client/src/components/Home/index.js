@@ -1,15 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import Profile from "../Profile";
-import Service from "../Service"
 import AuthService from '../AuthService';
 import CarProfile from '../CarProfile'
-
-=======
-import AuthService from '../AuthService';
-import CarProfile from '../CarProfile'
->>>>>>> f342c7dbc0b0ce5677d4cf06a24cf3ba9cefd3be
 import "./style.css";
 
 class Home extends React.Component {
@@ -17,18 +9,11 @@ class Home extends React.Component {
     super(props);
     this.Auth = new AuthService();
   }
-<<<<<<< HEAD
   // componentDidMount() {
   //   console.log(this.Auth.loggedIn());
   //   console.log(this.Auth.getProfile().id);
   //  ;
   // }
-=======
-
-  componentDidMount() {
-  }
-
->>>>>>> f342c7dbc0b0ce5677d4cf06a24cf3ba9cefd3be
   render() {
     if (this.Auth.loggedIn()) {
       return <User id={this.Auth.getProfile().id} />;

@@ -34,7 +34,7 @@ class Profile extends React.Component {
         });
 
         // edited this code, Helder need to check if it still works the way he intends -Cord
-        this.userCars.dateMileageUpdate = today;
+        this.state.userCars.dateMileageUpdate = today;
         console.log(this.state.userCars.dateMileageUpdate);
       } else {
         this.setState({
