@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Oil Change",
     "image": "./images/oilChange.svg",
-    "clicked": false
+    "totalLife" : 5000
   },
   {
     "id": 2,

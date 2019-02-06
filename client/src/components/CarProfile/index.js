@@ -27,7 +27,6 @@ class CarProfile extends React.Component {
               carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
               carServiceDate: res.data.cars[0].services[0].dateServiced,
               carServiceMileage: res.data.cars[0].services[0].mileage
-
             });
             let myCarObj = {
               initialDate: this.state.carServiceDate,
@@ -36,6 +35,7 @@ class CarProfile extends React.Component {
               currentDate: this.state.carmileageUpdateDate,
             }
             this.calculateAverageMileage(myCarObj);
+
             API.getService(res.data.cars[0]._id).then(res => {
               this.setState({ servicesFromDataBase: res.data.services })
             }).then(data => {
@@ -72,6 +72,9 @@ class CarProfile extends React.Component {
     }
   }
 
+  // avgPerDay = mileageDif / daysDif
+  // currentLife = avgPerDay * daysDiff
+  
   render() {
     return (
       <section className="mainSection">
@@ -84,6 +87,7 @@ class CarProfile extends React.Component {
                 key={service.id}
                 name={service.name}
                 image={service.image}
+                // life={1 - (currentLife / service.totalLife)}
               />
             );
           })}
