@@ -3,12 +3,9 @@ import "./style.css";
 import withAuth from "../withAuth";
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
-import { Tabs, Tab } from "react-materialize";
-//added import to the API -- Helder
- 
+import { Tabs, Tab, Modal, Button, Row, Input, Col } from "react-materialize";
 import API from "../../utils/API"
-//turned the function into a class 
-// import Modal from "../Modal";
+import ChatBot from "../ChatBot";
 
 class Profile extends React.Component {
   // Must initialize state first
@@ -35,7 +32,9 @@ class Profile extends React.Component {
           userDetails: res.data,
           userCars: res.data.cars[0]
         });
-        this.state.userCars.dateMileageUpdate = today;
+
+        // edited this code, Helder need to check if it still works the way he intends -Cord
+        this.userCars.dateMileageUpdate = today;
         console.log(this.state.userCars.dateMileageUpdate);
       } else {
         this.setState({
@@ -45,29 +44,33 @@ class Profile extends React.Component {
       }
     });
   }
-  
+
   render() {
     return (
       <section className="mainSection">
         <div className="container">
           <div className="row">
-            <div className="col l10">
+            <div className="col s10">
               <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
             </div>
+
           </div>
 
           <div className="row">
-            
+
             <div className="col s12">
               <Tabs className="tabs">
                 <Tab title="Home" active>
+
                   <Home
                     firstName={this.state.userDetails.firstname}
                     lastName={this.state.userDetails.lastname}
                     email={this.state.userDetails.email}
                   />
                 </Tab>
-                {this.state.carIsSet ? (
+
+                {this.state.carIsSet ?
+
                   <Tab title="Vehicle">
                     <Vehicle
                       year={this.state.userCars.year}
@@ -83,18 +86,38 @@ class Profile extends React.Component {
                       currentMileage={this.state.userCars.currentMileage}
                     />
                   </Tab>
-                ) : (
-                  <Tab />
-                )}
+                  :
+                  <Tab title="Add Car">
+                    <Modal header='Modal Header'
+                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                      <Row>
+                        <Input placeholder="VIN" s={6} label="" />
+                      </Row>
+
+                    </Modal>
+                  </Tab>
+                }
               </Tabs>
             </div>
           </div>
-        
-        
+          <Row>    
+          <button
+            type="submit"
+            name="btn_logout"
+            id="userLogout"
+            className="btn btn-large waves-effect light-blue lighten-2"
+          > Logout
+          </button>
+          </Row>
+          <Row>
+            <Col s={4}><ChatBot />
+            </Col>
+          </Row>
         </div>
       </section>
     );
   }
 }
+
 
 export default withAuth(Profile);

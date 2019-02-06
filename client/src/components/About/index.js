@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
-import UserModal from "../Modal"
-//added the reference to the progressbar component for testing purposes 
-// Helder.
-// import Service from "../Service"
-// import Modal from "../Modal"
 
 class About extends Component {
 
-
-  
   render() {
     return (
       <section className="mainSection">
@@ -24,15 +17,9 @@ class About extends Component {
               Development Bootcamp and quickly gravitated towards working
               together, and working together well more importantly.
           </p>
-            
-          </div>
-          {/* //added the reference to the progressbar component for testing purposes 
-// Helder. */}
-        <div>
-        <UserModal />
-        </div>
-        </div>
 
+          </div>
+        </div>
       </section>
 
     )

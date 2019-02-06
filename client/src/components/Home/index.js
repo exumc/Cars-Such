@@ -1,29 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Profile from "../Profile";
-import Service from "../Service"
 import AuthService from '../AuthService';
 import CarProfile from '../CarProfile'
-
 import "./style.css";
 
-class  Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.Auth = new AuthService();
   }
+
   componentDidMount() {
-    console.log(this.Auth.loggedIn());
-    console.log(this.Auth.getProfile().id);
-   ;
   }
+
   render() {
     if (this.Auth.loggedIn()) {
-      return <User id={this.Auth.getProfile().id}/>;
+      return <User id={this.Auth.getProfile().id} />;
     }
     return <Guest />;
   }
 }
+
 function Guest(props) {
   return (
     <section>
@@ -59,13 +56,10 @@ function Guest(props) {
   );
 }
 
-function User(props){
-  
-  return( 
-  
-<CarProfile id={props.id}/>
+function User(props) {
 
-  
+  return (
+    <CarProfile id={props.id} />
   )
 }
 
