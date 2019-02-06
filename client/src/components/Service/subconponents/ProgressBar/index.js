@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 
 class ProgressBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       mileageDone: "",
       milieageDate: "",
@@ -11,7 +11,9 @@ class ProgressBar extends React.Component {
       lastMileageUpdatedDate: ""
     }
   }
- 
+ componentDidMount(){
+   console.log(this.props.mileage)
+ }
 
 
   
@@ -20,7 +22,7 @@ class ProgressBar extends React.Component {
     return (
       <div className="row">
         <div className="col s10 progress light-blue lighten-4">
-          <p>{this.state.mileageDone}</p>
+          <p>{this.props.mileage}</p>
 
           {/* if props.partLife < 75% classname="determinate yellow" */}
           {/* if props.partLife < 25% className="determinate red" */}
