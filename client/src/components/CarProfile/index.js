@@ -24,21 +24,22 @@ class CarProfile extends React.Component {
       .getUser(this.props.id)
       .then(res => {
         if (res.data.cars[0]) {
-          this.setState({ carId: res.data.cars[0]._id })
-          console.log(this.state.carId)
+          this.setState({carId : res.data.cars[0]._id})
           if (res.data.cars[0].services[0]) {
             this.setState({
               servicesFromDataBase: res.data.services,
               carmileage: res.data.cars[0].currentMileage,
+              // carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
+              // carServiceDate: res.data.cars[0].services[0].dateServiced,
               carServiceMileage: res.data.cars[0].services[0].mileage,
 
             });
 
             let myCarObj = {
-
+              // initialDate: this.state.carServiceDate,
               initialMileage: this.state.carServiceMileage,
               currentMileage: this.state.carmileage,
-
+              // currentDate: this.state.carmileageUpdateDate,
             }
             // this.calculateAverageMileage(myCarObj);
 
@@ -65,13 +66,56 @@ class CarProfile extends React.Component {
                 }
               }
               this.setState({ services: a })
-
             })
           }
         }
       })
   }
 
+
+  // calculateAverageMileage(objInfo) {
+  //   let initialDate = objInfo.initialDate;
+  //   let initialMileage = objInfo.initialMileage;
+  //   let currentMileage = objInfo.currentMileage;
+  //   let currentDate = objInfo.currentDate;
+  //   let date_1 = new Date(initialDate);
+  //   let date_2 = new Date(currentDate);
+  //   let differenceInDays =this.mydiff(date_1 , date_2 , "days");
+  //   let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
+  //   let myNewObj = {
+  //     mileageDif: currentMileage - initialMileage,
+  //     daysDif: differenceInDays,
+  //     averageMileagePerDay:averageMiles
+  //   }
+  //   console.log(myNewObj);
+  //   this.setState({averageMileagePerDay:averageMiles})
+  //   return myNewObj.averageMileagePerDay
+  // }
+  getPercentage(argDateServiced , argServiceLifeSpan){
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // let currentDate = new Date();
+    // argDateServiced = new Date(argDateServiced);
+    // let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
+    // console.log("avg Miles per day: "+ this.state.averageMileagePerDay);
+    // let milesCounter = dateDifference * this.state.averageMileagePerDay
+    // let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
+    // let percentageLeft =100 - percentage
+    // console.log("Service Life Span: "+ argServiceLifeSpan);
+    // console.log("Days Since last Service: "+ dateDifference);
+    // console.log("Estimated Miles Since Last Service: "+ milesCounter);
+    // console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
+    // return percentageLeft
+  }
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
     let initialMileage = objInfo.initialMileage;
@@ -86,53 +130,49 @@ class CarProfile extends React.Component {
       daysDif: differenceInDays,
       averageMileagePerDay: averageMiles
     }
-    console.log(myNewObj);
-    this.setState({ averageMileagePerDay: averageMiles })
+    this.setState({averageMileagePerDay:averageMiles})
     return myNewObj.averageMileagePerDay
   }
   getPercentage(argDateServiced, argServiceLifeSpan) {
     let currentDate = new Date();
     argDateServiced = new Date(argDateServiced);
-    let dateDifference = this.mydiff(argDateServiced, currentDate, "days");
-    console.log("avg Miles per day: " + this.state.averageMileagePerDay);
+    let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
     let milesCounter = dateDifference * this.state.averageMileagePerDay
-    let percentage = Math.floor((milesCounter / argServiceLifeSpan) * 100)
-    let percentageLeft = 100 - percentage
-    console.log("Service Life Span: " + argServiceLifeSpan);
-    console.log("Days Since last Service: " + dateDifference);
-    console.log("Estimated Miles Since Last Service: " + milesCounter);
-    console.log("Percentage Used / Left : " + percentage + " / " + percentageLeft);
+    let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
+    let percentageLeft =100 - percentage
+
     return percentageLeft
 
 
 
-  }
 
-  mydiff(date1, date2, interval) {
-    var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
-    date1 = new Date(date1);
-    date2 = new Date(date2);
-    var timediff = date2 - date1;
-    if (isNaN(timediff)) return NaN;
-    switch (interval) {
-      case "years": return date2.getFullYear() - date1.getFullYear();
-      case "months": return (
-        (date2.getFullYear() * 12 + date2.getMonth())
-        -
-        (date1.getFullYear() * 12 + date1.getMonth())
-      );
-      case "weeks": return Math.floor(timediff / week);
-      case "days": return Math.floor(timediff / day);
-      case "hours": return Math.floor(timediff / hour);
-      case "minutes": return Math.floor(timediff / minute);
-      case "seconds": return Math.floor(timediff / second);
-      default: return undefined;
-    }
   }
+  
+//   mydiff(date1,date2,interval) {
+//     var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
+//     date1 = new Date(date1);
+//     date2 = new Date(date2);
+//     var timediff = date2 - date1;
+//     if (isNaN(timediff)) return NaN;
+//     switch (interval) {
+//         case "years": return date2.getFullYear() - date1.getFullYear();
+//         case "months": return (
+//             ( date2.getFullYear() * 12 + date2.getMonth() )
+//             -
+//             ( date1.getFullYear() * 12 + date1.getMonth() )
+//         );
+//         case "weeks"  : return Math.floor(timediff / week);
+//         case "days"   : return Math.floor(timediff / day); 
+//         case "hours"  : return Math.floor(timediff / hour); 
+//         case "minutes": return Math.floor(timediff / minute);
+//         case "seconds": return Math.floor(timediff / second);
+//         default: return undefined;
+//     }
+// }
   render() {
     return (
       <section className="mainSection">
-        <div className="container" id="car-services">
+        <div className="row" id="car-services">
           <h2 className="center">Your car services</h2>
           {this.state.services.map(service => {
             return (

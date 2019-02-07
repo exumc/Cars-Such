@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
 
 
@@ -10,14 +10,14 @@ class Nav extends React.Component {
       <nav>
 
         <div className="nav-wrapper white">
-          
+
           <div className="myRow">
-            <Link to="/">
+            <NavLink to="/">
               <span className="brand-logo center black-text bold">
                 Keep it Running
               </span>
-            </Link>
-            
+            </NavLink>
+
 
             <a
               href="menu"
@@ -28,16 +28,18 @@ class Nav extends React.Component {
             </a>
             <ul id="nav-mobile" className="right hide-on-med-and-down thin">
               <li>
-                <Link to="/profile">
+                <NavLink to="/profile">
                   <i className="fas fa-user-circle" />
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/about">About</Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <NavLink to="/">Car Services</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
               </li>
             </ul>
           </div>
@@ -45,18 +47,21 @@ class Nav extends React.Component {
 
         <ul className="sidenav" id="mobile-demo">
           <li>
-            <Link to="/profile">
+            <NavLink to="/profile" className="sidenav-close">
               <i className="fas fa-user-circle" />
-            </Link>{" "}
+            </NavLink>{" "}
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/" className="sidenav-close">Car Services</NavLink>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <NavLink to="/about" className="sidenav-close">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact" className="sidenav-close">Contact</NavLink>
           </li>
         </ul>
-        
+
       </nav>
     );
   }
