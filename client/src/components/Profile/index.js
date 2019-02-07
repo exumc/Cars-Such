@@ -5,7 +5,7 @@ import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import AddVehicle from "./subcomponents/AddVehicle"
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Row, Col } from "react-materialize";
+import { Row, Col, Tab, Modal, Button, Tabs } from "react-materialize";
 import API from "../../utils/API"
 import AuthService from '../AuthService';
 
@@ -90,35 +90,68 @@ class Profile extends React.Component {
 
             </div>
 
-            <div className="row">
+          </div>
+          <Modal header='Modal Header'
+                      trigger={<Button 
+                        className="light-blue lighten-4 black-text" 
+                        waves='light'>Add Car
+                        </Button>}>
+                      <Row>
+                        {/* <form onSubmit={this.handleSubmit}> */}
+                        <input 
+                        placeholder="VIN" 
+                        s={6} 
+                        name="vin" 
+                        id="vin" 
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleChange}
+                        />
+                        {/* </form> */}
+                        <Button 
+                        type="submit"
+                        onClick={this.handleSubmit}
+                        
+                        >Submit</Button>
+                        
+                      </Row>
+                    </Modal>
+          <div className="row">
 
-              <ul>
+            <div className="col s12">
+              <Tabs className="tabs">
+                <Tab title="Home" active>
 
-                <li>
-                  <Link to='/profile' className="navTab center">Home</Link>
+                  <Home
+                    firstName={this.state.userDetails.firstname}
+                    lastName={this.state.userDetails.lastname}
+                    email={this.state.userDetails.email}
+                  />
+                </Tab>
 
+                {this.state.carIsSet ?
 
-                </li>
-
-                <li>
-                  <Switch>
-                    {this.state.carIsSet ?
-
-                      <Link to='/profile/vehicle' className="navTab center">Vehicle</Link>
-
-
-                      :
-
-                      <Link to='/profile/addvehicle' className="navTab center">Add Vehicle</Link>
-
-
-                    }
-                  </Switch>
-                </li>
-
-
-              </ul>
-
+                  <Tab title="Vehicle">
+                    <Vehicle
+                      year={this.state.userCars.year}
+                      make={this.state.userCars.make}
+                      model={this.state.userCars.model}
+                      type={this.state.userCars.Vehicle_Type}
+                      driveType={this.state.userCars.driveType}
+                      hp={this.state.userCars.HP}
+                      fuelType={this.state.userCars.fueltype}
+                      noCylinders={this.state.userCars.noCylinders}
+                      weight={this.state.userCars.grossWeightRating}
+                      lastMileageDate={this.state.userCars.dateMileageUpdate}
+                      currentMileage={this.state.userCars.currentMileage}
+                    />
+                  </Tab>
+                  :
+                  <Tab title="Add Car">
+                    
+                  </Tab>
+                }
+              </Tabs>
             </div>
 
 
