@@ -31,7 +31,7 @@ class Vehicle extends React.Component {
       noCylinders: this.props.noCylinders,
       weight: this.props.weight,
       lastMileageDate: convertedDate,
-      currentMileage: "",
+      currentMileage: this.props.currentMileage,
       lastMileage: this.props.currentMileage,
       carId: this.props.carId
     })
@@ -56,7 +56,7 @@ class Vehicle extends React.Component {
   }
 
   handleSubmitUpdateCarInfo = (event) => {
-    event.preventDefault();
+
     this.setState({
       year: this.state.year,
       make: this.state.make,
@@ -68,7 +68,7 @@ class Vehicle extends React.Component {
       noCylinders: this.state.noCylinders,
       weight: this.state.weight,
       lastMileageDate: new Date(),
-      currentMileage: "",
+      currentMileage: this.state.currentMileage,
       lastMileage: this.state.currentMileage,
       carId: this.state.carId
     })
