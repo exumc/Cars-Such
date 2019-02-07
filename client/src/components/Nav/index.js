@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
+
+
 class Nav extends React.Component {
   render() {
     return (
       <nav>
+
         <div className="nav-wrapper white">
+          
           <div className="myRow">
             <Link to="/">
               <span className="brand-logo center black-text bold">
                 Keep it Running
               </span>
             </Link>
+            
 
             <a
               href="menu"
@@ -51,6 +56,7 @@ class Nav extends React.Component {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
+        
       </nav>
     );
   }
