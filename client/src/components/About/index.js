@@ -7,7 +7,7 @@ class About extends Component {
     return (
       <section className="mainSection">
         <div className="row white-text center">
-          <div className="col s4 offset-s4">
+          <div className="col s12 m4 offset-m4">
             <p className="black-text">
               Keep It Running comes as the brainchild of Helder Calado, Chris
               Pierre-Louis, Cord Exum, Leslie Morris, and Alan Lopez. We set out

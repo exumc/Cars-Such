@@ -39,8 +39,7 @@ class Profile extends React.Component {
     });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = () => {
     if (this.Auth.loggedIn()) {
       API.addCar(this.state.userDetails._id, this.state.vin);
     }

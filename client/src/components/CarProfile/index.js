@@ -60,7 +60,6 @@ class CarProfile extends React.Component {
                 }
               }
               this.setState({ services: a })
-              
             })
           }
         }
@@ -122,7 +121,7 @@ class CarProfile extends React.Component {
   render() {
     return (
       <section className="mainSection">
-        <div className="container" id="car-services">
+        <div className="row" id="car-services">
           <h2 className="center">Your car services</h2>
           {this.state.services.map(service => {
             return (
