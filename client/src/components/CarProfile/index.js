@@ -25,7 +25,6 @@ class CarProfile extends React.Component {
       .then(res => {
         if (res.data.cars[0]) {
           this.setState({carId : res.data.cars[0]._id})
-          console.log(this.state.carId)
           if (res.data.cars[0].services[0]) {
               this.setState({
               servicesFromDataBase: res.data.services,
@@ -82,7 +81,6 @@ class CarProfile extends React.Component {
       daysDif: differenceInDays,
       averageMileagePerDay:averageMiles
     }
-    console.log(myNewObj);
     this.setState({averageMileagePerDay:averageMiles})
     return myNewObj.averageMileagePerDay
   }
@@ -90,14 +88,10 @@ class CarProfile extends React.Component {
     let currentDate = new Date();
     argDateServiced = new Date(argDateServiced);
     let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
-    console.log("avg Miles per day: "+ this.state.averageMileagePerDay);
     let milesCounter = dateDifference * this.state.averageMileagePerDay
     let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
     let percentageLeft =100 - percentage
-    console.log("Service Life Span: "+ argServiceLifeSpan);
-    console.log("Days Since last Service: "+ dateDifference);
-    console.log("Estimated Miles Since Last Service: "+ milesCounter);
-    console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
+
     return percentageLeft
 
 

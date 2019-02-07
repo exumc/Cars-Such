@@ -28,10 +28,7 @@ class Service extends React.Component {
   };
 
   onServiceSubmit = event => {
-
-    console.log(this.props.name + this.state.mileage + this.props.carId)
     API.addService(this.props.name, this.state.mileage, this.props.carId);
-
   }
 
   render() {

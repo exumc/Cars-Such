@@ -40,9 +40,8 @@ router.post("/signup", (req, res) => {
 router.put("/updatecar/:carid" , function(req,res){
 db.Car.findByIdAndUpdate(req.params.carid,{$set:req.body}, function(err, result){
   if(err){
-      console.log(err);
+    throw(err)
   }
-  console.log("RESULT: " + result);
   res.send('Done')
 });
 
@@ -54,7 +53,6 @@ db.Car.findByIdAndUpdate(req.params.carid,{$set:req.body}, function(err, result)
 // to access , removed isAuthenticated from function temporarily
 // Helder
 router.get("/user/:id", (req, res) => {
-  console.log(req.params.id);
   db.User.findById(req.params.id)
     .populate({
       path: "cars",
@@ -96,7 +94,7 @@ router.post("/edituser/:id", function (req, res) {
 
 router.post("/addcar/:id/user/:uid", (req, res) => {
   // route to a car to the existing logged in user
-  //   console.log(req.params);
+  
   axios
     .get(
       "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" +
@@ -105,7 +103,6 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
     )
     .then(function (result) {
       var data = [];
-      console.log(result);
       result.data.Results.forEach(function (el) {
         data[el.VariableId] = [];
         data[el.VariableId]["name"] = el.Variable;
@@ -171,7 +168,6 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
         HP: HP,
         fuelType: fuelType
       };
-      //console.log(carObj);
       db.Car.create(carObj)
         .then(function (data) {
           return db.User.findOneAndUpdate(
@@ -207,7 +203,6 @@ router.post("/addservice/:carid", function (req, res) {
   // creates an instance of db.services
   var Service = db.Services;
   //console log req.body
-  console.log(req.body);
   // creates a var for a new instance of Service
   // and uses req.body contents to initialize it
   var service = new Service(req.body);
