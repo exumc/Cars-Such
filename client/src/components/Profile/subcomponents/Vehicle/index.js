@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import API from "../../../../utils/API";
-import { Redirect } from 'react-router-dom'
 
 class Vehicle extends React.Component {
   constructor() {
@@ -19,7 +18,6 @@ class Vehicle extends React.Component {
   componentDidMount() {
     let convertedDate = new Date(this.props.lastMileageDate);
     convertedDate = convertedDate.toLocaleDateString();
-    console.log(this.props.carId);
     this.setState({
       year: this.props.year,
       make: this.props.make,

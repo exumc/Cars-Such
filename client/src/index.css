@@ -18,7 +18,7 @@ main {
 
 @media only screen and (min-width: 600px) {
   section {
-    min-height: 960px;
+    min-height: 700px;
   }
 }
 
@@ -34,13 +34,13 @@ footer {
   width: 100%;
 }
 
-.bold {
-  font-weight: 700;
-}
-
 .mainSection {
   height: 100%;
   background-color: white;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 .input-field input[type="date"]:focus + label,
@@ -60,11 +60,6 @@ footer {
   box-shadow: none !important;
 }
 
-.mainSection {
-  height: 100%;
-  background-color: white;
-}
-
 .login-form {
   display: inline-block;
   padding: 32px 48px 0px 48px;
@@ -72,9 +67,10 @@ footer {
 }
 
 .kirbyBtn{
+  position:relative;
   float:right;
-  margin-right:200px;
-  margin-bottom:80px;
+  margin-right:100px;
+  bottom: 0;
 }
 
 #BotChatElement .wc-chatview-panel .wc-header{
