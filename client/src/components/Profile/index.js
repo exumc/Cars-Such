@@ -6,6 +6,7 @@ import Vehicle from "./subcomponents/Vehicle";
 import { Row, Tab, Modal, Button, Tabs, Input } from "react-materialize";
 import API from "../../utils/API"
 import AuthService from '../AuthService';
+import withAuth from "../withAuth";
 
 
 class Profile extends React.Component {
