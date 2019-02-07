@@ -25,7 +25,6 @@ class CarProfile extends React.Component {
       .then(res => {
         if (res.data.cars[0]) {
           this.setState({carId : res.data.cars[0]._id})
-          console.log(this.state.carId)
           if (res.data.cars[0].services[0]) {
               this.setState({
               servicesFromDataBase: res.data.services,
@@ -67,13 +66,13 @@ class CarProfile extends React.Component {
                 }
               }
               this.setState({ services: a })
-              
             })
           }
         }
       })
   }
 
+<<<<<<< HEAD
   // calculateAverageMileage(objInfo) {
   //   let initialDate = objInfo.initialDate;
   //   let initialMileage = objInfo.initialMileage;
@@ -116,6 +115,34 @@ class CarProfile extends React.Component {
     // console.log("Estimated Miles Since Last Service: "+ milesCounter);
     // console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
     // return percentageLeft
+=======
+  calculateAverageMileage(objInfo) {
+    let initialDate = objInfo.initialDate;
+    let initialMileage = objInfo.initialMileage;
+    let currentMileage = objInfo.currentMileage;
+    let currentDate = objInfo.currentDate;
+    let date_1 = new Date(initialDate);
+    let date_2 = new Date(currentDate);
+    let differenceInDays =this.mydiff(date_1 , date_2 , "days");
+    let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
+    let myNewObj = {
+      mileageDif: currentMileage - initialMileage,
+      daysDif: differenceInDays,
+      averageMileagePerDay:averageMiles
+    }
+    this.setState({averageMileagePerDay:averageMiles})
+    return myNewObj.averageMileagePerDay
+  }
+  getPercentage(argDateServiced , argServiceLifeSpan){
+    let currentDate = new Date();
+    argDateServiced = new Date(argDateServiced);
+    let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
+    let milesCounter = dateDifference * this.state.averageMileagePerDay
+    let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
+    let percentageLeft =100 - percentage
+
+    return percentageLeft
+>>>>>>> 9c20aa3890a03f36e31efd9c215954211d737931
 
 
 
@@ -145,7 +172,7 @@ class CarProfile extends React.Component {
   render() {
     return (
       <section className="mainSection">
-        <div className="container" id="car-services">
+        <div className="row" id="car-services">
           <h2 className="center">Your car services</h2>
           {this.state.services.map(service => {
             return (

@@ -10,7 +10,6 @@ const db = require('./models');
 const PORT = process.env.PORT || 3001;
 var axios = require("axios")
 
-
 // Setting CORS so that any website can
 // Access our API
 app.use((req, res, next) => {
@@ -33,9 +32,6 @@ mongoose.set('useCreateIndex', true);
 const isAuthenticated = exjwt({
   secret: process.env.SERVER_SECRET
 });
-
-
-
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -60,7 +56,6 @@ app.use(function (err, req, res, next) {
 var apiRoute = require("./routes/apiRoutes");
 app.use("/api", apiRoute);
 
-
 // Send every request to the React app
 // Define any API routes before this runs
 // app.get("*", function(req, res) {
@@ -71,12 +66,9 @@ app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
 
-
-
 function getVin(vin) {
   axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" + vin + "?format=json").then(function (result) {
     var data = [];
-    console.log(result);
     result.data.Results.forEach(function (el) {
       data[el.VariableId] = [];
       data[el.VariableId]['name'] = el.Variable;
@@ -113,16 +105,9 @@ function getVin(vin) {
       }
     }
 
-
-
-
-
     if (typeof data[26] !== 'undefined' && data[26]['value']) {
       var make = data[26]['value']
       var logo_path = 'logos/' + make.toLowerCase() + '.svg'
-
-
-
     }
     if (typeof data[28] !== 'undefined' && data[28]['value']) var model = data[28]['value'];
     if (typeof data[29] !== 'undefined' && data[29]['value']) var year = data[29]['value'];
@@ -144,11 +129,5 @@ function getVin(vin) {
       HP: HP,
       fuelType: fuelType,
     }
-
-
-    console.log(carObj);
   })
-
 }
-
-// getVin("5TFTX4CN7BX009246");

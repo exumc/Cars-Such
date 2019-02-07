@@ -65,7 +65,6 @@ export default {
     },
     getUser: function (userId) {
 
-        console.log("get user called: " + userId);
         return axios.get("/api/user/" + userId);
 
     }

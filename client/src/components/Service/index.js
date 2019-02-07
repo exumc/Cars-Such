@@ -28,10 +28,7 @@ class Service extends React.Component {
   };
 
   onServiceSubmit = event => {
-
-    console.log(this.props.name + this.state.mileage + this.props.carId)
     API.addService(this.props.name, this.state.mileage, this.props.carId);
-
   }
 
   render() {
@@ -40,16 +37,13 @@ class Service extends React.Component {
         <div className="col s12 m6 offset-m3 center">
           <Collapsible>
             <CollapsibleItem className="active" header={this.props.name}>
-              <Button
-                className="right"
-                floating
-                large
-                onClick={() => {
-                  window.$(`#${this.props.nameId}`).modal("open");
-                }}
-              >
-                Add Service
-              </Button>
+              <button 
+              className="pointer btn-floating btn-large waves-effect waves-light right light-blue lighten-2" 
+              onClick={() => {
+                window.$(`#${this.props.nameId}`).modal("open");
+              }}>
+                <i class="fas fa-plus"></i>
+              </button>
               <div
                 className="box-img"
                 style={{

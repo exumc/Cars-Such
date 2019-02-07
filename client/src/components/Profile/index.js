@@ -39,8 +39,7 @@ class Profile extends React.Component {
     });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = () => {
     if (this.Auth.loggedIn()) {
       API.addCar(this.state.userDetails._id, this.state.vin);
     }
@@ -58,13 +57,11 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user.id);
     API.getUser(this.props.user.id).then(res => {
       if (res.data.cars[0]) {
         this.setState({ carIsSet: true });
         var now = new Date(res.data.cars[0].dateMileageUpdate);
         var today = now.toLocaleDateString();
-        console.log(today);
         this.setState({
           userDetails: res.data,
           userCars: res.data.cars[0]
@@ -72,7 +69,6 @@ class Profile extends React.Component {
 
         // edited this code, Helder need to check if it still works the way he intends -Cord
         this.state.userCars.dateMileageUpdate = today;
-        console.log(this.state.userCars.dateMileageUpdate);
       } else {
         this.setState({
           carIsSet: false,
