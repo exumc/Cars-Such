@@ -5,7 +5,7 @@ import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import AddVehicle from "./subcomponents/AddVehicle"
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Row, Col, Tab, Modal, Button, Tabs } from "react-materialize";
+import { Row, Col, Tab, Modal, Button, Tabs, Input } from "react-materialize";
 import API from "../../utils/API"
 import AuthService from '../AuthService';
 
@@ -13,15 +13,16 @@ import AuthService from '../AuthService';
 class Profile extends React.Component {
 
   // Must initialize state first
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
       userDetails: {},
       userCars: "",
       username: "",
       email: "",
       carIsSet: false,
-      value: ""
+      vin: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,15 +30,19 @@ class Profile extends React.Component {
     this.Auth = new AuthService();
 
   }
+  handleChange = event => {
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value });
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.Auth.loggedIn()) {
-      API.addCar(this.state.userDetails._id, this.state.value);
+      API.addCar(this.state.userDetails._id, this.state.vin);
     }
   }
 
@@ -79,131 +84,121 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <Router>
-
-        <section className="mainSection">
-          <div className="container">
-            <div className="row">
-              <div className="col s10">
-                <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
-              </div>
-
+      <section className="mainSection">
+        <div className="container">
+          <div className="row">
+            <div className="col s10">
+              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
             </div>
 
           </div>
-          <Modal header='Modal Header'
-                      trigger={<Button 
-                        className="light-blue lighten-4 black-text" 
-                        waves='light'>Add Car
+
+        </div>
+        <Modal header='Modal Header'
+          trigger={<Button
+            className="light-blue lighten-4 black-text"
+            waves='light'>Add Car
                         </Button>}>
-                      <Row>
-                        {/* <form onSubmit={this.handleSubmit}> */}
-                        <input 
-                        placeholder="VIN" 
-                        s={6} 
-                        name="vin" 
-                        id="vin" 
-                        type="text" 
-                        value={this.state.value} 
-                        onChange={this.handleChange}
-                        />
-                        {/* </form> */}
-                        <Button 
-                        type="submit"
-                        onClick={this.handleSubmit}
-                        
-                        >Submit</Button>
-                        
-                      </Row>
-                    </Modal>
-          <div className="row">
+          <Row>
+            {/* <form onSubmit={this.handleSubmit}> */}
+            <input
+              placeholder="VIN"
+              s={6}
+              name="vin"
+              id="vin"
+              type="text"
+              value={this.state.vin}
+              onChange={this.handleChange}
+            />
+            {/* </form> */}
+            <Button
+              type="submit"
+              onClick={this.handleSubmit}
 
-            <div className="col s12">
-              <Tabs className="tabs">
-                <Tab title="Home" active>
+            >Submit</Button>
 
-                  <Home
-                    firstName={this.state.userDetails.firstname}
-                    lastName={this.state.userDetails.lastname}
-                    email={this.state.userDetails.email}
-                  />
-                </Tab>
+          </Row>
+        </Modal>
+        <div className="row">
 
-                {this.state.carIsSet ?
+          <div className="col s12">
+            <Tabs className="tabs">
+              <Tab title="Home" active>
 
-                  <Tab title="Vehicle">
-                    <Vehicle
-                      year={this.state.userCars.year}
-                      make={this.state.userCars.make}
-                      model={this.state.userCars.model}
-                      type={this.state.userCars.Vehicle_Type}
-                      driveType={this.state.userCars.driveType}
-                      hp={this.state.userCars.HP}
-                      fuelType={this.state.userCars.fueltype}
-                      noCylinders={this.state.userCars.noCylinders}
-                      weight={this.state.userCars.grossWeightRating}
-                      lastMileageDate={this.state.userCars.dateMileageUpdate}
-                      currentMileage={this.state.userCars.currentMileage}
-                    />
-                  </Tab>
-                  :
-                  <Tab title="Add Car">
-                    
-                  </Tab>
-                }
-              </Tabs>
-            </div>
-
-
-            <Col s={12}>
-              <Route
-                exact
-                path="/profile"
-                render={props => <Home {...props}
+                <Home
                   firstName={this.state.userDetails.firstname}
                   lastName={this.state.userDetails.lastname}
-                  email={this.state.userDetails.email} />}
-              />
-              <Route
-                path="/profile/addvehicle"
-                render={props => <AddVehicle {...props}
-                  value={props.value}
-                  onChange={props.handleChange}
-                  onClick={props.handleSubmit}
+                  email={this.state.userDetails.email}
+                />
+              </Tab>
 
-                />}
-              />
+              {this.state.carIsSet ?
 
-              <Route
-                exact
-                path="/profile/vehicle"
-                render={props => <Vehicle {...props}
-                  year={this.state.userCars.year}
-                  make={this.state.userCars.make}
-                  model={this.state.userCars.model}
-                  type={this.state.userCars.Vehicle_Type}
-                  driveType={this.state.userCars.driveType}
-                  hp={this.state.userCars.HP}
-                  fuelType={this.state.userCars.fueltype}
-                  noCylinders={this.state.userCars.noCylinders}
-                  weight={this.state.userCars.grossWeightRating}
-                  lastMileageDate={this.state.userCars.dateMileageUpdate}
-                  currentMileage={this.state.userCars.currentMileage} />}
-              />
-            </Col>
-            <Row>
-              <button
-                type="submit"
-                name="btn_logout"
-                id="userLogout"
-                onClick={this.handleLogout}
-                className="btn btn-large waves-effect red lighten-2"
-              > Logout
-          </button>
-            </Row>
+                <Tab title="Vehicle">
+                  <Vehicle
+                    year={this.state.userCars.year}
+                    make={this.state.userCars.make}
+                    model={this.state.userCars.model}
+                    type={this.state.userCars.Vehicle_Type}
+                    driveType={this.state.userCars.driveType}
+                    hp={this.state.userCars.HP}
+                    fuelType={this.state.userCars.fueltype}
+                    noCylinders={this.state.userCars.noCylinders}
+                    weight={this.state.userCars.grossWeightRating}
+                    lastMileageDate={this.state.userCars.dateMileageUpdate}
+                    lastMileage={this.state.userCars.currentMileage}
+                    currentMileage={this.state.userCars.currentMileage}
+                    carId={this.state.userCars._id}
+                  />
+                </Tab>
+                :
+                <Tab title="Add Car">
+                  <Modal header='Modal Header'
+                    trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                    <Row>
+                      <form>
+                        <Input
+                          placeholder="VIN"
+                          s={6}
+                          id="vin"
+                          name="vin"
+                          defaultValue={this.state.vin}
+                          onChange={this.handleChange}
+                        />
+                        <Button type="submit">Submit</Button>
+                      </form>
+                    </Row>
+
+                  </Modal>
+                </Tab>
+              }
+            </Tabs>
           </div>
-        </section>
-      </Router>
+        </div>
+        <Row>
+          <button
+            type="submit"
+            name="btn_logout"
+            id="userLogout"
+            onClick={this.handleSubmit}
+            className="btn btn-large waves-effect light-blue lighten-2"
+          > Logout
+          </button>
+
+        </Row>
+        <Row>
+          <button
+            type="submit"
+            name="btn_logout"
+            id="userLogout"
+            onClick={this.handleLogout}
+            className="btn btn-large waves-effect red lighten-2"
+          > Logout
+          </button>
+        </Row>
+
+      </section >
+
     );
   }
 }

@@ -3,66 +3,79 @@
     "id": 1,
     "name": "Oil Change",
     "image": "./images/oilChange.svg",
-    "totalLife" : 5000
+    "totalLife" : 5000,
+    "nameId": "OilChange"
   },
   {
     "id": 2,
     "name": "Air Filter",
-    "image": "./images/airFilter.png"
+    "image": "./images/airFilter.png",
+    "nameId": "AirFilter"
   },
   {
     "id": 3,
     "name": "Tune Up",
-    "image": "./images/tuneUp.png"
+    "image": "./images/tuneUp.png",
+    "nameId": "TuneUp"
   },
   {
     "id": 4,
     "name": "Shocks and Struts",
-    "image": "./images/shocks.png"
+    "image": "./images/shocks.png",
+    "nameId": "Shocks"
   },
   {
     "id": 5,
     "name": "Brakes",
-    "image": "./images/brakes.png"
+    "image": "./images/brakes.png",
+    "nameId": "Brakes"
   },
   {
     "id": 6,
     "name": "Battery",
-    "image": "./images/battery.png"
+    "image": "./images/battery.png",
+    "nameId": "Battery"
   },
   {
     "id": 7,
     "name": "Coolant",
-    "image": "./images/coolant.png"
+    "image": "./images/coolant.png",
+    "nameId": "Coolant"
   },
   {
     "id": 8,
     "name": "Timing Belt",
-    "image": "./images/timingBelt.png"
+    "image": "./images/timingBelt.png",
+    "nameId": "TimingBelt"
   },
   {
     "id": 9,
     "name": "Transmission",
-    "image": "./images/transmission.png"
+    "image": "./images/transmission.png",
+    "nameId": "Transmission"
   },
   {
     "id": 10,
     "name": "Spark Plugs",
-    "image": "./images/sparkPlug.png"
+    "image": "./images/sparkPlug.png",
+    "nameId": "SparkPlugs"
   },
   {
     "id": 11,
     "name": "Power Steering",
-    "image": "./images/steering.png"
+    "image": "./images/steering.png",
+    "nameId": "PowerSteering"
   },
   {
     "id": 12,
     "name": "Tire Rotation",
-    "image": "./images/tire.png"
+    "image": "./images/tire.png",
+    "nameId": "TireRotation"
   },
   {
     "id": 13,
     "name": "Air Conditioning",
-    "image": "./images/airConditioning.png"
+    "image": "./images/airConditioning.png",
+    "nameId": "AC"
   }
 ]

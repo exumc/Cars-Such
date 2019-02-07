@@ -12,23 +12,30 @@ class CarProfile extends React.Component {
       servicesFromDataBase: [],
       carmileage: "",
       carmileageUpdateDate: "",
-      averageMileagePerDay:""
+      averageMileagePerDay:"",
+      carId: ""
     };
   }
 
   componentDidMount() {
+    
+
     API
       .getUser(this.props.id)
       .then(res => {
         if (res.data.cars[0]) {
+          this.setState({carId : res.data.cars[0]._id})
+          console.log(this.state.carId)
           if (res.data.cars[0].services[0]) {
-            this.setState({
+              this.setState({
               servicesFromDataBase: res.data.services,
               carmileage: res.data.cars[0].currentMileage,
               carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
               carServiceDate: res.data.cars[0].services[0].dateServiced,
-              carServiceMileage: res.data.cars[0].services[0].mileage
+              carServiceMileage: res.data.cars[0].services[0].mileage,
+              
             });
+            
             let myCarObj = {
               initialDate: this.state.carServiceDate,
               initialMileage: this.state.carServiceMileage,
@@ -54,13 +61,11 @@ class CarProfile extends React.Component {
                 }
               }
               this.setState({ services: a })
+              
             })
           }
         }
       })
-  }
-  addNewService() {
-    
   }
 
   calculateAverageMileage(objInfo) {
@@ -133,6 +138,8 @@ class CarProfile extends React.Component {
                 name={service.name}
                 image={service.image}
                 partLife={service.percentage}
+                nameId={service.nameId}
+                carId={this.state.carId}
               />
             );
           })}

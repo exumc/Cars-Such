@@ -38,7 +38,7 @@ ReactDOM.render(
         <Route
           exact
           path="/"
-          render={props => <Home {...props} loggedIn={true} />}
+          render={props => <Home {...props} />}
         />
         <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
