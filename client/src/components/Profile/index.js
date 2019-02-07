@@ -98,7 +98,7 @@ class Profile extends React.Component {
               waves='light'>Add Car
                         </Button>}>
             <Row>
-              {/* <form onSubmit={this.handleSubmit}> */}
+              <form onSubmit={this.handleSubmit}>
               <input
                 placeholder="VIN"
                 s={6}
@@ -108,13 +108,13 @@ class Profile extends React.Component {
                 value={this.state.vin}
                 onChange={this.handleChange}
               />
-              {/* </form> */}
+              
               <Button
                 type="submit"
-                onClick={this.handleSubmit}
+                // onClick={this.handleSubmit}
 
               >Submit</Button>
-
+              </form>
             </Row>
           </Modal>
           <div className="row">

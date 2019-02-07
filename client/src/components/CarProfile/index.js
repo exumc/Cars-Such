@@ -12,13 +12,13 @@ class CarProfile extends React.Component {
       servicesFromDataBase: [],
       carmileage: "",
       carmileageUpdateDate: "",
-      averageMileagePerDay:"",
+      averageMileagePerDay: "",
       carId: ""
     };
   }
 
   componentDidMount() {
-    
+
 
     API
       .getUser(this.props.id)
@@ -26,15 +26,15 @@ class CarProfile extends React.Component {
         if (res.data.cars[0]) {
           this.setState({carId : res.data.cars[0]._id})
           if (res.data.cars[0].services[0]) {
-              this.setState({
+            this.setState({
               servicesFromDataBase: res.data.services,
               carmileage: res.data.cars[0].currentMileage,
               // carmileageUpdateDate: res.data.cars[0].dateMileageUpdate,
               // carServiceDate: res.data.cars[0].services[0].dateServiced,
               carServiceMileage: res.data.cars[0].services[0].mileage,
-              
+
             });
-            
+
             let myCarObj = {
               // initialDate: this.state.carServiceDate,
               initialMileage: this.state.carServiceMileage,
@@ -72,7 +72,7 @@ class CarProfile extends React.Component {
       })
   }
 
-<<<<<<< HEAD
+
   // calculateAverageMileage(objInfo) {
   //   let initialDate = objInfo.initialDate;
   //   let initialMileage = objInfo.initialMileage;
@@ -115,7 +115,7 @@ class CarProfile extends React.Component {
     // console.log("Estimated Miles Since Last Service: "+ milesCounter);
     // console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
     // return percentageLeft
-=======
+  }
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
     let initialMileage = objInfo.initialMileage;
@@ -123,17 +123,17 @@ class CarProfile extends React.Component {
     let currentDate = objInfo.currentDate;
     let date_1 = new Date(initialDate);
     let date_2 = new Date(currentDate);
-    let differenceInDays =this.mydiff(date_1 , date_2 , "days");
-    let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
+    let differenceInDays = this.mydiff(date_1, date_2, "days");
+    let averageMiles = Math.floor((currentMileage - initialMileage) / differenceInDays);
     let myNewObj = {
       mileageDif: currentMileage - initialMileage,
       daysDif: differenceInDays,
-      averageMileagePerDay:averageMiles
+      averageMileagePerDay: averageMiles
     }
     this.setState({averageMileagePerDay:averageMiles})
     return myNewObj.averageMileagePerDay
   }
-  getPercentage(argDateServiced , argServiceLifeSpan){
+  getPercentage(argDateServiced, argServiceLifeSpan) {
     let currentDate = new Date();
     argDateServiced = new Date(argDateServiced);
     let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
@@ -142,7 +142,7 @@ class CarProfile extends React.Component {
     let percentageLeft =100 - percentage
 
     return percentageLeft
->>>>>>> 9c20aa3890a03f36e31efd9c215954211d737931
+
 
 
 
