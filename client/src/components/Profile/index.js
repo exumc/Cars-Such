@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import withAuth from "../withAuth";
+
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import { Row, Tab, Modal, Button, Tabs, Input } from "react-materialize";
