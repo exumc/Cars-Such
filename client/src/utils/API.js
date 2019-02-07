@@ -15,7 +15,21 @@ export default {
         return axios.post("/api/addcar/" + vinNumber + "/user/" + userId);
     },
     editCar: function (carId, objUpdatedData) {
-        return axios.put("/api/updatecar/" + carId ,objUpdatedData);
+        let myObj ={
+            year: objUpdatedData.year,
+            make: objUpdatedData.make,
+            model: objUpdatedData.model,
+            vehicle_Type: objUpdatedData.type,
+            driveType: objUpdatedData.driveType,
+            HP: objUpdatedData.hp,
+            fuelType: objUpdatedData.fuelType,
+            noCylinders: objUpdatedData.noCylinders,
+            grosWeightRating: objUpdatedData.weight,
+            lastMileageDate:objUpdatedData.lastMileageDate ,
+            currentMileage: objUpdatedData.currentMileage,
+            
+        }
+        return axios.put("/api/updatecar/" + carId ,myObj);
     },
     removeCar: function (userId, carId) {
         return axios.post("/removecar/user/" + userId + "/car" + carId);

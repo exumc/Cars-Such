@@ -62,7 +62,7 @@ handleSubmit = (event) => {
 handleSubmitUpdateCarInfo = (event) => {
 
   event.preventDefault();
-  let myObj = {
+  this.setstate= {
     year: this.state.year,
     make: this.state.make,
     model: this.state.model,
@@ -78,7 +78,7 @@ handleSubmitUpdateCarInfo = (event) => {
     carId:this.state.carId
 
   }
-  API.editCar(this.state.carId , myObj).then(res => {
+  API.editCar(this.state.carId , this.state).then(res => {
    
   })
 
