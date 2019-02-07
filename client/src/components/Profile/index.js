@@ -85,7 +85,28 @@ class Profile extends React.Component {
             </div>
 
           </div>
-
+          <Modal header='Modal Header'
+                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                      <Row>
+                        {/* <form onSubmit={this.handleSubmit}> */}
+                        <input 
+                        placeholder="VIN" 
+                        s={6} 
+                        name="vin" 
+                        id="vin" 
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleChange}
+                        />
+                        {/* </form> */}
+                        <Button 
+                        type="submit"
+                        onClick={this.handleSubmit}
+                        
+                        >Submit</Button>
+                        
+                      </Row>
+                    </Modal>
           <div className="row">
 
             <div className="col s12">
@@ -118,28 +139,7 @@ class Profile extends React.Component {
                   </Tab>
                   :
                   <Tab title="Add Car">
-                    {/* <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}> */}
-                      <Row>
-                        {/* <form onSubmit={this.handleSubmit}> */}
-                        <input 
-                        placeholder="VIN" 
-                        s={6} 
-                        name="vin" 
-                        id="vin" 
-                        type="text" 
-                        value={this.state.value} 
-                        onChange={this.handleChange}
-                        />
-                        {/* </form> */}
-                        <Button 
-                        type="submit"
-                        onClick={this.handleSubmit}
-                        
-                        >Submit</Button>
-                        
-                      </Row>
-                    {/* </Modal> */}
+                    
                   </Tab>
                 }
               </Tabs>
