@@ -11,15 +11,16 @@ import AuthService from '../AuthService';
 class Profile extends React.Component {
   
   // Must initialize state first
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
       userDetails: {},
       userCars: "",
       username: "",
       email: "",
       carIsSet: false,
-      value: ""
+      vin:"",
     };
    
     this.handleChange = this.handleChange.bind(this);
@@ -27,11 +28,15 @@ class Profile extends React.Component {
     this.Auth = new AuthService();
 
   }
+  handleChange = event =>{
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
+    const { name, value } = event.target;
+   
+    this.setState({
+      [name]: value
+    });
   }
-
+  
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.Auth.loggedIn()) {
@@ -137,12 +142,30 @@ class Profile extends React.Component {
                       noCylinders={this.state.userCars.noCylinders}
                       weight={this.state.userCars.grossWeightRating}
                       lastMileageDate={this.state.userCars.dateMileageUpdate}
+                      lastMileage={this.state.userCars.currentMileage}
                       currentMileage={this.state.userCars.currentMileage}
+                      carId={this.state.userCars._id}
                     />
                   </Tab>
                   :
                   <Tab title="Add Car">
-                    
+                    <Modal header='Modal Header'
+                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                      <Row>
+                        <form>
+                        <Input
+                         placeholder="VIN"
+                          s={6} 
+                          id="vin"
+                          name="vin"
+                          defaultValue={this.state.vin}
+                          onChange={this.handleChange}
+                          />
+                        <Button type="submit">Submit</Button>
+                        </form>
+                      </Row>
+
+                    </Modal>
                   </Tab>
                 }
               </Tabs>
@@ -157,8 +180,10 @@ class Profile extends React.Component {
               className="btn btn-large waves-effect light-blue lighten-2"
             > Logout
           </button>
+          
           </Row>
           <Row>
+            
             <Col s={4}><ChatBot />
             </Col>
           </Row>

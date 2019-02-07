@@ -14,6 +14,9 @@ export default {
     addCar: function (userId, vinNumber) {
         return axios.post("/api/addcar/" + vinNumber + "/user/" + userId);
     },
+    editCar: function (carId, objUpdatedData) {
+        return axios.put("/api/updatecar/" + carId ,objUpdatedData);
+    },
     removeCar: function (userId, carId) {
         return axios.post("/removecar/user/" + userId + "/car" + carId);
     },
