@@ -14,6 +14,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
+import ChatBot from "./components/ChatBot"
+import { Row } from "react-materialize";
+
 import axios from "axios";
 // Here is if we have an id_token in localStorage
 if (localStorage.getItem("id_token")) {
@@ -28,20 +31,27 @@ ReactDOM.render(
     <Wrapper>
       <Header>
         <Nav />
+
       </Header>
+
       <Main>
         <Route
           exact
           path="/"
-          render={props => <Home {...props} loggedIn={true} />}
+          render={props => <Home {...props} />}
         />
         <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/register" component={Register} />
-      </Main>
 
+      </Main>
+      <Row>
+        <div className="kirbyBtn">
+          <ChatBot />
+        </div>
+      </Row>
       <Footer />
     </Wrapper>
   </Router>,
