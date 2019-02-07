@@ -34,13 +34,13 @@ footer {
   width: 100%;
 }
 
-.bold {
-  font-weight: 700;
-}
-
 .mainSection {
   height: 100%;
   background-color: white;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 .input-field input[type="date"]:focus + label,
@@ -60,10 +60,7 @@ footer {
   box-shadow: none !important;
 }
 
-.mainSection {
-  height: 100%;
-  background-color: white;
-}
+
 
 .login-form {
   display: inline-block;

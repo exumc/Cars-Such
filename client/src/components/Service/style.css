@@ -4,3 +4,8 @@
     margin:auto;
     margin-bottom:20px
 }
+
+.pointer {
+    cursor: pointer;
+}
+
