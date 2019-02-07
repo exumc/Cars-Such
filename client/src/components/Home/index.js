@@ -9,10 +9,11 @@ class Home extends React.Component {
     super(props);
     this.Auth = new AuthService();
   }
-
-  componentDidMount() {
-  }
-
+  // componentDidMount() {
+  //   console.log(this.Auth.loggedIn());
+  //   console.log(this.Auth.getProfile().id);
+  //  ;
+  // }
   render() {
     if (this.Auth.loggedIn()) {
       return <User id={this.Auth.getProfile().id} />;

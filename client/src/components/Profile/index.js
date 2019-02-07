@@ -18,13 +18,28 @@ class Profile extends React.Component {
       userCars: "",
       username: "",
       email: "",
-      carIsSet: false
+      carIsSet: false,
+      value: ""
     };
+   
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.Auth = new AuthService();
 
   }
 
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
   handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.Auth.loggedIn()) {
+    API.addCar(this.state.userDetails._id, this.state.value);
+  }
+  }
+
+  handleLogout = (event) => {
 
     event.preventDefault();
     this.Auth.logout()
@@ -33,7 +48,6 @@ class Profile extends React.Component {
       .catch(err => {
         alert(err.response.data.message)
       });
-
   }
 
   componentDidMount() {
@@ -71,7 +85,31 @@ class Profile extends React.Component {
             </div>
 
           </div>
-
+          <Modal header='Modal Header'
+                      trigger={<Button 
+                        className="light-blue lighten-4 black-text" 
+                        waves='light'>Add Car
+                        </Button>}>
+                      <Row>
+                        {/* <form onSubmit={this.handleSubmit}> */}
+                        <input 
+                        placeholder="VIN" 
+                        s={6} 
+                        name="vin" 
+                        id="vin" 
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleChange}
+                        />
+                        {/* </form> */}
+                        <Button 
+                        type="submit"
+                        onClick={this.handleSubmit}
+                        
+                        >Submit</Button>
+                        
+                      </Row>
+                    </Modal>
           <div className="row">
 
             <div className="col s12">
@@ -104,14 +142,7 @@ class Profile extends React.Component {
                   </Tab>
                   :
                   <Tab title="Add Car">
-                    <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
-                      <Row>
-                        <Input placeholder="VIN" s={6} label="" />
-                        <Button type="submit">Submit</Button>
-                      </Row>
-
-                    </Modal>
+                    
                   </Tab>
                 }
               </Tabs>
@@ -122,7 +153,7 @@ class Profile extends React.Component {
               type="submit"
               name="btn_logout"
               id="userLogout"
-              onClick={this.handleSubmit}
+              onClick={this.handleLogout}
               className="btn btn-large waves-effect light-blue lighten-2"
             > Logout
           </button>

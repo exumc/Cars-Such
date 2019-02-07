@@ -59,6 +59,9 @@ class CarProfile extends React.Component {
         }
       })
   }
+  addNewService() {
+    
+  }
 
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
@@ -90,7 +93,7 @@ class CarProfile extends React.Component {
     console.log("Days Since last Service: "+ dateDifference);
     console.log("Estimated Miles Since Last Service: "+ milesCounter);
     console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
-    return percentageLeft  
+    return percentageLeft
 
 
 
