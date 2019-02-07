@@ -109,7 +109,9 @@ class Profile extends React.Component {
                       noCylinders={this.state.userCars.noCylinders}
                       weight={this.state.userCars.grossWeightRating}
                       lastMileageDate={this.state.userCars.dateMileageUpdate}
+                      lastMileage={this.state.userCars.currentMileage}
                       currentMileage={this.state.userCars.currentMileage}
+                      carId={this.state.userCars._id}
                     />
                   </Tab>
                   :

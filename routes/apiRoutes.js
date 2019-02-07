@@ -37,6 +37,18 @@ router.post("/signup", (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
 });
+router.put("/updatecar/:carid" , function(req,res){
+db.Car.findByIdAndUpdate(req.params.carid,{$set:req.body}, function(err, result){
+  if(err){
+      console.log(err);
+  }
+  console.log("RESULT: " + result);
+  res.send('Done')
+});
+
+
+
+})
 
 // Any route with isAuthenticated is protected and you need a valid token
 // to access , removed isAuthenticated from function temporarily
