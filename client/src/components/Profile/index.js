@@ -86,7 +86,10 @@ class Profile extends React.Component {
 
           </div>
           <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                      trigger={<Button 
+                        className="light-blue lighten-4 black-text" 
+                        waves='light'>Add Car
+                        </Button>}>
                       <Row>
                         {/* <form onSubmit={this.handleSubmit}> */}
                         <input 

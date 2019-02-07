@@ -59,6 +59,9 @@ class CarProfile extends React.Component {
         }
       })
   }
+  addNewService() {
+    
+  }
 
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
