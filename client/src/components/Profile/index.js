@@ -19,7 +19,7 @@ class Profile extends React.Component {
       username: "",
       email: "",
       carIsSet: false,
-      vin: ""
+      value: ""
     };
    
     this.handleChange = this.handleChange.bind(this);
@@ -29,17 +29,13 @@ class Profile extends React.Component {
   }
 
   handleChange = (event) => {
-    
-    const { name, value } = event.target;
-   this.setState({
-     [name]: value
-   });
+    this.setState({value: event.target.value});
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.Auth.loggedIn()) {
-    API.addcar(this.state.userDetails._id, this.state.vin)
+    API.addCar(this.state.userDetails._id, this.state.value);
   }
   }
 
@@ -122,19 +118,28 @@ class Profile extends React.Component {
                   </Tab>
                   :
                   <Tab title="Add Car">
-                    <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
+                    {/* <Modal header='Modal Header'
+                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}> */}
                       <Row>
                         {/* <form onSubmit={this.handleSubmit}> */}
-                        <Input placeholder="VIN" s={6} name="vin" label="" id="vin" type="text" value={this.state.vin} onChange={this.handleChange}/>
+                        <input 
+                        placeholder="VIN" 
+                        s={6} 
+                        name="vin" 
+                        id="vin" 
+                        type="text" 
+                        value={this.state.value} 
+                        onChange={this.handleChange}
+                        />
+                        {/* </form> */}
                         <Button 
                         type="submit"
-                        onSubmit={this.handleSubmit}
+                        onClick={this.handleSubmit}
                         
                         >Submit</Button>
-                        {/* </form> */}
+                        
                       </Row>
-                    </Modal>
+                    {/* </Modal> */}
                   </Tab>
                 }
               </Tabs>
