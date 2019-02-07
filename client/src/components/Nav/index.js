@@ -32,7 +32,9 @@ class Nav extends React.Component {
                   <i className="fas fa-user-circle" />
                 </Link>
               </li>
-
+              <li>
+              <Link to="/">Services</Link>
+              </li>
               <li>
                 <Link to="/about">About</Link>
               </li>
