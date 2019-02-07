@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-// import Progress from "./subconponents/ProgressBar";
+import API from "../../utils/API"
 import {
   Collapsible,
   CollapsibleItem,
@@ -11,73 +11,96 @@ import {
   Button
 } from "react-materialize";
 
-// function onClickService(event) {
-//   event.stopPropagation();
-//   console.log("Hello There", event.isPropagationStopped());
 
-// }
 
-function Service(props) {
-  return (
-    <div className="row">
-      <div className="col s12 m6 offset-m3 center">
-        <Collapsible>
-          <CollapsibleItem className="active" header={props.name}>
-            <div
-              className="box-img"
-              style={{
-                backgroundImage: `url(${props.image})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain"
-              }}
-            />
+class Service extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      mileage: ""
+    }
+  }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-            <Row>
-              <Col s={12}>
-                <div className="col s10">
-                  <ProgressBar
-                    progress={props.partLife}
-                    className={
-                      props.partLife >= 80
-                        ? "green"
-                        : props.partLife >= 40
-                        ? "yellow"
-                        : "red"
-                    }
-                  />
-                </div>
-                <div className="col s2">{props.partLife}%</div>
-              </Col>
-            </Row>
-            <div>
+  onServiceSubmit = event => {
+
+    console.log(this.props.name + this.state.mileage + this.props.carId)
+    API.addService(this.props.name, this.state.mileage, this.props.carId);
+
+  }
+
+  render() {
+    return (
+      <div className="row">
+        <div className="col s12 m6 offset-m3 center">
+          <Collapsible>
+            <CollapsibleItem className="active" header={this.props.name}>
               <Button
+                className="right"
+                floating
+                large
                 onClick={() => {
-                  window.$("#addServiceModal").modal("open");
+                  window.$(`#${this.props.nameId}`).modal("open");
                 }}
               >
                 Add Service
               </Button>
-              <Modal 
-              id="addServiceModal" 
-              header="Add a Service"
+              <div
+                className="box-img"
+                style={{
+                  backgroundImage: `url(${this.props.image})`,
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "contain"
+                }}
+              />
 
-              >
-                <input 
-                        placeholder="Want to add a service?" 
-                        name="addService" 
-                        id="addService" 
-                        type="text" 
-                        // value={this.state.value} 
-                        // onChange={this.handleChange}
-                        />
-              </Modal>
-            </div>
-          </CollapsibleItem>
-        </Collapsible>
+              <Row>
+                <Col s={12}>
+                  <div className="col s10">
+                    <ProgressBar
+                      progress={this.props.partLife}
+                      className={
+                        this.props.partLife >= 80
+                          ? "green"
+                          : this.props.partLife >= 40
+                            ? "yellow"
+                            : "red"
+                      }
+                    />
+                  </div>
+                  <div className="col s2">{this.props.partLife}%</div>
+                </Col>
+              </Row>
+              <div>
+
+                <Modal
+                  id={this.props.nameId}
+                  header="Add a Service"
+                >
+
+                  <input
+                    placeholder="Input current mileage ammount for service completed"
+                    name="mileage"
+                    id="mileage"
+                    type="text"
+                    value={this.state.mileage}
+                    onChange={this.handleChange}
+                  />
+                  <Button onClick={this.onServiceSubmit} type="submit">Submit</Button>
+                </Modal>
+              </div>
+            </CollapsibleItem>
+          </Collapsible>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Service;

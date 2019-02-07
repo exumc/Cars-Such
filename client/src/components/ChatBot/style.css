@@ -2,3 +2,9 @@
     width:100%;
     height:40vh;
 }
+
+.openKirby:hover{
+    background-color: #b3e5fc !important;
+    color:white !important;
+}
+
