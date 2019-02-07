@@ -3,9 +3,7 @@ import "./style.css";
 import withAuth from "../withAuth";
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
-import AddVehicle from "./subcomponents/AddVehicle"
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Row, Col, Tab, Modal, Button, Tabs, Input } from "react-materialize";
+import { Row, Tab, Modal, Button, Tabs, Input } from "react-materialize";
 import API from "../../utils/API"
 import AuthService from '../AuthService';
 
@@ -89,34 +87,32 @@ class Profile extends React.Component {
 
           </div>
 
-
-
-
-          <Modal header='Modal Header'
-            trigger={<Button
-              className="light-blue lighten-4 black-text"
-              waves='light'>Add Car
+          <Row>
+            <Modal header='Modal Header'
+              trigger={<Button
+                className="light-blue lighten-4 black-text"
+                waves='light'>Add Car
                         </Button>}>
-            <Row>
-              {/* <form onSubmit={this.handleSubmit}> */}
-              <input
-                placeholder="VIN"
-                s={6}
-                name="vin"
-                id="vin"
-                type="text"
-                value={this.state.vin}
-                onChange={this.handleChange}
-              />
-              {/* </form> */}
-              <Button
-                type="submit"
-                onClick={this.handleSubmit}
+              <Row>
+                <input
+                  placeholder="VIN"
+                  s={6}
+                  name="vin"
+                  id="vin"
+                  type="text"
+                  value={this.state.vin}
+                  onChange={this.handleChange}
+                />
+                <Button
+                  type="submit"
+                  onClick={this.handleSubmit}
+                  className="modal-close light-blue lighten-2"
 
-              >Submit</Button>
+                >Submit</Button>
 
-            </Row>
-          </Modal>
+              </Row>
+            </Modal>
+          </Row>
           <div className="row">
 
             <div className="col s12">
@@ -150,25 +146,7 @@ class Profile extends React.Component {
                     />
                   </Tab>
                   :
-                  <Tab title="Add Car">
-                    <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
-                      <Row>
-                        <form>
-                          <Input
-                            placeholder="VIN"
-                            s={6}
-                            id="vin"
-                            name="vin"
-                            defaultValue={this.state.vin}
-                            onChange={this.handleChange}
-                          />
-                          <Button type="submit">Submit</Button>
-                        </form>
-                      </Row>
-
-                    </Modal>
-                  </Tab>
+                  <Tab></Tab>
                 }
               </Tabs>
             </div>
