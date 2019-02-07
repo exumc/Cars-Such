@@ -18,13 +18,32 @@ class Profile extends React.Component {
       userCars: "",
       username: "",
       email: "",
-      carIsSet: false
+      carIsSet: false,
+      vin: ""
     };
+   
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.Auth = new AuthService();
 
   }
 
+  handleChange = (event) => {
+    
+    const { name, value } = event.target;
+   this.setState({
+     [name]: value
+   });
+  }
+
   handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.Auth.loggedIn()) {
+    API.addcar(this.state.userDetails._id, this.state.vin)
+  }
+  }
+
+  handleLogout = (event) => {
 
     event.preventDefault();
     this.Auth.logout()
@@ -33,7 +52,6 @@ class Profile extends React.Component {
       .catch(err => {
         alert(err.response.data.message)
       });
-
   }
 
   componentDidMount() {
@@ -107,10 +125,15 @@ class Profile extends React.Component {
                     <Modal header='Modal Header'
                       trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}>
                       <Row>
-                        <Input placeholder="VIN" s={6} label="" />
-                        <Button type="submit">Submit</Button>
+                        {/* <form onSubmit={this.handleSubmit}> */}
+                        <Input placeholder="VIN" s={6} name="vin" label="" id="vin" type="text" value={this.state.vin} onChange={this.handleChange}/>
+                        <Button 
+                        type="submit"
+                        onSubmit={this.handleSubmit}
+                        
+                        >Submit</Button>
+                        {/* </form> */}
                       </Row>
-
                     </Modal>
                   </Tab>
                 }
@@ -122,7 +145,7 @@ class Profile extends React.Component {
               type="submit"
               name="btn_logout"
               id="userLogout"
-              onClick={this.handleSubmit}
+              onClick={this.handleLogout}
               className="btn btn-large waves-effect light-blue lighten-2"
             > Logout
           </button>
