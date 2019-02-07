@@ -46,12 +46,12 @@ ReactDOM.render(
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/register" component={Register} />
 
+
+
       </Main>
-      <Row>
-        <div className="kirbyBtn">
-          <ChatBot />
-        </div>
-      </Row>
+      <Row> <div className="kirbyBtn">
+        <ChatBot />
+      </div></Row>
       <Footer />
     </Wrapper>
   </Router>,

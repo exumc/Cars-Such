@@ -42,7 +42,7 @@ class Service extends React.Component {
               onClick={() => {
                 window.$(`#${this.props.nameId}`).modal("open");
               }}>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </button>
               <div
                 className="box-img"
@@ -86,7 +86,7 @@ class Service extends React.Component {
                     value={this.state.mileage}
                     onChange={this.handleChange}
                   />
-                  <Button onClick={this.onServiceSubmit} type="submit">Submit</Button>
+                  <Button onClick={this.onServiceSubmit} type="submit" className="modal-close light-blue lighten-2">Submit</Button>
                 </Modal>
               </div>
             </CollapsibleItem>

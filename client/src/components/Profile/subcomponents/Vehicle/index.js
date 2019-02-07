@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import API from "../../../../utils/API";
-import { Redirect } from 'react-router-dom'
 
 class Vehicle extends React.Component {
   constructor() {
