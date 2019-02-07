@@ -17,7 +17,7 @@ class About extends Component {
               Development Bootcamp and quickly gravitated towards working
               together, and working together well more importantly.
           </p>
-          <img className="responsive-img" src="./images/powercoders-1.jpg" alt="The Power Coders" />
+            <img className="responsive-img" src="./images/PowerCoders-1.jpg" alt="The Power Coders" />
 
           </div>
         </div>
