@@ -6,6 +6,17 @@ div.col.s12 button{
     margin-right:8px;
 }
 
+.navTab {
+    height:40px;
+    float:left;
+    margin-right:20px;
+    font-size:20px;
+    color:#4fc3f7;
+}
+
+.navTab:hover{
+    background-color:#e1f5fe;
+}
 .list-group{
     margin-top:40px;
 }

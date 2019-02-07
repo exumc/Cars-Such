@@ -1,4 +1,10 @@
 .kirbyChat{
-    width:100%;
+    width:400px;
     height:40vh;
 }
+
+.openKirby:hover{
+    background-color: #b3e5fc !important;
+    color:white !important;
+}
+

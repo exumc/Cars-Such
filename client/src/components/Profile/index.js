@@ -3,13 +3,15 @@ import "./style.css";
 import withAuth from "../withAuth";
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
-import { Tabs, Tab, Modal, Button, Row, Input, Col } from "react-materialize";
+import AddVehicle from "./subcomponents/AddVehicle"
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Row, Col } from "react-materialize";
 import API from "../../utils/API"
-import ChatBot from "../ChatBot";
 import AuthService from '../AuthService';
 
+
 class Profile extends React.Component {
-  
+
   // Must initialize state first
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ class Profile extends React.Component {
       carIsSet: false,
       value: ""
     };
-   
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.Auth = new AuthService();
@@ -29,14 +31,14 @@ class Profile extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.Auth.loggedIn()) {
-    API.addCar(this.state.userDetails._id, this.state.value);
-  }
+      API.addCar(this.state.userDetails._id, this.state.value);
+    }
   }
 
   handleLogout = (event) => {
@@ -77,90 +79,98 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <section className="mainSection">
-        <div className="container">
-          <div className="row">
-            <div className="col s10">
-              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
+      <Router>
+
+        <section className="mainSection">
+          <div className="container">
+            <div className="row">
+              <div className="col s10">
+                <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
+              </div>
+
             </div>
 
-          </div>
+            <div className="row">
 
-          <div className="row">
+              <ul>
 
-            <div className="col s12">
-              <Tabs className="tabs">
-                <Tab title="Home" active>
+                <li>
+                  <Link to='/profile' className="navTab center">Home</Link>
 
-                  <Home
-                    firstName={this.state.userDetails.firstname}
-                    lastName={this.state.userDetails.lastname}
-                    email={this.state.userDetails.email}
-                  />
-                </Tab>
 
-                {this.state.carIsSet ?
+                </li>
 
-                  <Tab title="Vehicle">
-                    <Vehicle
-                      year={this.state.userCars.year}
-                      make={this.state.userCars.make}
-                      model={this.state.userCars.model}
-                      type={this.state.userCars.Vehicle_Type}
-                      driveType={this.state.userCars.driveType}
-                      hp={this.state.userCars.HP}
-                      fuelType={this.state.userCars.fueltype}
-                      noCylinders={this.state.userCars.noCylinders}
-                      weight={this.state.userCars.grossWeightRating}
-                      lastMileageDate={this.state.userCars.dateMileageUpdate}
-                      currentMileage={this.state.userCars.currentMileage}
-                    />
-                  </Tab>
-                  :
-                  <Tab title="Add Car">
-                    {/* <Modal header='Modal Header'
-                      trigger={<Button className="light-blue lighten-4 black-text" waves='light'>Add Car</Button>}> */}
-                      <Row>
-                        {/* <form onSubmit={this.handleSubmit}> */}
-                        <input 
-                        placeholder="VIN" 
-                        s={6} 
-                        name="vin" 
-                        id="vin" 
-                        type="text" 
-                        value={this.state.value} 
-                        onChange={this.handleChange}
-                        />
-                        {/* </form> */}
-                        <Button 
-                        type="submit"
-                        onClick={this.handleSubmit}
-                        
-                        >Submit</Button>
-                        
-                      </Row>
-                    {/* </Modal> */}
-                  </Tab>
-                }
-              </Tabs>
+                <li>
+                  <Switch>
+                    {this.state.carIsSet ?
+
+                      <Link to='/profile/vehicle' className="navTab center">Vehicle</Link>
+
+
+                      :
+
+                      <Link to='/profile/addvehicle' className="navTab center">Add Vehicle</Link>
+
+
+                    }
+                  </Switch>
+                </li>
+
+
+              </ul>
+
             </div>
-          </div>
-          <Row>
-            <button
-              type="submit"
-              name="btn_logout"
-              id="userLogout"
-              onClick={this.handleLogout}
-              className="btn btn-large waves-effect light-blue lighten-2"
-            > Logout
-          </button>
-          </Row>
-          <Row>
-            <Col s={4}><ChatBot />
+
+
+            <Col s={12}>
+              <Route
+                exact
+                path="/profile"
+                render={props => <Home {...props}
+                  firstName={this.state.userDetails.firstname}
+                  lastName={this.state.userDetails.lastname}
+                  email={this.state.userDetails.email} />}
+              />
+              <Route
+                path="/profile/addvehicle"
+                render={props => <AddVehicle {...props}
+                  value={props.value}
+                  onChange={props.handleChange}
+                  onClick={props.handleSubmit}
+
+                />}
+              />
+
+              <Route
+                exact
+                path="/profile/vehicle"
+                render={props => <Vehicle {...props}
+                  year={this.state.userCars.year}
+                  make={this.state.userCars.make}
+                  model={this.state.userCars.model}
+                  type={this.state.userCars.Vehicle_Type}
+                  driveType={this.state.userCars.driveType}
+                  hp={this.state.userCars.HP}
+                  fuelType={this.state.userCars.fueltype}
+                  noCylinders={this.state.userCars.noCylinders}
+                  weight={this.state.userCars.grossWeightRating}
+                  lastMileageDate={this.state.userCars.dateMileageUpdate}
+                  currentMileage={this.state.userCars.currentMileage} />}
+              />
             </Col>
-          </Row>
-        </div>
-      </section>
+            <Row>
+              <button
+                type="submit"
+                name="btn_logout"
+                id="userLogout"
+                onClick={this.handleLogout}
+                className="btn btn-large waves-effect red lighten-2"
+              > Logout
+          </button>
+            </Row>
+          </div>
+        </section>
+      </Router>
     );
   }
 }
