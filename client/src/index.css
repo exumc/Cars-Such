@@ -14,9 +14,10 @@ main {
   background-image: url(/images/bg1.jpg);
   background-size: cover;
   background-position: 50% 20%;
+  height: 85vh;
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   section {
     min-height: 700px;
   }
@@ -26,7 +27,7 @@ main {
   section {
     min-height: 700px;
   }
-}
+} */
 
 footer {
   bottom: 0;
@@ -42,6 +43,7 @@ footer {
 .bold {
   font-weight: 700;
 }
+
 
 .input-field input[type="date"]:focus + label,
 .input-field input[type="text"]:focus + label,
@@ -60,12 +62,6 @@ footer {
   box-shadow: none !important;
 }
 
-.login-form {
-  display: inline-block;
-  padding: 32px 48px 0px 48px;
-  border: 1px solid #eee;
-}
-
 .kirbyBtn{
   position:relative;
   float:right;
@@ -75,4 +71,9 @@ footer {
 
 #BotChatElement .wc-chatview-panel .wc-header{
   background-color:green !important;
+}
+
+.login-form {
+  padding: 32px 48px 0px 48px;
+  border: 1px solid #eee;
 }

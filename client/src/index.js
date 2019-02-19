@@ -49,9 +49,7 @@ ReactDOM.render(
 
 
       </Main>
-      <Row> <div className="kirbyBtn">
-        <ChatBot />
-      </div></Row>
+      
       <Footer />
     </Wrapper>
   </Router>,
