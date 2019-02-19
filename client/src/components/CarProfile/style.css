@@ -1,3 +1,11 @@
 #car-services{
     padding-bottom:40px;
 }
+
+#servicesModal{
+    height:80%;
+}
+
+.dropdown-content li span{
+    color:#4fc3f7;
+}
