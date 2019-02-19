@@ -42,7 +42,7 @@ class Login extends React.Component {
   
   render() {
     return (
-      <section className="mainSection">
+      <div className="mainSection">
         <div className="container">
           <center>
             <div className="section" />
@@ -107,7 +107,7 @@ class Login extends React.Component {
             <Link to="/register">Register an Account</Link>
           </center>
         </div>
-      </section>
+      </div>
     );
   }
 }

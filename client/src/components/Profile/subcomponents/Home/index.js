@@ -19,6 +19,7 @@ class Home extends React.Component {
       [name]: value
     });
   };
+  
   handleSubmit = () => {
     if (this.Auth.loggedIn()) {
       API.editUser(this.state.firstName. this.state.lastName, this.state.email, this.state.password, this.state.userId);
