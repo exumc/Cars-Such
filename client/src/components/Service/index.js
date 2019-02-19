@@ -79,7 +79,7 @@ class Service extends React.Component {
                 >
 
                   <input
-                    placeholder="Input current mileage ammount for service completed"
+                    placeholder="Input current mileage amount for service completed"
                     name="mileage"
                     id="mileage"
                     type="text"

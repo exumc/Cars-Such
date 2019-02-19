@@ -14,8 +14,6 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
-import ChatBot from "./components/ChatBot";
-import { Row } from "react-materialize";
 
 import axios from "axios";
 // Here is if we have an id_token in localStorage
