@@ -17,7 +17,6 @@ class Register extends React.Component {
     }
   }
 
-
   componentWillMount() {
     if (this.Auth.loggedIn()) {
       this.props.history.replace('/');
@@ -45,79 +44,74 @@ class Register extends React.Component {
     return (
       <section className="mainSection">
         <div className="container center">
-            <h5 class="black-text">Register Your account</h5>
-            <div class="container">
-              <div class="z-depth-1 grey lighten-4 login-form">
-                <form class="col s12" onSubmit={this.handleFormSubmit}>
-                  <div class="row">
-                    <div class="col s12" />
+            <h5 className="black-text">Register Your account</h5>
+            <div className="container">
+              <div className="z-depth-1 grey lighten-4 login-form">
+                <form className="col s12" onSubmit={this.handleFormSubmit}>
+                  <div className="row">
+                    <div className="col s12" />
                   </div>
 
-                  <div class="row">
-                    <div class="input-field col s12">
+                  <div className="row">
+                    <div className="input-field col s12">
+                    <label htmlFor="firstName">First Name</label>
                       <input
-                        class="validate"
                         type="text"
                         name="firstname"
                         id="firstname"
                         value={this.state.firstname}
                         onChange={this.handleChange}
                       />
-                      <label for="firstName">First Name</label>
                     </div>
                   </div>
-                  <div class="row">
+                  <div className="row">
 
-                    <div class="input-field col s12">
+                    <div className="input-field col s12">
+                    <label htmlFor="email">Last Name</label>
                       <input
-                        class="validate"
                         type="text"
                         name="lastname"
                         id="lastname"
                         value={this.state.lastname}
                         onChange={this.handleChange}
                       />
-                      <label for="email">Last Name</label>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="input-field col s12">
+                  <div className="row">
+                    <div className="input-field col s12">
+                    <label htmlFor="email">Enter your email</label>
                       <input
-                        class="validate"
                         type="email"
                         name="email"
                         id="email"
                         value={this.state.email}
                         onChange={this.handleChange}
                       />
-                      <label for="email">Enter your email</label>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="input-field col s12">
+                  <div className="row">
+                    <div className="input-field col s12">
+                    <label htmlFor="password">Enter your password</label>
                       <input
-                        class="validate"
                         type="password"
                         name="password"
                         id="password"
                         value={this.state.password}
                         onChange={this.handleChange}
                       />
-                      <label for="password">Enter your password</label>
                     </div>
                     
-
                   </div>
 
                   <br />
-                    <div class="row">
+                    <div className="row">
                       <button
                         type="submit"
                         name="btn_login"
                         id="userLogin"
-                        class="col s12 btn btn-large waves-effect light-blue lighten-2"
+                        className="col s12 btn btn-large waves-effect light-blue lighten-2"
                       >
                         Register
                     </button>
@@ -125,7 +119,6 @@ class Register extends React.Component {
                 </form>
               </div>
             </div>
-            <Link to="/register">Register an Account</Link>
         </div>
       </section>
     );

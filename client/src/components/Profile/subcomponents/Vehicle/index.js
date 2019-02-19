@@ -192,7 +192,7 @@ class Vehicle extends React.Component {
                   <h6>Vehicle Weight</h6>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   name="weight"
                   id="weight"

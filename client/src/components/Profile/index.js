@@ -1,16 +1,14 @@
 import React from "react";
 import "./style.css";
-import withAuth from "../withAuth";
+
 import Home from "./subcomponents/Home";
 import Vehicle from "./subcomponents/Vehicle";
 import { Row, Tab, Modal, Button, Tabs, Input } from "react-materialize";
-import API from "../../utils/API"
-import AuthService from '../AuthService';
+import API from "../../utils/API";
+import AuthService from "../AuthService";
 import withAuth from "../withAuth";
 
-
 class Profile extends React.Component {
-
   // Must initialize state first
   constructor() {
     super();
@@ -21,39 +19,35 @@ class Profile extends React.Component {
       username: "",
       email: "",
       carIsSet: false,
-      vin: "",
+      vin: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.Auth = new AuthService();
-
   }
   handleChange = event => {
-
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-  }
+  };
 
   handleSubmit = () => {
     if (this.Auth.loggedIn()) {
       API.addCar(this.state.userDetails._id, this.state.vin);
     }
-  }
+  };
 
-  handleLogout = (event) => {
-
+  handleLogout = event => {
     event.preventDefault();
     this.Auth.logout()
-      .then(res => {
-      })
+      .then(res => {})
       .catch(err => {
-        alert(err.response.data.message)
+        alert(err.response.data.message);
       });
-  }
+  };
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
@@ -83,34 +77,41 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col s10">
-              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
+              <h1>{`${this.state.userDetails.firstname} ${
+                this.state.userDetails.lastname
+              }`}</h1>
             </div>
-
           </div>
 
           <Row>
-            <Modal header='Modal Header'
-              trigger={<Button
-                className="light-blue lighten-4 black-text"
-                waves='light'>Add Car
-                        </Button>}>
+            <Modal
+              header="Modal Header"
+              trigger={
+                <Button
+                  className="light-blue lighten-4 black-text"
+                  waves="light"
+                >
+                  Add Car
+                </Button>
+              }
+            >
               <Row>
                 <form onSubmit={this.handleSubmit}>
-                  <input
-                    placeholder="VIN"
-                    s={6}
-                    name="vin"
-                    id="vin"
-                    type="text"
-                    value={this.state.vin}
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      placeholder="VIN"
+                      s={6}
+                      name="vin"
+                      id="vin"
+                      type="text"
+                      value={this.state.vin}
+                      onChange={this.handleChange}
+                    />
 
-                  <Button
-                    type="submit"
-                  // onClick={this.handleSubmit}
-
-                  >Submit</Button>
+                    <Button type="submit" className="btn btn-large waves-effect waves-light light-blue lighten-2" onClick={this.handleSubmit}>
+                      Submit
+                    </Button>
+                  </div>
                 </form>
               </Row>
             </Modal>
@@ -118,16 +119,15 @@ class Profile extends React.Component {
               <div className="col s12">
                 <Tabs className="tabs">
                   <Tab title="Home" active>
-
                     <Home
                       firstName={this.state.userDetails.firstname}
                       lastName={this.state.userDetails.lastname}
                       email={this.state.userDetails.email}
+                      handleChange={this.handleChange}
                     />
                   </Tab>
 
-                  {this.state.carIsSet ?
-
+                  {this.state.carIsSet ? 
                     <Tab title="Vehicle">
                       <Vehicle
                         year={this.state.userCars.year}
@@ -143,10 +143,11 @@ class Profile extends React.Component {
                         lastMileage={this.state.userCars.currentMileage}
                         currentMileage={this.state.userCars.currentMileage}
                         carId={this.state.userCars._id}
+                        handleChange={this.handleChange}
                       />
                     </Tab>
-                    :
-                    <Tab></Tab>
+                   : 
+                    <Tab title='' />
                   }
                 </Tabs>
               </div>
@@ -159,13 +160,14 @@ class Profile extends React.Component {
                 id="userLogout"
                 onClick={this.handleLogout}
                 className="btn btn-large waves-effect red lighten-2"
-              > Logout
-          </button>
+              >
+                {" "}
+                Logout
+              </button>
             </Row>
           </Row>
         </div>
-      </section >
-
+      </section>
     );
   }
 }
