@@ -65,7 +65,12 @@ class CarProfile extends React.Component {
                   }
                 }
               }
-              this.setState({ services: a })
+              let serviceList = a.filter(data=>{
+                if (data.percentage){
+                  return data
+                }
+              })
+              this.setState({ services: serviceList})
             })
           }
         }
