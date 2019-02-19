@@ -108,7 +108,7 @@ class Profile extends React.Component {
 
                   <Button
                     type="submit"
-                  // onClick={this.handleSubmit}
+                  onClick={this.handleSubmit}
 
                   >Submit</Button>
                 </form>
@@ -123,6 +123,7 @@ class Profile extends React.Component {
                       firstName={this.state.userDetails.firstname}
                       lastName={this.state.userDetails.lastname}
                       email={this.state.userDetails.email}
+                      onChange={this.handleChange}
                     />
                   </Tab>
 
@@ -146,7 +147,7 @@ class Profile extends React.Component {
                       />
                     </Tab>
                     :
-                    <Tab></Tab>
+                    <Tab title="vehicle"></Tab>
                   }
                 </Tabs>
               </div>
