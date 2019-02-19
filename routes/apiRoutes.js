@@ -82,11 +82,14 @@ router.get("/user/:id", (req, res) => {
 // Helder // isAuthenticated,
 router.post("/edituser/:id", function (req, res) {
   // route to edit the user information
-  db.User.updateOne({
-    id: req.params.id,
+  console.log(req.params.id);
+  console.log(req.body);
+  db.User.findByIdAndUpdate({
+    _id: req.params.id,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    email: req.body.email
+    email: req.body.email,
+    password:req.body.password
   }).then(function (data) {
     res.json(data);
   });

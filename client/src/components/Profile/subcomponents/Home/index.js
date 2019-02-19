@@ -4,13 +4,21 @@ import API from "../../../../utils/API";
 
 
 class Home extends React.Component {
-  state = {
-    firstName: this.props.firstName,
-    lastName: this.props.lastName,
-    email: this.props.email,
-    password: '',
-    userId: this.props.userId
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      firstName: this.props.firstName,
+      lastName: this.props.lastName,
+      email: this.props.email,
+      password: '',
+      userId: this.props.id
+    };
+
+
+  }
+  componentDidMount(){
+    console.log(this.state.userId);
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -19,10 +27,13 @@ class Home extends React.Component {
       [name]: value
     });
   };
-  handleSubmit = () => {
-    if (this.Auth.loggedIn()) {
-      API.editUser(this.state.firstName. this.state.lastName, this.state.email, this.state.password, this.state.userId);
-    }
+  handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.userId);
+        
+    
+      API.editUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password, this.state.userId);
+    
   };
 
   render() {
@@ -33,8 +44,9 @@ class Home extends React.Component {
             <hr />
             <form
               className="form"
-              action="##"
-              method="post"
+              
+              onSubmit={this.handleSubmit}
+              
               id="registrationForm1"
             >
               <div className="input-field">
@@ -102,6 +114,7 @@ class Home extends React.Component {
                     id="password"
                     placeholder="password"
                     title="enter your password."
+                    value={this.password}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -116,13 +129,13 @@ class Home extends React.Component {
                     <i className="fas fa-check" />
                     Save
                   </button>
-                  <button
+                  {/* <button
                     className="btn btn-large waves-effect waves-light light-blue lighten-2"
                     type="reset"
                   >
                     <i className="fas fa-redo" />
                     Reset
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </form>
