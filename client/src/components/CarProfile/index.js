@@ -3,6 +3,16 @@ import "./style.css";
 import services from "../../services.json";
 import Service from "../Service";
 import API from "../../utils/API"
+import {
+  Collapsible,
+  CollapsibleItem,
+  Row,
+  Col,
+  ProgressBar,
+  Modal,
+  Button
+} from "react-materialize";
+
 class CarProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -15,6 +25,9 @@ class CarProfile extends React.Component {
       averageMileagePerDay: "",
       carId: ""
     };
+
+
+
   }
 
   componentDidMount() {
@@ -24,7 +37,7 @@ class CarProfile extends React.Component {
       .getUser(this.props.id)
       .then(res => {
         if (res.data.cars[0]) {
-          this.setState({carId : res.data.cars[0]._id})
+          this.setState({ carId: res.data.cars[0]._id })
           if (res.data.cars[0].services[0]) {
             this.setState({
               servicesFromDataBase: res.data.services,
@@ -56,21 +69,21 @@ class CarProfile extends React.Component {
 
                     let serviceLife = b[j].nextServiceMiles - b[j].mileage;
                     let milesCounter = myCarObj.currentMileage - a[i].mileage
-                    console.log("current car mileage: "+myCarObj.currentMileage);
-                    console.log("service Life: "+serviceLife);
-                    console.log("miles counter: "+milesCounter);
+                    console.log("current car mileage: " + myCarObj.currentMileage);
+                    console.log("service Life: " + serviceLife);
+                    console.log("miles counter: " + milesCounter);
                     a[i].percentage = 100 - Math.floor((milesCounter / serviceLife) * 100)
                     console.log(a[i].percentage);
 
                   }
                 }
               }
-              let serviceList = a.filter(data=>{
-                if (data.percentage){
+              let serviceList = a.filter(data => {
+                if (data.percentage) {
                   return data
                 }
               })
-              this.setState({ services: serviceList})
+              this.setState({ services: serviceList })
             })
           }
         }
@@ -78,48 +91,11 @@ class CarProfile extends React.Component {
   }
 
 
-  // calculateAverageMileage(objInfo) {
-  //   let initialDate = objInfo.initialDate;
-  //   let initialMileage = objInfo.initialMileage;
-  //   let currentMileage = objInfo.currentMileage;
-  //   let currentDate = objInfo.currentDate;
-  //   let date_1 = new Date(initialDate);
-  //   let date_2 = new Date(currentDate);
-  //   let differenceInDays =this.mydiff(date_1 , date_2 , "days");
-  //   let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
-  //   let myNewObj = {
-  //     mileageDif: currentMileage - initialMileage,
-  //     daysDif: differenceInDays,
-  //     averageMileagePerDay:averageMiles
-  //   }
-  //   console.log(myNewObj);
-  //   this.setState({averageMileagePerDay:averageMiles})
-  //   return myNewObj.averageMileagePerDay
-  // }
-  getPercentage(argDateServiced , argServiceLifeSpan){
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // let currentDate = new Date();
-    // argDateServiced = new Date(argDateServiced);
-    // let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
-    // console.log("avg Miles per day: "+ this.state.averageMileagePerDay);
-    // let milesCounter = dateDifference * this.state.averageMileagePerDay
-    // let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
-    // let percentageLeft =100 - percentage
-    // console.log("Service Life Span: "+ argServiceLifeSpan);
-    // console.log("Days Since last Service: "+ dateDifference);
-    // console.log("Estimated Miles Since Last Service: "+ milesCounter);
-    // console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
-    // return percentageLeft
+
+  getPercentage(argDateServiced, argServiceLifeSpan) {
+
+
+
   }
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
@@ -135,16 +111,16 @@ class CarProfile extends React.Component {
       daysDif: differenceInDays,
       averageMileagePerDay: averageMiles
     }
-    this.setState({averageMileagePerDay:averageMiles})
+    this.setState({ averageMileagePerDay: averageMiles })
     return myNewObj.averageMileagePerDay
   }
   getPercentage(argDateServiced, argServiceLifeSpan) {
     let currentDate = new Date();
     argDateServiced = new Date(argDateServiced);
-    let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
+    let dateDifference = this.mydiff(argDateServiced, currentDate, "days");
     let milesCounter = dateDifference * this.state.averageMileagePerDay
-    let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100) 
-    let percentageLeft =100 - percentage
+    let percentage = Math.floor((milesCounter / argServiceLifeSpan) * 100)
+    let percentageLeft = 100 - percentage
 
     return percentageLeft
 
@@ -152,29 +128,27 @@ class CarProfile extends React.Component {
 
 
   }
-  
-//   mydiff(date1,date2,interval) {
-//     var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-//     date1 = new Date(date1);
-//     date2 = new Date(date2);
-//     var timediff = date2 - date1;
-//     if (isNaN(timediff)) return NaN;
-//     switch (interval) {
-//         case "years": return date2.getFullYear() - date1.getFullYear();
-//         case "months": return (
-//             ( date2.getFullYear() * 12 + date2.getMonth() )
-//             -
-//             ( date1.getFullYear() * 12 + date1.getMonth() )
-//         );
-//         case "weeks"  : return Math.floor(timediff / week);
-//         case "days"   : return Math.floor(timediff / day); 
-//         case "hours"  : return Math.floor(timediff / hour); 
-//         case "minutes": return Math.floor(timediff / minute);
-//         case "seconds": return Math.floor(timediff / second);
-//         default: return undefined;
-//     }
-// }
+
+onModalSubmit = event => {
+  API.addService(this.props.name);
+}
+
+
+  onServiceSubmit = event => {
+    API.addService(this.props.name, this.state.mileage, this.props.carId);
+  }
+
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+
   render() {
+
     return (
       <section className="mainSection">
         <div className="row" id="car-services">
@@ -190,8 +164,49 @@ class CarProfile extends React.Component {
                 nameId={service.nameId}
                 carId={this.state.carId}
               />
+
             );
+
           })}
+  
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Service</a>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Add Service</h4>
+
+
+    <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text"  />
+  </div>
+
+  <div class="input-field col s12">
+    <select onClick = {this.onModalSubmit} onChange = {this.handleChange}>
+   <ul> 
+    <li>{this.state.services.map(service => {
+  return (
+    <Service
+      nameId={this.state.nameId}
+    />
+
+  );
+  
+
+})}
+</li> 
+</ul>
+      {/* <option value="hey" >Choose service</option>
+      <option value="1">{this.state.nameId}</option>
+      <option value="2">{}</option>
+      <option value="3"></option> */}
+    </select>
+    <label>Your services</label> 
+  
+
+   <Button onClick ={this.onServiceSubmit} type ="submit">Submit Service</Button>
+    </div>
+ 
+</div>
+         
         </div>
       </section>
     );

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Form from "../Footer"
 import "./style.css";
+import Footer from "../Footer";
 
 class About extends Component {
 
@@ -18,7 +20,7 @@ class About extends Component {
               together, and working together well more importantly.
           </p>
             <img className="responsive-img" src="./images/PowerCoders-1.jpg" alt="The Power Coders" />
-
+        <Footer />
           </div>
         </div>
       </section>
