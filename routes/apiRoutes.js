@@ -84,8 +84,9 @@ router.post("/edituser/:id", function (req, res) {
   // route to edit the user information
   console.log(req.params.id);
   console.log(req.body);
-  db.User.findByIdAndUpdate({
-    _id: req.params.id,
+  db.User.findOneAndUpdate(
+    {"_id": req.params.id},
+    {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
