@@ -2,7 +2,11 @@ import React from "react";
 import "./style.css";
 import services from "../../services.json";
 import Service from "../Service";
-import API from "../../utils/API";
+import API from "../../utils/API"
+import {
+  Button,
+} from "react-materialize";
+
 class CarProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +19,7 @@ class CarProfile extends React.Component {
       averageMileagePerDay: "",
       carId: ""
     };
+
   }
 
   componentDidMount() {
@@ -159,11 +164,14 @@ class CarProfile extends React.Component {
   //     }
   // }
   render() {
+
     return (
       <section className="mainSection">
-        <div className="row" id="car-services">
+        <div className="row center" id="car-services">
           <div className="row">
-            <h2 className="center">Your car services</h2>
+            <h2 className="">Your car services</h2>
+            <br />
+            <a className="waves-effect waves-light light-blue lighten-2 btn modal-trigger" href="#servicesModal">Add a new Service</a>
           </div>
           {this.state.services.map(service => {
             return (
@@ -176,8 +184,32 @@ class CarProfile extends React.Component {
                 nameId={service.nameId}
                 carId={this.state.carId}
               />
+
             );
+
           })}
+
+          <div id="servicesModal" className="modal">
+            <div className="modal-content">
+              <h4>Add Service</h4>
+              <div className="input-field col s12">
+                <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
+              </div>
+              <div className="input-field col s12">
+                <select name="services" onClick={this.onModalSubmit} onChange={this.handleChange}>
+                  {this.state.services.map(service => {
+                    return <option key={service.name}>{service.name}</option>
+                  })}
+                </select>
+                <label htmlFor="services">Your services</label>
+                <Button className="light-blue lighten-2" onClick={this.onServiceSubmit} type="submit">Submit Service</Button>
+              </div>
+            </div>
+
+
+
+          </div>
+
         </div>
       </section>
     );
