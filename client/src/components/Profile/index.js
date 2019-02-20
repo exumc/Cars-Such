@@ -21,8 +21,6 @@ class Profile extends React.Component {
       carIsSet: false,
       vin: "",
       userId:""
-      
-
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -117,8 +115,6 @@ class Profile extends React.Component {
                       value={this.state.vin}
                       onChange={this.handleChange}
                     />
-
-
                   </div>
                 </form>
               </Row>

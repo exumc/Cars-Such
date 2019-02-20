@@ -82,15 +82,15 @@ router.post("/edituser/:id", function (req, res) {
   console.log(req.params.id);
   console.log(req.body);
   db.User.findOneAndUpdate(
-    {"_id": req.params.id},
+    { "_id": req.params.id },
     {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    password:req.body.password
-  }).then(function (data) {
-    res.json(data);
-  });
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password: req.body.password
+    }).then(function (data) {
+      res.json(data);
+    });
 });
 
 router.post("/addcar/:id/user/:uid", (req, res) => {
@@ -198,23 +198,22 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
         .catch(err => res.status(400).json(err));
     });
 });
+
 router.post("/updateservice/:serviceid", function (req, res) {
 
-db.Services.findOneAndUpdate(
+  db.Services.findOneAndUpdate(
+    { _id: req.params.serviceid },
+    {
+      serviceType: req.body.serviceType,
+      mileage: req.body.mileage,
+      nextServiceMiles: 0
+    }
 
-{_id:req.params.serviceid},
-{serviceType:req.body.serviceType ,
- mileage:req.body.mileage, 
- nextServiceMiles:0
-}
-
-).then(data =>{
-  res.json(data);
+  ).then(data => {
+    res.json(data);
+  })
 })
 
-
-
-})
 router.post("/addservice/:carid", function (req, res) {
   // route to add a service type to a chosen car.
   // creates an instance of db.servicesyarn start
