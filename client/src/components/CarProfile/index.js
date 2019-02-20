@@ -152,8 +152,16 @@ class CarProfile extends React.Component {
       }
     })
     if (!serviceExists) {
-      API.addService(this.state.selectedOption.value, this.state.mileage, this.state.carId);
-      // window.location.reload();
+      API.addService(this.state.selectedOption.value, this.state.mileage, this.state.carId).then(res => {
+        if (this.state.mileage > this.state.carmileage){
+          this.setState({
+            currentMileage: this.state.mileage
+          })
+          API.updateMileage(this.state.carId, this.state)
+        }
+        window.location.reload();
+      });
+     
     }
 
   }
@@ -188,6 +196,7 @@ class CarProfile extends React.Component {
                   nameId={service.nameId}
                   carId={this.state.carId}
                   serviceId={service.serviceId}
+                  currentMileage={this.state.carmileage}
                 />
               );
             }
