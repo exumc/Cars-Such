@@ -260,11 +260,8 @@ class Vehicle extends React.Component {
                 <br />
                 <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="submit">
                   <i className="fas fa-check"></i>Save
-
                     </button>
-                <button className="btn btn-large waves-effect waves-light light-blue lighten-2" type="reset">
-                  <i className="fas fa-redo"></i>Reset
-                    </button>
+               
               </div>
             </div>
           </form>

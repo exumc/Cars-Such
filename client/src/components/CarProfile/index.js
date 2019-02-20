@@ -6,7 +6,6 @@ import API from "../../utils/API"
 import { Button, Row, Modal } from "react-materialize";
 import Select from 'react-select';
 
-
 const options = [
   { value: 'Oil Change', label: 'Oil Change' },
   { value: 'Air Filter', label: 'Air Filter' },
@@ -21,7 +20,6 @@ const options = [
   { value: 'Power Steering', label: 'Power Steering' },
   { value: 'Tire Rotation', label: 'Tire Rotation' },
   { value: 'Air Conditioning', label: 'Air Conditioning' }
-
 ];
 
 class CarProfile extends React.Component {
@@ -30,7 +28,7 @@ class CarProfile extends React.Component {
     this.state = {
       services,
       value: "Select",
-      options:"",
+      options: "",
       userCars: "",
       servicesFromDataBase: [],
       carmileage: "",
@@ -38,20 +36,19 @@ class CarProfile extends React.Component {
       averageMileagePerDay: "",
       selectedOption: null,
       carId: "",
-      mileage:""
+      mileage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.onServiceSubmit = this.onServiceSubmit.bind(this);
   }
 
-
   handleServiceChange = (selectedOption) => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    console.log(`Option selected:`, selectedOption.value);
   }
 
   componentDidMount() {
-   
+
     API.getUser(this.props.id).then(res => {
       if (res.data.cars[0]) {
         this.setState({ carId: res.data.cars[0]._id });
@@ -103,14 +100,13 @@ class CarProfile extends React.Component {
                 if (data.percentage) {
                   return data;
                 }
+                return null
               });
               this.setState({ services: serviceList });
-              console.log(this.state.services);
             });
         }
       }
     });
-
   }
 
   calculateAverageMileage(objInfo) {
@@ -132,6 +128,7 @@ class CarProfile extends React.Component {
     this.setState({ averageMileagePerDay: averageMiles });
     return myNewObj.averageMileagePerDay;
   }
+
   getPercentage(argDateServiced, argServiceLifeSpan) {
     let currentDate = new Date();
     argDateServiced = new Date(argDateServiced);
@@ -139,35 +136,44 @@ class CarProfile extends React.Component {
     let milesCounter = dateDifference * this.state.averageMileagePerDay;
     let percentage = Math.floor((milesCounter / argServiceLifeSpan) * 100);
     let percentageLeft = 100 - percentage;
-
     return percentageLeft;
   }
-  onServiceSubmit =event =>{
-    event.preventDefault()
-    this.setState({mileage:this.state.mileage})
+
+  onServiceSubmit = event => {
+    event.preventDefault();
+    this.setState({ mileage: this.state.mileage })
     console.log(this.state.selectedOption.value);
     console.log(this.state.mileage);
     let serviceExists = false;
-    this.state.services.map(data =>{
-      if (data.name === this.state.selectedOption.value){
-        serviceExists=true
+    this.state.servicesFromDataBase.map(data => {
+      console.log(data)
+      if (data.serviceType === this.state.selectedOption.value) {
+        serviceExists = true
       }
     })
-    if (serviceExists === false){
-      API.addService(this.state.selectedOption.value , this.state.mileage , this.state.carId);
-
+    if (!serviceExists) {
+      API.addService(this.state.selectedOption.value, this.state.mileage, this.state.carId).then(res => {
+        if (this.state.mileage > this.state.carmileage){
+          this.setState({
+            currentMileage: this.state.mileage
+          })
+          API.updateMileage(this.state.carId, this.state)
+        }
+        window.location.reload();
+      });
+     
     }
-   
+
   }
-  
 
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
-    
+
   }
+
   render() {
     const { selectedOption } = this.state;
 
@@ -179,52 +185,56 @@ class CarProfile extends React.Component {
             <br />
           </div>
           {this.state.services.map(service => {
-            return (
-              <Service
-                id={service.id}
-                key={service.id}
-                name={service.name}
-                image={service.image}
-                partLife={service.percentage}
-                nameId={service.nameId}
-                carId={this.state.carId}
-                serviceId={service.serviceId}
-              />
-            );
+            if (service.serviceId) {
+              return (
+                <Service
+                  id={service.id}
+                  key={service.id}
+                  name={service.name}
+                  image={service.image}
+                  partLife={service.percentage}
+                  nameId={service.nameId}
+                  carId={this.state.carId}
+                  serviceId={service.serviceId}
+                  currentMileage={this.state.carmileage}
+                />
+              );
+            }
+            return null
           })}
 
           <Row>
-          <Modal 
-            className="services-modal" 
-            header="Your Services" 
-            trigger={<Button className="light-blue lighten-2" waves="light">Add a new service</Button>} 
-            actions={
-              <div></div>
-            }>
+            <Modal
+              className="services-modal"
+              header="Your Services"
+              trigger={<Button className="light-blue lighten-2" waves="light">Add a new service</Button>}
+              actions={
+                <div></div>
+              }>
               <div className="modal-content">
                 <h4>Select service to add</h4>
                 <form onSubmit={this.onServiceSubmit}>
-                <Row>
-                  <Select 
-                    value={selectedOption}
-                    onChange={this.handleServiceChange}
-                    options={options} />
-                </Row>
-                <Row>
-                  <div className="input-field col s12">
-                    <input 
-                    placeholder="Input current mileage amount for service completed" 
-                    name="mileage" 
-                    
-                    type="text"
-                    value={this.state.mileage}
-                    onChange={this.handleChange}
-                     />
+                  <Row>
+                    <Select
+                      value={selectedOption}
+                      onChange={this.handleServiceChange}
+                      options={options} />
+                  </Row>
+                  <Row>
+                    <div className="input-field col s12">
+                      <input
+                        placeholder="Input current mileage amount for service completed"
+                        name="mileage"
+                        id="mileage"
+                        type="text"
+                        value={this.state.mileage}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </Row>
+                  <div>
+                    <Button className="light-blue lighten-2" type="submit">Submit Service</Button>
                   </div>
-                </Row>
-                <div>
-                <Button className="light-blue lighten-2"  type="submit">Submit Service</Button>
-              </div>
                 </form>
 
               </div>

@@ -19,7 +19,8 @@ class Service extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      mileage: ""
+      mileage: "",
+      currentMileage: this.props.currentMileage
     }
   }
   handleChange = event => {
@@ -28,13 +29,23 @@ class Service extends React.Component {
       [name]: value
     });
   };
-componentDidMount(){
-  console.log(this.props.serviceId);
-}
+
+  componentDidMount() {
+
+  }
+
   onServiceSubmit = event => {
-    API.updateService(this.props.name, this.state.mileage, this.props.serviceId);
+    API.updateService(this.props.name, this.state.mileage, this.props.serviceId)
+      .then(res => {
+        console.log(this.state.mileage)
+        if (this.state.mileage > this.state.currentMileage) {
+          this.setState({
+            currentMileage: this.state.mileage
+          })
+          API.updateMileage(this.props.carId, this.state)
+        }
+      })
     window.location.reload();
-    
   }
 
   render() {
@@ -43,11 +54,11 @@ componentDidMount(){
         <div className="col s12 m6 offset-m3 center">
           <Collapsible>
             <CollapsibleItem className="active" header={this.props.name}>
-              <button 
-              className="pointer btn-floating btn-large waves-effect waves-light right light-blue lighten-2" 
-              onClick={() => {
-                window.$(`#${this.props.nameId}`).modal("open");
-              }}>
+              <button
+                className="pointer btn-floating btn-large waves-effect waves-light right light-blue lighten-2"
+                onClick={() => {
+                  window.$(`#${this.props.nameId}`).modal("open");
+                }}>
                 <i className="fas fa-plus"></i>
               </button>
               <div
@@ -94,7 +105,7 @@ componentDidMount(){
                     value={this.state.mileage}
                     onChange={this.handleChange}
                   />
-                  
+
                 </Modal>
               </div>
             </CollapsibleItem>
