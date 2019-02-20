@@ -2,8 +2,12 @@
     padding-bottom:40px;
 }
 
-#servicesModal{
-    height:80%;
+.services-modal{
+    height:60%;
+}
+
+.my-services-modal{
+    height:25%;
 }
 
 .dropdown-content li span{

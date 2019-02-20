@@ -13,6 +13,7 @@ let ServiceSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
 ServiceSchema.methods.updateServices = function() {
   if (this.serviceType === "Oil Filter") {
     this.nextServiceMiles = this.mileage + 5000;

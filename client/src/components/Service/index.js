@@ -76,6 +76,8 @@ class Service extends React.Component {
                 <Modal
                   id={this.props.nameId}
                   header="Add a Service"
+                  actions={<div><Button onClick={this.onServiceSubmit} type="submit" className="modal-close light-blue lighten-2">Submit</Button></div>}
+                  className="my-services-modal"
                 >
 
                   <input
@@ -86,7 +88,7 @@ class Service extends React.Component {
                     value={this.state.mileage}
                     onChange={this.handleChange}
                   />
-                  <Button onClick={this.onServiceSubmit} type="submit" className="modal-close light-blue lighten-2">Submit</Button>
+                  
                 </Modal>
               </div>
             </CollapsibleItem>
