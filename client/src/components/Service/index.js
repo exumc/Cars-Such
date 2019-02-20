@@ -13,6 +13,8 @@ import {
 
 
 
+
+
 class Service extends React.Component {
   constructor(props) {
     super(props)
@@ -31,6 +33,8 @@ componentDidMount(){
 }
   onServiceSubmit = event => {
     API.updateService(this.props.name, this.state.mileage, this.props.serviceId);
+    window.location.reload();
+    
   }
 
   render() {

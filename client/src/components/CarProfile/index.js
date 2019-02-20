@@ -35,8 +35,11 @@ class CarProfile extends React.Component {
       carmileageUpdateDate: "",
       averageMileagePerDay: "",
       selectedOption: null,
-      carId: ""
+      carId: "",
+      mileage: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.onServiceSubmit = this.onServiceSubmit.bind(this);
   }
 
   handleServiceChange = (selectedOption) => {
@@ -45,6 +48,7 @@ class CarProfile extends React.Component {
   }
 
   componentDidMount() {
+
     API.getUser(this.props.id).then(res => {
       if (res.data.cars[0]) {
         this.setState({ carId: res.data.cars[0]._id });
@@ -72,6 +76,7 @@ class CarProfile extends React.Component {
             .then(data => {
               let a = this.state.services;
               let b = this.state.servicesFromDataBase;
+              console.log(b);
               for (let i = 0; i < a.length; i++) {
                 for (let j = 0; j < b.length; j++) {
                   if (b[j].serviceType === a[i].name) {
@@ -95,6 +100,7 @@ class CarProfile extends React.Component {
                 if (data.percentage) {
                   return data;
                 }
+                return null
               });
               this.setState({ services: serviceList });
             });
@@ -133,11 +139,31 @@ class CarProfile extends React.Component {
     return percentageLeft;
   }
 
-  handleChange = (event) => {
+  onServiceSubmit = event => {
+    event.preventDefault();
+    this.setState({ mileage: this.state.mileage })
+    console.log(this.state.selectedOption.value);
+    console.log(this.state.mileage);
+    let serviceExists = false;
+    this.state.servicesFromDataBase.map(data => {
+      console.log(data)
+      if (data.serviceType === this.state.selectedOption.value) {
+        serviceExists = true
+      }
+    })
+    if (!serviceExists) {
+      API.addService(this.state.selectedOption.value, this.state.mileage, this.state.carId);
+      // window.location.reload();
+    }
+
+  }
+
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
+
   }
 
   render() {
@@ -151,51 +177,55 @@ class CarProfile extends React.Component {
             <br />
           </div>
           {this.state.services.map(service => {
-            return (
-              <Service
-                id={service.id}
-                key={service.id}
-                name={service.name}
-                image={service.image}
-                partLife={service.percentage}
-                nameId={service.nameId}
-                carId={this.state.carId}
-                serviceId={service.serviceId}
-              />
-            );
+            if (service.serviceId) {
+              return (
+                <Service
+                  id={service.id}
+                  key={service.id}
+                  name={service.name}
+                  image={service.image}
+                  partLife={service.percentage}
+                  nameId={service.nameId}
+                  carId={this.state.carId}
+                  serviceId={service.serviceId}
+                />
+              );
+            }
+            return null
           })}
 
           <Row>
-            <Modal 
-            className="services-modal" 
-            header="Your Services" 
-            trigger={<Button className="light-blue lighten-2" waves="light">Add a new service</Button>} 
-            actions={
-              <div></div>
-            }>
+            <Modal
+              className="services-modal"
+              header="Your Services"
+              trigger={<Button className="light-blue lighten-2" waves="light">Add a new service</Button>}
+              actions={
+                <div></div>
+              }>
               <div className="modal-content">
                 <h4>Select service to add</h4>
-                <form onSubmit={this.onServiceSubmit} >
-                <Row>
-                  <Select 
-                    value={selectedOption}
-                    onChange={this.handleServiceChange}
-                    options={options} />
-                </Row>
-                <Row>
-                  <div className="input-field col s12">
-                    <input 
-                    placeholder="Input current mileage amount for service completed" 
-                    name="mileage" 
-                    id="mileage" 
-                    type="text"
-                    onChange={this.handleChange}
-                     />
+                <form onSubmit={this.onServiceSubmit}>
+                  <Row>
+                    <Select
+                      value={selectedOption}
+                      onChange={this.handleServiceChange}
+                      options={options} />
+                  </Row>
+                  <Row>
+                    <div className="input-field col s12">
+                      <input
+                        placeholder="Input current mileage amount for service completed"
+                        name="mileage"
+                        id="mileage"
+                        type="text"
+                        value={this.state.mileage}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </Row>
+                  <div>
+                    <Button className="light-blue lighten-2" type="submit">Submit Service</Button>
                   </div>
-                </Row>
-                <div>
-                <Button className="light-blue lighten-2" type="submit">Submit Service</Button>
-              </div>
                 </form>
 
               </div>
