@@ -37,16 +37,13 @@ router.post("/signup", (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
 });
-router.put("/updatecar/:carid" , function(req,res){
-db.Car.findByIdAndUpdate(req.params.carid,{$set:req.body}, function(err, result){
-  if(err){
-    throw(err)
-  }
-  res.send('Done')
-});
-
-
-
+router.put("/updatecar/:carid", function (req, res) {
+  db.Car.findByIdAndUpdate(req.params.carid, { $set: req.body }, function (err, result) {
+    if (err) {
+      throw (err)
+    }
+    res.send('Done')
+  });
 })
 
 // Any route with isAuthenticated is protected and you need a valid token
@@ -98,7 +95,7 @@ router.post("/edituser/:id", function (req, res) {
 
 router.post("/addcar/:id/user/:uid", (req, res) => {
   // route to a car to the existing logged in user
-  
+
   axios
     .get(
       "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinExtended/" +
@@ -298,6 +295,7 @@ router.post("/carmileage/:id", function (req, res) {
     res.json(data);
   });
 });
+
 router.get("/getservices/:carid", function (req, res) {
   db.Car.findById(req.params.carid)
     .populate({

@@ -13,6 +13,7 @@ let ServiceSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+<<<<<<< HEAD
 ServiceSchema.pre('findOneAndUpdate', function(next) {
   console.log("pre hook function called");
   // console.log(this);
@@ -67,6 +68,9 @@ ServiceSchema.pre('findOneAndUpdate', function(next) {
   }
  next();
 });
+=======
+
+>>>>>>> f1f518b4d4c2f54ea698681171ef33c6dafeadcc
 ServiceSchema.methods.updateServices = function() {
   if (this.serviceType === "Oil Filter") {
     this.nextServiceMiles = this.mileage + 5000;

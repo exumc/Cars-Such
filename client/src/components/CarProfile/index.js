@@ -3,10 +3,26 @@ import "./style.css";
 import services from "../../services.json";
 import Service from "../Service";
 import API from "../../utils/API"
-import {
-  Button,
-  Input
-} from "react-materialize";
+import { Button, Row, Modal } from "react-materialize";
+import Select from 'react-select';
+
+
+const options = [
+  { value: 'Oil Change', label: 'Oil Change' },
+  { value: 'Air Filter', label: 'Air Filter' },
+  { value: 'Tune Up', label: 'Tune Up' },
+  { value: 'Shocks and Struts', label: 'Shocks and Struts' },
+  { value: 'Brakes', label: 'Brakes' },
+  { value: 'Battery', label: 'Battery' },
+  { value: 'Coolant', label: 'Coolant' },
+  { value: 'Timing Belt', label: 'Timing Belt' },
+  { value: 'Transmission', label: 'Transmission' },
+  { value: 'Spark Plugs', label: 'Spark Plugs' },
+  { value: 'Power Steering', label: 'Power Steering' },
+  { value: 'Tire Rotation', label: 'Tire Rotation' },
+  { value: 'Air Conditioning', label: 'Air Conditioning' }
+
+];
 
 class CarProfile extends React.Component {
   constructor(props) {
@@ -20,8 +36,15 @@ class CarProfile extends React.Component {
       carmileage: "",
       carmileageUpdateDate: "",
       averageMileagePerDay: "",
+      selectedOption: null,
       carId: ""
     };
+  }
+
+
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
   }
 
   componentDidMount() {
@@ -157,8 +180,7 @@ populateSelect(){
     console.log(event.target.value);
   }
   render() {
-      
-    
+    const { selectedOption } = this.state;
 
     return (
       <section className="mainSection">
@@ -166,7 +188,6 @@ populateSelect(){
           <div className="row">
             <h2 className="">Your car services</h2>
             <br />
-            <a className="waves-effect waves-light light-blue lighten-2 btn modal-trigger" href="#servicesModal">Add a new Service</a>
           </div>
           {this.state.services.map(service => {
             return (
@@ -183,34 +204,31 @@ populateSelect(){
             );
           })}
 
-
-          <div id="servicesModal" className="modal">
-            <div className="modal-content">
-              <h4>Add Service</h4>
-              <div className="input-field col s12">
-                <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
-              </div>
-              <div className="input-field col s12">
-                <select name="services" onClick={this.onModalSubmit} onChange={this.handleChange}>
-                  <option value="Oil Change">Oil Change</option>
-                  <option value="Air Filter">Air Filter</option>
-                  <option value="Tune Up">Tune Up</option>
-                  <option value="Shocks and Struts">Shocks and Struts</option>
-                  <option value="Brakes">Brakes</option>
-                  <option value="Battery">Battery</option>
-                  <option value="Coolant">Coolant</option>
-                  <option value="Timing Belt">Timing Belt</option>
-                  <option value="Transmission">Transmission</option>
-                  <option value="Spark Plugs">Spark Plugs</option>
-                  <option value="Power Steering">Power Steering</option>
-                  <option value="Tire Rotation">Tire Rotation</option>
-                  <option value="Air Conditioning">Air Conditioning</option>
-                </select>
-                <label htmlFor="services">Your services</label>
+          <Row>
+            <Modal className="services-modal" header="Your Services" trigger={<Button className="light-blue lighten-2" waves="light">Add a new service</Button>} actions={
+              <div>
                 <Button className="light-blue lighten-2" onClick={this.onServiceSubmit} type="submit">Submit Service</Button>
               </div>
-            </div>
-          </div>
+            }>
+              <div className="modal-content">
+
+                <h4>Select service to add</h4>
+                <Row>
+                  <Select value={selectedOption}
+                    onChange={this.handleChange}
+                    options={options} />
+                </Row>
+                <Row>
+                  <div className="input-field col s12">
+                    <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
+                  </div>
+                </Row>
+
+
+              </div>
+            </Modal>
+          </Row>
+
         </div>
       </section>
     );
