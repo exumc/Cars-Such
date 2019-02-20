@@ -10,8 +10,8 @@ import withAuth from "../withAuth";
 
 class Profile extends React.Component {
   // Must initialize state first
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       userDetails: {},
@@ -19,7 +19,10 @@ class Profile extends React.Component {
       username: "",
       email: "",
       carIsSet: false,
-      vin: ""
+      vin: "",
+      userId:""
+      
+
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,9 +53,12 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
+    
     API.getUser(this.props.user.id).then(res => {
       if (res.data.cars[0]) {
-        this.setState({ carIsSet: true });
+        this.setState({ carIsSet: true,
+         userId: this.props.user.id 
+        });
         var now = new Date(res.data.cars[0].dateMileageUpdate);
         var today = now.toLocaleDateString();
         this.setState({
@@ -126,6 +132,7 @@ class Profile extends React.Component {
                       lastName={this.state.userDetails.lastname}
                       email={this.state.userDetails.email}
                       handleChange={this.handleChange}
+                      id={this.state.userId}
                     />
                   </Tab>
 

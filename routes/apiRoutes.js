@@ -79,11 +79,15 @@ router.get("/user/:id", (req, res) => {
 // Helder // isAuthenticated,
 router.post("/edituser/:id", function (req, res) {
   // route to edit the user information
-  db.User.updateOne({
-    id: req.params.id,
+  console.log(req.params.id);
+  console.log(req.body);
+  db.User.findOneAndUpdate(
+    {"_id": req.params.id},
+    {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    email: req.body.email
+    email: req.body.email,
+    password:req.body.password
   }).then(function (data) {
     res.json(data);
   });
@@ -194,10 +198,27 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
         .catch(err => res.status(400).json(err));
     });
 });
+router.post("/updateservice/:serviceid", function (req, res) {
 
+db.Services.findOneAndUpdate(
+
+{_id:req.params.serviceid},
+{serviceType:req.body.serviceType ,
+ mileage:req.body.mileage, 
+ nextServiceMiles:0
+}
+
+).then(data =>{
+  res.json(data);
+})
+
+
+
+})
 router.post("/addservice/:carid", function (req, res) {
   // route to add a service type to a chosen car.
-  // creates an instance of db.services
+  // creates an instance of db.servicesyarn start
+
   var Service = db.Services;
   //console log req.body
   // creates a var for a new instance of Service
