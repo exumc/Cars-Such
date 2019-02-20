@@ -43,7 +43,7 @@ class Profile extends React.Component {
   handleLogout = event => {
     event.preventDefault();
     this.Auth.logout()
-      .then(res => {})
+      .then(res => { })
       .catch(err => {
         alert(err.response.data.message);
       });
@@ -79,7 +79,7 @@ class Profile extends React.Component {
             <div className="col s10">
               <h1>{`${this.state.userDetails.firstname} ${
                 this.state.userDetails.lastname
-              }`}</h1>
+                }`}</h1>
             </div>
           </div>
 
@@ -88,12 +88,16 @@ class Profile extends React.Component {
               header="Modal Header"
               trigger={
                 <Button
-                  className="light-blue lighten-4 black-text"
+                  className="light-blue lighten-4 black-text mb-4"
                   waves="light"
                 >
                   Add Car
                 </Button>
               }
+              actions={<div><Button type="submit" className="btn btn-large waves-effect waves-light light-blue lighten-2" onClick={this.handleSubmit}>
+                Submit
+            </Button></div>}
+              className="add-car-modal"
             >
               <Row>
                 <form onSubmit={this.handleSubmit}>
@@ -108,9 +112,7 @@ class Profile extends React.Component {
                       onChange={this.handleChange}
                     />
 
-                    <Button type="submit" className="btn btn-large waves-effect waves-light light-blue lighten-2" onClick={this.handleSubmit}>
-                      Submit
-                    </Button>
+
                   </div>
                 </form>
               </Row>
@@ -127,7 +129,7 @@ class Profile extends React.Component {
                     />
                   </Tab>
 
-                  {this.state.carIsSet ? 
+                  {this.state.carIsSet ?
                     <Tab title="Vehicle">
                       <Vehicle
                         year={this.state.userCars.year}
@@ -146,7 +148,7 @@ class Profile extends React.Component {
                         handleChange={this.handleChange}
                       />
                     </Tab>
-                   : 
+                    :
                     <Tab title='' />
                   }
                 </Tabs>
@@ -161,7 +163,6 @@ class Profile extends React.Component {
                 onClick={this.handleLogout}
                 className="btn btn-large waves-effect red lighten-2"
               >
-                {" "}
                 Logout
               </button>
             </Row>
