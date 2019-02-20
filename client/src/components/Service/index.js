@@ -26,9 +26,11 @@ class Service extends React.Component {
       [name]: value
     });
   };
-
+componentDidMount(){
+  console.log(this.props.serviceId);
+}
   onServiceSubmit = event => {
-    API.addService(this.props.name, this.state.mileage, this.props.carId);
+    API.updateService(this.props.name, this.state.mileage, this.props.serviceId);
   }
 
   render() {

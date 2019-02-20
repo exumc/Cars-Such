@@ -201,10 +201,27 @@ router.post("/addcar/:id/user/:uid", (req, res) => {
         .catch(err => res.status(400).json(err));
     });
 });
+router.post("/updateservice/:serviceid", function (req, res) {
 
+db.Services.findOneAndUpdate(
+
+{_id:req.params.serviceid},
+{serviceType:req.body.serviceType ,
+ mileage:req.body.mileage, 
+ nextServiceMiles:0
+}
+
+).then(data =>{
+  res.json(data);
+})
+
+
+
+})
 router.post("/addservice/:carid", function (req, res) {
   // route to add a service type to a chosen car.
-  // creates an instance of db.services
+  // creates an instance of db.servicesyarn start
+
   var Service = db.Services;
   //console log req.body
   // creates a var for a new instance of Service

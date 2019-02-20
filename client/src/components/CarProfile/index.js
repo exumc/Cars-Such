@@ -22,7 +22,6 @@ class CarProfile extends React.Component {
       averageMileagePerDay: "",
       carId: ""
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +57,7 @@ class CarProfile extends React.Component {
                 for (let j = 0; j < b.length; j++) {
                   if (b[j].serviceType === a[i].name) {
                     a[i].mileage = b[j].mileage;
+                    a[i].serviceId = b[j]._id;
 
                     let serviceLife = b[j].nextServiceMiles - b[j].mileage;
                     let milesCounter = myCarObj.currentMileage - a[i].mileage;
@@ -78,6 +78,7 @@ class CarProfile extends React.Component {
                 }
               });
               this.setState({ services: serviceList });
+              console.log(this.state.services);
             });
         }
       }
@@ -85,38 +86,6 @@ class CarProfile extends React.Component {
 
   }
 
-  // calculateAverageMileage(objInfo) {
-  //   let initialDate = objInfo.initialDate;
-  //   let initialMileage = objInfo.initialMileage;
-  //   let currentMileage = objInfo.currentMileage;
-  //   let currentDate = objInfo.currentDate;
-  //   let date_1 = new Date(initialDate);
-  //   let date_2 = new Date(currentDate);
-  //   let differenceInDays =this.mydiff(date_1 , date_2 , "days");
-  //   let averageMiles =Math.floor( (currentMileage - initialMileage) / differenceInDays);
-  //   let myNewObj = {
-  //     mileageDif: currentMileage - initialMileage,
-  //     daysDif: differenceInDays,
-  //     averageMileagePerDay:averageMiles
-  //   }
-  //   console.log(myNewObj);
-  //   this.setState({averageMileagePerDay:averageMiles})
-  //   return myNewObj.averageMileagePerDay
-  // }
-  getPercentage(argDateServiced, argServiceLifeSpan) {
-    // let currentDate = new Date();
-    // argDateServiced = new Date(argDateServiced);
-    // let dateDifference = this.mydiff(argDateServiced , currentDate , "days");
-    // console.log("avg Miles per day: "+ this.state.averageMileagePerDay);
-    // let milesCounter = dateDifference * this.state.averageMileagePerDay
-    // let percentage =Math.floor((milesCounter / argServiceLifeSpan) * 100)
-    // let percentageLeft =100 - percentage
-    // console.log("Service Life Span: "+ argServiceLifeSpan);
-    // console.log("Days Since last Service: "+ dateDifference);
-    // console.log("Estimated Miles Since Last Service: "+ milesCounter);
-    // console.log("Percentage Used / Left : "+ percentage +" / "+ percentageLeft);
-    // return percentageLeft
-  }
   calculateAverageMileage(objInfo) {
     let initialDate = objInfo.initialDate;
     let initialMileage = objInfo.initialMileage;
@@ -209,36 +178,39 @@ populateSelect(){
                 partLife={service.percentage}
                 nameId={service.nameId}
                 carId={this.state.carId}
+                serviceId={service.serviceId}
               />
-
             );
-
           })}
+
 
           <div id="servicesModal" className="modal">
             <div className="modal-content">
               <h4>Add Service</h4>
-              <form>
-                <div className="input-field col s12">
-                  <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
-                </div>
-                <div className="input-field col s12">
-
-                <select  >
-                    {this.state.options}
-                      
-                      
-                  </select>
-                  <label htmlFor="services">Your services</label>
-                  <Button className="light-blue lighten-2" type="submit">Submit Service</Button>
-                </div>
-              </form>
+              <div className="input-field col s12">
+                <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
+              </div>
+              <div className="input-field col s12">
+                <select name="services" onClick={this.onModalSubmit} onChange={this.handleChange}>
+                  <option value="Oil Change">Oil Change</option>
+                  <option value="Air Filter">Air Filter</option>
+                  <option value="Tune Up">Tune Up</option>
+                  <option value="Shocks and Struts">Shocks and Struts</option>
+                  <option value="Brakes">Brakes</option>
+                  <option value="Battery">Battery</option>
+                  <option value="Coolant">Coolant</option>
+                  <option value="Timing Belt">Timing Belt</option>
+                  <option value="Transmission">Transmission</option>
+                  <option value="Spark Plugs">Spark Plugs</option>
+                  <option value="Power Steering">Power Steering</option>
+                  <option value="Tire Rotation">Tire Rotation</option>
+                  <option value="Air Conditioning">Air Conditioning</option>
+                </select>
+                <label htmlFor="services">Your services</label>
+                <Button className="light-blue lighten-2" onClick={this.onServiceSubmit} type="submit">Submit Service</Button>
+              </div>
             </div>
-
-
-
           </div>
-
         </div>
       </section>
     );
