@@ -5,6 +5,7 @@ import Service from "../Service";
 import API from "../../utils/API"
 import {
   Button,
+  Input
 } from "react-materialize";
 
 class CarProfile extends React.Component {
@@ -12,6 +13,8 @@ class CarProfile extends React.Component {
     super(props);
     this.state = {
       services,
+      value: "Select",
+      options:"",
       userCars: "",
       servicesFromDataBase: [],
       carmileage: "",
@@ -19,10 +22,11 @@ class CarProfile extends React.Component {
       averageMileagePerDay: "",
       carId: ""
     };
-
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
+    this.populateSelect();
     API.getUser(this.props.id).then(res => {
       if (res.data.cars[0]) {
         this.setState({ carId: res.data.cars[0]._id });
@@ -78,6 +82,7 @@ class CarProfile extends React.Component {
         }
       }
     });
+
   }
 
   // calculateAverageMileage(objInfo) {
@@ -163,7 +168,28 @@ class CarProfile extends React.Component {
   //         default: return undefined;
   //     }
   // }
+populateSelect(){
+  let myOptions = this.state.services.map( (option, index) => {
+    return(
+     <option key={index}>
+     {option.name}
+  </option>
+
+    )
+
+    })
+    this.setState({options:myOptions})
+    console.log(this.state.options);
+    console.log(myOptions);
+}
+  handleChange(event) {
+
+    this.setState({ value: event.target.value });
+    console.log(event.target.value);
+  }
   render() {
+      
+    
 
     return (
       <section className="mainSection">
@@ -192,18 +218,21 @@ class CarProfile extends React.Component {
           <div id="servicesModal" className="modal">
             <div className="modal-content">
               <h4>Add Service</h4>
-              <div className="input-field col s12">
-                <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
-              </div>
-              <div className="input-field col s12">
-                <select name="services" onClick={this.onModalSubmit} onChange={this.handleChange}>
-                  {this.state.services.map(service => {
-                    return <option key={service.name}>{service.name}</option>
-                  })}
-                </select>
-                <label htmlFor="services">Your services</label>
-                <Button className="light-blue lighten-2" onClick={this.onServiceSubmit} type="submit">Submit Service</Button>
-              </div>
+              <form>
+                <div className="input-field col s12">
+                  <input placeholder="Input current mileage amount for service completed" name="mileage" id="mileage" type="text" />
+                </div>
+                <div className="input-field col s12">
+
+                <select  >
+                    {this.state.options}
+                      
+                      
+                  </select>
+                  <label htmlFor="services">Your services</label>
+                  <Button className="light-blue lighten-2" type="submit">Submit Service</Button>
+                </div>
+              </form>
             </div>
 
 
