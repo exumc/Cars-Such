@@ -6,7 +6,6 @@ import API from "../../utils/API"
 import { Button, Row, Modal } from "react-materialize";
 import Select from 'react-select';
 
-
 const options = [
   { value: 'Oil Change', label: 'Oil Change' },
   { value: 'Air Filter', label: 'Air Filter' },
@@ -21,7 +20,6 @@ const options = [
   { value: 'Power Steering', label: 'Power Steering' },
   { value: 'Tire Rotation', label: 'Tire Rotation' },
   { value: 'Air Conditioning', label: 'Air Conditioning' }
-
 ];
 
 class CarProfile extends React.Component {
@@ -38,7 +36,6 @@ class CarProfile extends React.Component {
       carId: ""
     };
   }
-
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
