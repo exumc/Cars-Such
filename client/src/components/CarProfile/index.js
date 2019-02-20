@@ -27,6 +27,8 @@ class CarProfile extends React.Component {
     super(props);
     this.state = {
       services,
+      value: "Select",
+      options:"",
       userCars: "",
       servicesFromDataBase: [],
       carmileage: "",
@@ -43,6 +45,7 @@ class CarProfile extends React.Component {
   }
 
   componentDidMount() {
+    this.populateSelect();
     API.getUser(this.props.id).then(res => {
       if (res.data.cars[0]) {
         this.setState({ carId: res.data.cars[0]._id });
@@ -74,6 +77,7 @@ class CarProfile extends React.Component {
                 for (let j = 0; j < b.length; j++) {
                   if (b[j].serviceType === a[i].name) {
                     a[i].mileage = b[j].mileage;
+                    a[i].serviceId = b[j]._id;
 
                     let serviceLife = b[j].nextServiceMiles - b[j].mileage;
                     let milesCounter = myCarObj.currentMileage - a[i].mileage;
@@ -94,10 +98,12 @@ class CarProfile extends React.Component {
                 }
               });
               this.setState({ services: serviceList });
+              console.log(this.state.services);
             });
         }
       }
     });
+
   }
 
   calculateAverageMileage(objInfo) {
@@ -151,6 +157,25 @@ class CarProfile extends React.Component {
   //         default: return undefined;
   //     }
   // }
+populateSelect(){
+  let myOptions = this.state.services.map( (option, index) => {
+    return(
+     <option key={index}>
+     {option.name}
+  </option>
+
+    )
+
+    })
+    this.setState({options:myOptions})
+    console.log(this.state.options);
+    console.log(myOptions);
+}
+  handleChange(event) {
+
+    this.setState({ value: event.target.value });
+    console.log(event.target.value);
+  }
   render() {
     const { selectedOption } = this.state;
 
@@ -171,6 +196,7 @@ class CarProfile extends React.Component {
                 partLife={service.percentage}
                 nameId={service.nameId}
                 carId={this.state.carId}
+                serviceId={service.serviceId}
               />
             );
           })}
