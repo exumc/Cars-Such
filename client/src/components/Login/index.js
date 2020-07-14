@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthService from '../AuthService';
+import AuthService from "../AuthService";
 import "./style.css";
 
 class Login extends React.Component {
@@ -10,12 +10,12 @@ class Login extends React.Component {
   }
   state = {
     email: "",
-    password: "",
-  }
+    password: ""
+  };
 
   componentWillMount() {
     if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
+      this.props.history.replace("/");
     }
   }
 
@@ -26,8 +26,7 @@ class Login extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
-
+  handleSubmit = event => {
     event.preventDefault();
     this.Auth.login(this.state.email, this.state.password)
       .then(res => {
@@ -36,10 +35,10 @@ class Login extends React.Component {
         this.props.history.replace(`/profile`);
       })
       .catch(err => {
-        alert(err.response.data.message)
+        alert(err.response.data.message);
       });
-  }
-  
+  };
+
   render() {
     return (
       <div className="mainSection">
@@ -50,14 +49,14 @@ class Login extends React.Component {
             <div className="section" />
             <div className="container">
               <div className="z-depth-1 grey lighten-4 row login-form">
-                <form className="col s12" onSubmit={this.handleSubmit} >
+                <form className="col s12" onSubmit={this.handleSubmit}>
                   <div className="row">
                     <div className="col s12" />
                   </div>
 
                   <div className="row">
                     <div className="input-field col s12">
-                    <label for="email">Enter your email</label>
+                      <label for="email">Enter your email</label>
 
                       <input
                         type="email"
@@ -71,7 +70,7 @@ class Login extends React.Component {
 
                   <div className="row">
                     <div className="input-field col s12">
-                    <label for="password">Enter your password</label>
+                      <label for="password">Enter your password</label>
                       <input
                         type="password"
                         name="password"
@@ -95,10 +94,9 @@ class Login extends React.Component {
                         name="btn_login"
                         id="userLogin"
                         className="col s12 btn btn-large waves-effect light-blue lighten-2"
-
                       >
                         Login
-                    </button>
+                      </button>
                     </div>
                   </center>
                 </form>

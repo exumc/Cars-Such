@@ -22,8 +22,6 @@ GitHub & Git
 
 # Authors
 Alan Lopez - UI/UX, Back-End Development, Front-End consulting, Project Management | [See Alan's GitHub](https://github.com/beardybones)  
-Helder Calado - WRITE WHAT YOU DID HERE | [See Helder's GitHub](https://github.com/heldercalado)  
-Cord Exum - WRITE WHAT YOU DID HERE | [See Cord's GitHub](https://github.com/exumc)  
+Helder Calado - Back-End Lead | [See Helder's GitHub](https://github.com/heldercalado)  
+Cord Exum - Front-End Lead | [See Cord's GitHub](https://github.com/exumc)  
 Christopher PierreLouis - Front-End Development | [See Chris' GitHub](https://github.com/chrispierrelouis26)  
-Leslie Morris - WRITE WHAT YOU DID HERE | [See Leslie's GitHub](https://github.com/Lmorris757)  
-

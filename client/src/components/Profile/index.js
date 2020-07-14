@@ -20,7 +20,7 @@ class Profile extends React.Component {
       email: "",
       carIsSet: false,
       vin: "",
-      userId:""
+      userId: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,22 +41,10 @@ class Profile extends React.Component {
     }
   };
 
-  handleLogout = event => {
-    event.preventDefault();
-    this.Auth.logout()
-      .then(res => { })
-      .catch(err => {
-        alert(err.response.data.message);
-      });
-  };
-
   componentDidMount() {
-    
     API.getUser(this.props.user.id).then(res => {
       if (res.data.cars[0]) {
-        this.setState({ carIsSet: true,
-         userId: this.props.user.id 
-        });
+        this.setState({ carIsSet: true, userId: this.props.user.id });
         var now = new Date(res.data.cars[0].dateMileageUpdate);
         var today = now.toLocaleDateString();
         this.setState({
@@ -81,9 +69,7 @@ class Profile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col s10">
-              <h1>{`${this.state.userDetails.firstname} ${
-                this.state.userDetails.lastname
-                }`}</h1>
+              <h1>{`${this.state.userDetails.firstname} ${this.state.userDetails.lastname}`}</h1>
             </div>
           </div>
 
@@ -98,9 +84,17 @@ class Profile extends React.Component {
                   Add Car
                 </Button>
               }
-              actions={<div><Button type="submit" className="btn btn-large waves-effect waves-light light-blue lighten-2" onClick={this.handleSubmit}>
-                Submit
-            </Button></div>}
+              actions={
+                <div>
+                  <Button
+                    type="submit"
+                    className="btn btn-large waves-effect waves-light light-blue lighten-2"
+                    onClick={this.handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              }
               className="add-car-modal"
             >
               <Row>
@@ -132,7 +126,7 @@ class Profile extends React.Component {
                     />
                   </Tab>
 
-                  {this.state.carIsSet ?
+                  {this.state.carIsSet ? (
                     <Tab title="Vehicle">
                       <Vehicle
                         year={this.state.userCars.year}
@@ -151,24 +145,13 @@ class Profile extends React.Component {
                         handleChange={this.handleChange}
                       />
                     </Tab>
-                    :
-                    <Tab title='' />
-                  }
+                  ) : (
+                    <Tab title="" />
+                  )}
                 </Tabs>
               </div>
             </div>
 
-            <Row>
-              <button
-                type="submit"
-                name="btn_logout"
-                id="userLogout"
-                onClick={this.handleLogout}
-                className="btn btn-large waves-effect red lighten-2"
-              >
-                Logout
-              </button>
-            </Row>
           </Row>
         </div>
       </section>

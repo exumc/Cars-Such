@@ -23,3 +23,15 @@ nav {
 ul.sidenav{
   padding-top:24px;
 }
+
+#userLogout{
+  margin-right:40px;
+}
+
+.sidenav #userLogout{
+  margin-left:24px;
+}
+
+.sidenav .fa-user-circle {
+  margin-right:8px !important;
+}

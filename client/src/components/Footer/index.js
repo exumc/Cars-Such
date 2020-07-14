@@ -10,9 +10,6 @@ class Footer extends React.Component {
           <div className="container center">
             © 2019 Keep it Running by the Power Coders
           </div>
-          <div className="kirbyBtn">
-            <ChatBot />
-          </div>
         </div>
       </footer>
     );
